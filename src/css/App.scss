@@ -5,3 +5,18 @@
   background-color: black;
   cursor: none;
 }
+
+.menu {
+  display: flex;
+  flex-direction: row;
+  background: #ffffff;
+}
+.menu-item {
+  cursor: pointer;
+  padding: 5px;
+  height: 28px;
+  border-right: 1px solid rgb(187, 187, 187);
+}
+.menu-item:hover {
+  color: #2980b9;
+}

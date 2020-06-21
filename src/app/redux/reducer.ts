@@ -15,6 +15,13 @@ export function reducer(state: ReduxState | undefined, action: Actions.Action): 
         username: payload,
       };
     }
+    case Actions.SET_SCREEN: {
+      let payload = (action as Actions.SetStringAction).payload;
+      return {
+        ...state,
+        screen: payload,
+      };
+    }
   }
   return state;
 }

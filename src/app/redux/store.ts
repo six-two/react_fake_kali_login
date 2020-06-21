@@ -1,6 +1,10 @@
 import { createStore } from 'redux';
 import { reducer } from './reducer';
 
+export const SCREEN_OFF = "SCREEN_OFF";
+export const SCREEN_HIBERNATE = "SCREEN_HIBERNATE";
+
+
 export interface ReduxState {
   hostname: string,
   screen: string,
@@ -26,3 +30,4 @@ if ((window as any).__REDUX_DEVTOOLS_EXTENSION__) {
 }
 
 export const store = createStore(reducer, fallbackState, devTools);
+export default store;

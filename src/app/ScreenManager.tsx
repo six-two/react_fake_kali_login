@@ -51,11 +51,6 @@ class StatusBar extends React.Component<Props, State> {
   }
 
   renderMenu(menu: MenuData) {
-    let disabled = this.props.disableMenus ?? false;
-    let selected = menu.name === this.state.activeMenu;
-    return <MenuBarItem name={menu.name} icon={menu.icon}
-      disable={disabled}
-      selected={selected} onClick={this.onMenuSelected} />
   }
 
   onMenuSelected = (name: string) => {
