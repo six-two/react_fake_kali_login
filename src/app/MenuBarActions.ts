@@ -4,5 +4,5 @@ import store from "./redux/store";
 const dispatch = store.dispatch;
 
 function shutdown() {
-  dispatch(Actions.showTurnedOffScreen());
+  dispatch(Actions.setScreen(Actions.SCREEN_OFF));
 }

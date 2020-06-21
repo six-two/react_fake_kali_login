@@ -1,11 +1,14 @@
-import { SCREEN_OFF } from './store';
-
 // action types
 export const SET_USERNAME = "SET_USERNAME";
 export const SET_PASSWORD = "SET_PASSWORD";
 export const SET_SCREEN = "SET_SCREEN";
 export const SET_HOSTNAME = "SET_HOSTNAME";
 
+// screens
+export const SCREEN_OFF = "SCREEN_OFF";
+export const SCREEN_HIBERNATE = "SCREEN_HIBERNATE";
+export const SCREEN_SUSPEND = "SCREEN_SUSPEND";
+export const SCREEN_LOGIN = "SCREEN_LOGIN";
 
 // actions
 export interface ActionWithoutPayload {
@@ -41,9 +44,9 @@ export function setHostname(newValue: string): SetStringAction {
   };
 }
 
-export function showTurnedOffScreen(): SetStringAction {
+export function setScreen(newValue: string): SetStringAction {
   return {
     type: SET_SCREEN,
-    payload: SCREEN_OFF,
+    payload: newValue,
   };
 }

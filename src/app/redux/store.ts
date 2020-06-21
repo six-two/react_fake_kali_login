@@ -1,9 +1,6 @@
 import { createStore } from 'redux';
 import { reducer } from './reducer';
-
-export const SCREEN_OFF = "SCREEN_OFF";
-export const SCREEN_HIBERNATE = "SCREEN_HIBERNATE";
-
+import { SCREEN_LOGIN } from './actions';
 
 export interface ReduxState {
   hostname: string,
@@ -14,7 +11,7 @@ export interface ReduxState {
 
 export const fallbackState: ReduxState = {
   hostname: "Kali Linux",
-  screen: "login",
+  screen: SCREEN_LOGIN,
   username: "",
   password: "",
 }

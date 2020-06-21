@@ -4,11 +4,14 @@ import Popup from "reactjs-popup";
 import '../css/App.scss';
 import TurnedOffScreen from './TurnedOffScreen';
 import StatusBar from './StatusBar';
-import FullscreenManager from "./FullscreenManager";
+import FullscreenManager from './FullscreenManager';
+import ScreenManager from './ScreenManager';
 
 // TODOs
 
 // --- Nice to have ---
+
+const DEBUG = true;
 
 
 export default class App extends React.Component<any, State> {
@@ -17,7 +20,6 @@ export default class App extends React.Component<any, State> {
     this.state = {};
   }
 
-  // <TurnedOffScreen />
   render() {
     return <div className="App">
       <h1>TODO</h1>
@@ -43,8 +45,9 @@ export default class App extends React.Component<any, State> {
         </Popup>
         <div className="menu-item"> Menu item 4</div>
       </div>
-      <FullscreenManager>
-        <h1 style={{color: "red"}}>Fullscreen content</h1>
+      <FullscreenManager alwaysShowContents={DEBUG}>
+        <ScreenManager />
+        <h1 style={{ color: "red" }}>Fullscreen content</h1>
       </FullscreenManager>
     </div>
   }
