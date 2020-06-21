@@ -1,5 +1,7 @@
 import React from 'react';
 import './App.scss';
+import TurnedOffScreen from './TurnedOffScreen';
+import StatusBar from './StatusBar';
 
 // TODOs
 
@@ -12,9 +14,11 @@ export default class App extends React.Component<any, State> {
     this.state = {};
   }
 
+  // <TurnedOffScreen />
   render() {
     return <div className="App">
       <h1>TODO</h1>
+      <StatusBar />
     </div>
   }
 }

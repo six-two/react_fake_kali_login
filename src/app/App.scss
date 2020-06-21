@@ -1,72 +1,32 @@
-a {
-  text-decoration: none;
-  color: blue;
+.screen-off {
+  background-color: black;
+  cursor: none;
 }
 
-h1, h2 {
-  text-align: center;
+.fullscreen {
+  position:absolute;
+  top:0; left:0; bottom:0; right:0;
+  width:100%; height:100%;
+  border:none; margin:0; padding:0;
+  overflow:hidden;
 }
 
-button {
-  border: 1px solid gray;
-  border-radius: 10px;
-  color: white;
-  background-color: gray;
-  font-weight: bold;
-  padding: 3px;
-  cursor: pointer;
+.bg {
+  z-index: -10;
 }
 
-.input-row {
+.v-flex {
   display: flex;
-  margin: 0px 5px 15px 5px;
-
-  .label {
-    flex: 0.1;
-    margin: auto;
-  }
-
-  .input {
-    flex: 0.9;
-    margin: auto;
-
-    input {
-      width: 100%;
-      // fixes input being bigger than parent div
-      box-sizing: border-box;
-    }
-
-    .error {
-      outline: 2px solid red;
-    }
-  }
+  flex-direction: column;
+  height: 100%;
 }
 
-.err-msg {
-  color: red;
+.h-flex {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
 }
 
-.link-div {
-  width: 90%;
-  border: 2px solid gray;
-  border-radius: 10px;
-  background-color: #eee;
-  padding: 5px;
-  margin: auto;
-  text-align: center;
-  overflow-wrap: break-word;
-}
-
-
-.initial-buttons {
-  button {
-    display: block;
-    margin: 15px auto;
-    width: 200px;
-    text-align: center;
-  }
-}
-
-.create-link-root {
-  margin-top: 20px;
+.expand {
+  flex: 1;
 }
