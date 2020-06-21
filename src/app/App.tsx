@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.scss';
+import '../css/App.scss';
 import TurnedOffScreen from './TurnedOffScreen';
 import StatusBar from './StatusBar';
 
