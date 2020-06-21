@@ -4,11 +4,14 @@ import Menu, { SubMenu, MenuItem } from 'rc-menu';
 import { connect } from 'react-redux';
 import { ReduxState } from './redux/store';
 import MenuBarItem from './MenuBarItem';
+import iconSession from '../img/bars.png';
+import iconAccessibility from '../img/accessibility.png';
+import iconShutdown from '../img/shutdown.png';
 
 
 const SESSION_MENU: MenuData = {
   name: "session",
-  icon: "img/bars.png",
+  icon: iconSession,
   menuItems: ["Test", "123"],
 };
 
@@ -19,13 +22,13 @@ const KEYBOARD_MENU: MenuData = {
 
 const ACCESSIBILITY_MENU: MenuData = {
   name: "accessibility",
-  icon: "img/accessibility.png",
+  icon: iconAccessibility,
   menuItems: ["Test", "123"],
 };
 
 const SHUTDOWN_MENU: MenuData = {
   name: "shutdown",
-  icon: "img/shutdown.png",
+  icon: iconShutdown,
   menuItems: ["Suspend"],
 };
 
