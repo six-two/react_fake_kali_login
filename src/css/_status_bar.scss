@@ -17,7 +17,7 @@ $login-buttons-bg: #23252e;
     height: 14px;
   }
 
-  * {
+  .menu-bar-item, .hostname, .clock {
     user-select: none !important;
     padding: 6px 5px;
   }
@@ -27,7 +27,33 @@ $login-buttons-bg: #23252e;
     padding-bottom: 4px;
   }
 
-  #clock {
+  .clock {
     font-weight: bold;
+  }
+
+  .menu-bar-item-content {
+    border: 0px !important;
+    padding: 0px !important;
+    margin: 0px !important;
+  }
+
+  .menu {
+    background-color: $bar-bg;
+    color: white;
+
+    .menu-item {
+      padding: 4px 0px 4px 30px;
+      width: 200px;
+
+      &:hover {
+        background-color: $blue;
+      }
+    }
+
+    .keybinding {
+      color: #999;
+      float: right;
+      margin-right: 7px;
+    }
   }
 }

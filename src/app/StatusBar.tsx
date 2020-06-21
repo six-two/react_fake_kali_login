@@ -44,11 +44,10 @@ class StatusBar extends React.Component<Props, State> {
     return <div className="status-bar h-flex">
       <div className="hostname">{this.props.hostname}</div>
       <div className="expand"></div>
-
       {this.renderMenu(SESSION_MENU)}
       {this.renderMenu(KEYBOARD_MENU)}
       {this.renderMenu(ACCESSIBILITY_MENU)}
-      <div id="clock"><Clock format={'MMM D, HH:mm'} /></div>
+      <div className="clock"><Clock format={'MMM D, HH:mm'} /></div>
       {this.renderMenu(SHUTDOWN_MENU)}
     </div>
   }
