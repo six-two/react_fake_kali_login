@@ -1,4 +1,5 @@
 import * as Actions from './actions';
+import * as C from './constants';
 import { ReduxState, fallbackState } from './store';
 
 export function reducer(state: ReduxState | undefined, action: Actions.Action): ReduxState {
@@ -8,19 +9,39 @@ export function reducer(state: ReduxState | undefined, action: Actions.Action): 
   }
 
   switch (action.type) {
-    case Actions.SET_USERNAME: {
+    case C.SET_USERNAME: {
       let payload = (action as Actions.SetStringAction).payload;
       return {
         ...state,
         username: payload,
       };
     }
-    case Actions.SET_SCREEN: {
-      let payload = (action as Actions.SetStringAction).payload;
-      return {
+    case C.SET_SCREEN: {
+      let newScreen = (action as Actions.SetStringAction).payload;
+      let oldScreen = state.screen.name;
+
+      let newState = {
         ...state,
-        screen: payload,
+        screen: {
+          name: newScreen,
+          changeTime: new Date(),
+        },
       };
+
+      if (newScreen === C.SCREEN_SUSPEND) {
+        newState.suspend = {
+          ...newState.suspend,
+          lastScreen: state.screen.name,
+        };
+      }
+
+      if (oldScreen === C.SCREEN_SUSPEND) {
+        newState.suspend = {
+          ...newState.suspend,
+          lastScreen: undefined,
+        };
+      }
+      return newState;
     }
   }
   return state;

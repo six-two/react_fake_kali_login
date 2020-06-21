@@ -1,7 +1,9 @@
 import React from 'react';
 import StatusBar from './StatusBar';
 import store from './redux/store';
-import { setScreen, SCREEN_OFF } from './redux/actions';
+import { setScreen } from './redux/actions';
+import * as C from './redux/constants';
+
 
 export default class ScreenLogin extends React.Component {
   render() {
@@ -12,6 +14,6 @@ export default class ScreenLogin extends React.Component {
   }
 
   screenOff = () => {
-    store.dispatch(setScreen(SCREEN_OFF));
+    setScreen(C.SCREEN_SUSPEND);
   }
 }

@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { SCREEN_LOGIN, SCREEN_OFF } from './redux/actions';
+import * as C from './redux/constants';
 import { ReduxState } from './redux/store';
 import ScreenLogin from './ScreenLogin';
 import ScreenOff from './TurnedOffScreen';
+import ScreenSuspend from './ScreenSuspend';
 
 
 class ScreenManager extends React.Component<Props> {
@@ -15,9 +16,11 @@ class ScreenManager extends React.Component<Props> {
 
   renderContent() {
     switch (this.props.screen) {
-      case SCREEN_LOGIN:
+      case C.SCREEN_LOGIN:
         return <ScreenLogin />;
-      case SCREEN_OFF:
+      case C.SCREEN_SUSPEND:
+        return <ScreenSuspend />;
+      case C.SCREEN_OFF:
         return <ScreenOff />;
       default:
         return <h1>{`Unknown screen: "${this.props.screen}"`}</h1>
@@ -32,7 +35,7 @@ interface Props {
 const mapStateToProps = (state: ReduxState, ownProps: any) => {
   return {
     ...ownProps,
-    screen: state.screen,
+    screen: state.screen.name,
   };
 };
 

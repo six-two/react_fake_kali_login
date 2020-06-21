@@ -1,24 +1,36 @@
 import React from 'react';
+import Popup from "reactjs-popup";
 
-export default class StatusBar extends React.Component<Props> {
-  defaultProps = {
-    disable: false,
-  };
 
+export default class MenuBarItem extends React.Component<Props> {
   render() {
-    let dom = this.props.icon ?
-      <img src={this.props.icon} alt={this.props.name} />
-      : this.props.name;
     let onClick = this.props.disable ? this.onClick : undefined;
+    let selected = this.props.disable ? false : this.props.selected;
     let classNames = ["menu-bar-item"];
     if (this.props.disable) {
       classNames.push("menu-disabled");
     } else if (this.props.selected) {
       classNames.push("menu-selected");
     }
-    return <div className={classNames.join(" ")} onClick={onClick}>
-      {dom}
-    </div>
+    let dom = this.props.icon ?
+      <img src={this.props.icon} alt={this.props.name} />
+      : <div>this.props.name</div>;
+    return <Popup
+      className={classNames.join(" ")}
+      trigger={dom}
+      position="bottom left"
+      on="hover"
+      closeOnDocumentClick
+      mouseLeaveDelay={300}
+      mouseEnterDelay={0}
+      arrow={false}
+    >
+      <div className="menu">
+        <div className="menu-item"> item 1</div>
+        <div className="menu-item"> item 2</div>
+        <div className="menu-item"> item 3</div>
+      </div>
+    </Popup>
   }
 
   onClick = () => {
