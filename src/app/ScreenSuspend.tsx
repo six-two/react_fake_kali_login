@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { ReduxState } from './redux/store';
 import { setScreen } from './redux/actions';
 
+const MIN_SUSPEND_TIME = 1000;//in milliseconds
+
 
 class ScreenSuspend extends React.Component<Props> {
   render() {
@@ -14,18 +16,23 @@ class ScreenSuspend extends React.Component<Props> {
   }
 
   wakeUp = () => {
-    setScreen(this.props.lastScreen);
+    let timeDiff = new Date().getTime() - this.props.suspendStart.getTime();
+    if (timeDiff >= MIN_SUSPEND_TIME) {
+      setScreen(this.props.lastScreen);
+    }
   }
 }
 
 interface Props {
   lastScreen: string,
+  suspendStart: Date,
 }
 
 const mapStateToProps = (state: ReduxState, ownProps: any) => {
   return {
     ...ownProps,
     lastScreen: state.suspend.lastScreen || "Error: suspend has no last screen set",
+    suspendStart: state.screen.changeTime,
   };
 };
 

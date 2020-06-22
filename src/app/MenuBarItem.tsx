@@ -19,11 +19,7 @@ export default class MenuBarItem extends React.Component<Props> {
     let dom = this.props.icon ?
       <img className={classes} src={this.props.icon} alt={this.props.name} />
       : <div className={classes}>{this.props.name}</div>;
-    let menuDom = <div className="menu">
-      <div className="menu-item"> item 1</div>
-      <div className="menu-item"> item 2</div>
-      <div className="menu-item"> item 3</div>
-    </div>;
+    let menuDom = this.props.children;
     return <Popup
       className={classNames.join(" ")}
       trigger={dom}
@@ -47,36 +43,6 @@ export default class MenuBarItem extends React.Component<Props> {
         }}
       </TrackVisibility>
     </Popup>
-
-    // return <ToggleLayer ResizeObserver={ResizeObserver}
-    //   renderLayer={({ isOpen, layerProps }) =>
-    //     isOpen && (
-    //       <div
-    //         ref={layerProps.ref}
-    //         className="menu"
-    //         style={{
-    //           ...layerProps.style,
-    //           backgroundColor: "gray",
-    //           width: "100px",
-    //         }}
-    //       >
-    //         Layer
-    //       </div>
-    //     )
-    //   }
-    //   placement={{
-    //     anchor: "BOTTOM_LEFT",
-    //     possibleAnchors: ["BOTTOM_LEFT", "BOTTOM_CENTER", "BOTTOM_RIGHT"],
-    //     autoAdjust: true,
-    //     triggerOffset: 0,
-    //   }}
-    //     >
-    //       {({ triggerRef, toggle }) => (
-    //         <div ref={triggerRef} onClick={toggle}>
-    //           {dom}
-    // </div>
-    //       )}
-    //     </ToggleLayer>
   }
 
   onClick = () => {
