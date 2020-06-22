@@ -16,8 +16,13 @@ export interface SetStringAction {
   payload: string,
 }
 
+export interface OptionalStringAction {
+  type: string,
+  payload?: string,
+}
 
-export type Action = ActionWithoutPayload | SetStringAction;
+
+export type Action = ActionWithoutPayload | SetStringAction | OptionalStringAction;
 
 // action creators
 export function setLoginUsername(newValue: string) {
@@ -37,6 +42,13 @@ export function setLoginPassword(newValue: string) {
 export function tryLogin() {
   d({
     type: C.TRY_LOGIN,
+  });
+}
+
+export function setLoginOpenMenu(newValue?: string) {
+  d({
+    type: C.SET_LOGIN_OPEN_MENU,
+    payload: newValue,
   });
 }
 

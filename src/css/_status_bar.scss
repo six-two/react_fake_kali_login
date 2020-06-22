@@ -32,6 +32,22 @@
     margin: 0px !important;
   }
 
+  .menu-div{
+    position: relative;
+
+    .popup-normal {
+      position: absolute;
+      top: $bar-height;
+      left: 0px;
+    }
+
+    .popup-fix-position {
+       position: "fixed";
+       top: "27px";
+       right: "0px";
+    }
+  }
+
   .menu {
     background-color: $bar-bg;
     color: white;
@@ -50,5 +66,9 @@
       float: right;
       margin-right: 7px;
     }
+  }
+
+  .menu-disabled {
+    color: gray;
   }
 }

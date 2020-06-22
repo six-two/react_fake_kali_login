@@ -20,6 +20,7 @@ export interface ScreenState {
 export interface LoginState {
   username: string,
   password: string,
+  openMenu?: string,
   failed: boolean,
   count: number,
 }

@@ -4,6 +4,7 @@ export const SET_LOGIN_PASSWORD = "SET_LOGIN_PASSWORD";
 export const SET_SCREEN = "SET_SCREEN";
 export const SET_HOSTNAME = "SET_HOSTNAME";
 export const TRY_LOGIN = "TRY_LOGIN";
+export const SET_LOGIN_OPEN_MENU = "SET_LOGIN_OPEN_MENU";
 
 // screens
 export const SCREEN_OFF = "SCREEN_OFF";

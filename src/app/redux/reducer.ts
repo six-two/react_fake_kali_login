@@ -56,6 +56,16 @@ export function reducer(state: ReduxState | undefined, action: Actions.Action): 
         isFinished: success,
       };
     }
+    case C.SET_LOGIN_OPEN_MENU: {
+      let payload = (action as Actions.OptionalStringAction).payload;
+      return {
+        ...state,
+        login: {
+          ...state.login,
+          openMenu: payload,
+        },
+      };
+    }
     case C.SET_SCREEN: {
       let newScreen = (action as Actions.SetStringAction).payload;
       let oldScreen = state.screen.name;

@@ -3,7 +3,7 @@ import Clock from 'react-live-clock';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 import { connect } from 'react-redux';
 import { ReduxState } from './redux/store';
-import { setScreen } from './redux/actions';
+import { setScreen, setLoginOpenMenu } from './redux/actions';
 import * as C from './redux/constants';
 import MenuBarItem from './MenuBarItem';
 import iconSession from '../img/bars.png';
@@ -78,13 +78,15 @@ class StatusBar extends React.Component<Props, State> {
   }
 
   renderMenu(menu: MenuData) {
-    let disabled = this.props.disableMenus ?? false;
-    let selected = menu.name === this.state.activeMenu;
+    let disabled = this.props.disableMenus === true;
+    let selected = menu.name === this.props.openMenu;
 
     return <div>
       <MenuBarItem name={menu.name} icon={menu.icon}
         disable={disabled}
-        selected={selected} onClick={this.onMenuSelected}>
+        selected={selected}
+        onClick={this.onMenuSelected}
+        close={this.closeCurrentMenu}>
 
         <div className="menu">
           {menu.menuItems.map(this.renderMenuItem)}
@@ -95,14 +97,20 @@ class StatusBar extends React.Component<Props, State> {
           .map((item) => {
             return <KeyboardEventHandler handleKeys={[item.shortcutKey]}
               handleFocusableElements
-              onKeyEvent={item.onClick} />
+              onKeyEvent={item.onClick}
+              key={item.shortcutKey} />
           })}
       </div>
     </div>
   }
 
   renderMenuItem(item: MenuItem) {
-    return <div className="menu-item" onClick={item.onClick} key={item.name}>
+    let onClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+      e.stopPropagation();
+      this.closeCurrentMenu();
+      item.onClick && item.onClick();
+    };
+    return <div className="menu-item" onClick={onClick} key={item.name}>
       {item.name}
       {item.shortcutKey &&
         <div className="keybinding">
@@ -112,7 +120,11 @@ class StatusBar extends React.Component<Props, State> {
   }
 
   onMenuSelected = (name: string) => {
-    // this.setState({activeMenu: });
+    setLoginOpenMenu(name);
+  }
+
+  closeCurrentMenu = () => {
+    setLoginOpenMenu();
   }
 }
 
@@ -123,12 +135,12 @@ function formatKeyboardShortcut(str: string) {
 }
 
 interface State {
-  activeMenu?: string,
 }
 
 interface Props {
   hostname: string,
   disableMenus?: boolean,
+  openMenu?: string,
 }
 
 interface MenuData {
@@ -147,13 +159,9 @@ const mapStateToProps = (state: ReduxState, ownProps: any) => {
   return {
     ...ownProps,
     hostname: state.hostname,
-  };
-};
-const mapDispatchToProps = (dispatch: any) => {
-  return {
-    // updatedClipbordManager: () => dispatch(updatedClipbordManager()),
+    openMenu: state.login.openMenu,
   };
 };
 
-const ReduxStatusBar = connect(mapStateToProps, mapDispatchToProps)(StatusBar);
+const ReduxStatusBar = connect(mapStateToProps)(StatusBar);
 export default ReduxStatusBar;
