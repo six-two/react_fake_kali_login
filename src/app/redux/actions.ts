@@ -20,25 +20,31 @@ export interface SetStringAction {
 export type Action = ActionWithoutPayload | SetStringAction;
 
 // action creators
-export function setUsername(newValue: string) {
+export function setLoginUsername(newValue: string) {
   d({
-    type: C.SET_USERNAME,
+    type: C.SET_LOGIN_USERNAME,
     payload: newValue,
   });
 }
 
-export function setPassword(newValue: string): SetStringAction {
-  return {
-    type: C.SET_PASSWORD,
+export function setLoginPassword(newValue: string) {
+  d({
+    type: C.SET_LOGIN_PASSWORD,
     payload: newValue,
-  };
+  });
 }
 
-export function setHostname(newValue: string): SetStringAction {
-  return {
+export function tryLogin() {
+  d({
+    type: C.TRY_LOGIN,
+  });
+}
+
+export function setHostname(newValue: string) {
+  d({
     type: C.SET_HOSTNAME,
     payload: newValue,
-  };
+  });
 }
 
 export function setScreen(newValue: string) {

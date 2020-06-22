@@ -5,16 +5,23 @@ import { SCREEN_LOGIN } from './constants';
 export interface ReduxState {
   hostname: string,
   screen: ScreenState,
-  username: string,
-  password: string,
+  login: LoginState,
   suspend: {
     lastScreen?: string,
-  }
+  },
+  isFinished: boolean,
 }
 
 export interface ScreenState {
   name: string,
   changeTime: Date,
+}
+
+export interface LoginState {
+  username: string,
+  password: string,
+  failed: boolean,
+  count: number,
 }
 
 export const fallbackState: ReduxState = {
@@ -23,9 +30,14 @@ export const fallbackState: ReduxState = {
     name: SCREEN_LOGIN,
     changeTime: new Date(),
   },
-  username: "",
-  password: "",
+  login: {
+    username: "",
+    password: "",
+    failed: false,
+    count: 0,
+  },
   suspend: {},
+  isFinished: false,
 }
 
 let devTools = undefined;
