@@ -1,8 +1,5 @@
 import React from 'react';
-import Popup from "reactjs-popup";
 import '../css/App.scss';
-import TurnedOffScreen from './TurnedOffScreen';
-import StatusBar from './StatusBar';
 import FullscreenManager from './FullscreenManager';
 import ScreenManager from './ScreenManager';
 

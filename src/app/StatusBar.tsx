@@ -66,8 +66,6 @@ class StatusBar extends React.Component<Props, State> {
   }
 
   render() {
-    let disableMenu = this.props.disableMenus ? true : undefined;
-    //TODO render menu popup
     return <div className="status-bar h-flex">
       <div className="hostname">{this.props.hostname}</div>
       <div className="expand"></div>
@@ -93,13 +91,12 @@ class StatusBar extends React.Component<Props, State> {
         </div>
       </MenuBarItem>
       <div className="key-shortcut-listeners">
-        {menu.menuItems.map((item) => {
-          if (item.shortcutKey) {
+        {menu.menuItems.filter((item) => !!item.shortcutKey)
+          .map((item) => {
             return <KeyboardEventHandler handleKeys={[item.shortcutKey]}
               handleFocusableElements
               onKeyEvent={item.onClick} />
-          }
-        })}
+          })}
       </div>
     </div>
   }
