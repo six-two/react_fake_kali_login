@@ -1,10 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { setScreen } from './redux/actions';
 import * as C from './redux/constants';
 import { ReduxState } from './redux/store';
 import ScreenLogin from './ScreenLogin';
 import ScreenOff from './TurnedOffScreen';
 import ScreenSuspend from './ScreenSuspend';
+import LoginDialog from './LoginDialog';
+import ShutdownConfirmDialog from './ShutdownConfirmDialog';
 
 
 class ScreenManager extends React.Component<Props> {
@@ -17,7 +20,20 @@ class ScreenManager extends React.Component<Props> {
   renderContent() {
     switch (this.props.screen) {
       case C.SCREEN_LOGIN:
-        return <ScreenLogin />;
+        return <ScreenLogin>
+          <LoginDialog />
+        </ScreenLogin>;
+      case C.SCREEN_DIALOG_SHUTDOWN:
+        return <ScreenLogin>
+          <ShutdownConfirmDialog
+            title="Shut Down"
+            message="Are you sure you want to close all programs and shut down the computer?"
+            icon="TODO"
+            confirmButtonText="Shut Down"
+            onConfirm={() => setScreen(C.SCREEN_OFF)}
+            onCancel={() => setScreen(C.SCREEN_LOGIN)}
+          />
+        </ScreenLogin>
       case C.SCREEN_SUSPEND:
         return <ScreenSuspend />;
       case C.SCREEN_OFF:

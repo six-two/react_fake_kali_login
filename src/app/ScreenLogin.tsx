@@ -1,6 +1,5 @@
 import React from 'react';
 import StatusBar from './StatusBar';
-import LoginDialog from './LoginDialog';
 import imageLoginBackground from '../img/background.jpg';
 
 
@@ -11,7 +10,7 @@ export default class ScreenLogin extends React.Component {
       <div className="fill-screen v-flex">
         <StatusBar />
         <div className="expand"></div>
-        <LoginDialog />
+        {this.props.children}
         <div className="expand"></div>
       </div>
     </div>

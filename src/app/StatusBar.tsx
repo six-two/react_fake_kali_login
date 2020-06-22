@@ -54,7 +54,7 @@ const SHUTDOWN_MENU: MenuData = {
     onClick: () => alert("TODO reboot dialog"),
   }, {
     name: "Shut Down...",
-    onClick: () => alert("TODO shutdown dialog"),
+    onClick: () => setScreen(C.SCREEN_DIALOG_SHUTDOWN),
     shortcutKey: "alt+f4",//oops, might quit the browser
   }],
 };
