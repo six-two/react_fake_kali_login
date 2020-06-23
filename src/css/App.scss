@@ -14,6 +14,6 @@ $login-buttons-bg: #23252e;
 }
 
 .screen-manager {
-  // Reason: to see what is not covered
-  background-color: red;
+  // This is sometimes visible (flashes), when a background image is loading
+  background-color: black;
 }

@@ -1,7 +1,6 @@
 import React from 'react';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
-import { setLoginOpenMenu } from './redux/actions';
-import StatusBar from './StatusBar';
+import SimpleCountdown from './SimpleCountdown';
 import imageGrubBackground from '../img/grub.jpg';
 
 
@@ -23,7 +22,17 @@ export default class ScreenLogin extends React.Component<Props> {
         <div className="menu">
           {this.props.entries.map(this.renderEntry)}
         </div>
-        <div className="expand"></div>
+        <div className="expand">
+          {this.props.timeout && this.props.lastScreenChange &&
+            <SimpleCountdown
+              startDate={this.props.lastScreenChange}
+              seconds={this.props.timeout}
+              onCompleted={() => {
+                // Activate the first menu entry
+                this.props.entries[0].onSelected();
+              }}
+              formatString="Booting in %s seconds" />}
+        </div>
       </div>
     </div>
   }
@@ -68,6 +77,7 @@ export default class ScreenLogin extends React.Component<Props> {
 interface Props {
   entries: MenuEntry[],
   timeout?: number,
+  lastScreenChange?: Date,
   selected: number,
   setSelectedIndex: (newValue: number) => void,
   onBack: () => void,

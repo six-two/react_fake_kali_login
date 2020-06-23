@@ -35,7 +35,7 @@ export interface BootState {
     default: string,
     advancedOptions: string[],
   },
-  timeoutStart?: Date,
+  showTimeout: boolean,
   timeout: number,
   selectedMain: number,
   selectedAdvanced: number,
@@ -66,6 +66,7 @@ export const fallbackState: ReduxState = {
     },
     selectedMain: 0,
     selectedAdvanced: 0,
+    showTimeout: true,
     timeout: 5,
   },
   decrypt: {

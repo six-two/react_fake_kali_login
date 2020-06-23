@@ -34,17 +34,23 @@ class ScreenGrubMain extends React.Component<Props> {
       },
     };
     const entries = [startNormal, ADVANCED_OPTIONS, SYSTEM_SETUP];
+    let timeout = this.props.showTimeout ? this.props.timeout : undefined;
     return <ScreenGrub
       entries={entries}
       onBack={DO_NOTHING}
       selected={this.props.selected}
-      setSelectedIndex={setGrubMainSelectedIndex} />
+      setSelectedIndex={setGrubMainSelectedIndex}
+      timeout={timeout}
+      lastScreenChange={this.props.lastScreenChange} />
   }
 }
 
 interface Props {
   selected: number,
   defaultKernel: string,
+  lastScreenChange: Date,
+  timeout: number,
+  showTimeout: boolean,
 }
 
 const mapStateToProps = (state: ReduxState, ownProps: any) => {
@@ -52,6 +58,9 @@ const mapStateToProps = (state: ReduxState, ownProps: any) => {
     ...ownProps,
     selected: state.boot.selectedMain,
     defaultKernel: state.boot.kernel.default,
+    lastScreenChange: state.screen.changeTime,
+    timeout: state.boot.timeout,
+    showTimeout: state.boot.showTimeout,
   };
 };
 

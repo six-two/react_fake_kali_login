@@ -1,5 +1,7 @@
 .screen-grub {
   // cursor: none;//DBG
+  color: white;
+  font-family: monospace;
 
   .menu {
     margin: auto;
@@ -8,8 +10,6 @@
   }
 
   .entry {
-    color: white;
-    font-family: monospace;
     padding: 10px 10px;
     width: 100%;
     box-sizing: border-box;
@@ -18,5 +18,10 @@
   .selected {
     background-color: #5ba4c5;//my best guess. maybe make is see through
     border-radius: 5px;
+  }
+
+  .countdown {
+    margin-top: 30px;
+    text-align: center;
   }
 }

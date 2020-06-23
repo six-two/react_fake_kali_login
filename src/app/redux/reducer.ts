@@ -73,6 +73,7 @@ export function reducer(state: ReduxState | undefined, action: Actions.Action): 
         boot: {
           ...state.boot,
           selectedMain: payload,
+          showTimeout: false,
         },
       };
     }
@@ -96,6 +97,7 @@ export function reducer(state: ReduxState | undefined, action: Actions.Action): 
             ...state.boot.kernel,
             used: payload,
           },
+          showTimeout: false,
         },
         screen: {
           name: C.SCREEN_LOGIN,//TODO DBG

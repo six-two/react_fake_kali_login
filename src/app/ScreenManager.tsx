@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setScreen, setGrubMainSelectedIndex } from './redux/actions';
+import { setScreen } from './redux/actions';
 import * as C from './redux/constants';
 import { ReduxState } from './redux/store';
 import ScreenGrubMain from './ScreenGrubMain';
