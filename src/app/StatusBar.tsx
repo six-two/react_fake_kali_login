@@ -51,7 +51,7 @@ const SHUTDOWN_MENU: MenuData = {
     onClick: () => setScreen(C.SCREEN_OFF),
   }, {
     name: "Restart...",
-    onClick: () => alert("TODO reboot dialog"),
+    onClick: () => setScreen(C.SCREEN_DIALOG_REBOOT),
   }, {
     name: "Shut Down...",
     onClick: () => setScreen(C.SCREEN_DIALOG_SHUTDOWN),
@@ -107,7 +107,7 @@ class StatusBar extends React.Component<Props, State> {
   renderMenuItem(item: MenuItem) {
     let onClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
       e.stopPropagation();
-      this.closeCurrentMenu();
+      setLoginOpenMenu(undefined);
       item.onClick && item.onClick();
     };
     return <div className="menu-item" onClick={onClick} key={item.name}>

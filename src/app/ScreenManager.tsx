@@ -29,17 +29,10 @@ class ScreenManager extends React.Component<Props> {
         return <ScreenLogin>
           <LoginDialog />
         </ScreenLogin>;
+      case C.SCREEN_DIALOG_REBOOT:
+        return renderRebootConfirmDialog();
       case C.SCREEN_DIALOG_SHUTDOWN:
-        return <ScreenLogin>
-          <ShutdownConfirmDialog
-            title="Shut Down"
-            message="Are you sure you want to close all programs and shut down the computer?"
-            icon="TODO"
-            confirmButtonText="Shut Down"
-            onConfirm={() => setScreen(C.SCREEN_OFF)}
-            onCancel={() => setScreen(C.SCREEN_LOGIN)}
-          />
-        </ScreenLogin>
+        return renderShutdownConfirmDialog();
       case C.SCREEN_SUSPEND:
         return <ScreenSuspend />;
       case C.SCREEN_OFF:
@@ -48,6 +41,32 @@ class ScreenManager extends React.Component<Props> {
         return <h1>{`Unknown screen: "${this.props.screen}"`}</h1>
     }
   }
+}
+
+const renderRebootConfirmDialog = () => {
+  return <ScreenLogin>
+    <ShutdownConfirmDialog
+      title="Restart"
+      message="Are you sure you want to close all programs and restart the computer?"
+      icon="TODO"
+      confirmButtonText="Restart"
+      onConfirm={() => setScreen(C.SCREEN_GRUB)}//TODO add shutting down screens. Also reset all state
+      onCancel={() => setScreen(C.SCREEN_LOGIN)}
+    />
+  </ScreenLogin>
+}
+
+const renderShutdownConfirmDialog = () => {
+  return <ScreenLogin>
+    <ShutdownConfirmDialog
+      title="Shut Down"
+      message="Are you sure you want to close all programs and shut down the computer?"
+      icon="TODO"
+      confirmButtonText="Shut Down"
+      onConfirm={() => setScreen(C.SCREEN_OFF)}
+      onCancel={() => setScreen(C.SCREEN_LOGIN)}
+    />
+  </ScreenLogin>
 }
 
 interface Props {
