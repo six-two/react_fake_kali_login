@@ -15,6 +15,8 @@ export interface ReduxConstants {
   kernelList: string[],
   bootTimeout: number | null,
   cryptDevice: string | null,
+  plymountDuration: number,//in seconds
+  initialScreen: string,
 }
 
 export const DEFAULT_CONSTANTS: ReduxConstants = {
@@ -22,7 +24,10 @@ export const DEFAULT_CONSTANTS: ReduxConstants = {
   defaultKernel: "5.6.0-kali2-amd64",
   kernelList: ["5.6.0-kali2-amd64", "5.6.0-kali1-amd64"],
   bootTimeout: 5,
-  cryptDevice: "sda3_crypt",
+  // cryptDevice: "sda3_crypt",
+  cryptDevice: null,
+  plymountDuration: 1.5,
+  initialScreen: C.SCREEN_GRUB,
 }
 
 // The variables or "state" of the simulation.
@@ -54,7 +59,7 @@ export interface ReduxVariables {
 
 export const DEFAULT_VARIABLES = {
   screen: {
-    name: C.SCREEN_LOGIN,
+    name: C.SCREEN_GRUB,
     changeTime: new Date(),
   },
   grub: {
@@ -79,7 +84,13 @@ export const DEFAULT_VARIABLES = {
 
 export const FALLBACK_STATE: ReduxState = {
   const: DEFAULT_CONSTANTS,
-  var: DEFAULT_VARIABLES,
+  var: {
+    ...DEFAULT_VARIABLES,
+    screen: {
+      ...DEFAULT_VARIABLES.screen,
+      name: DEFAULT_CONSTANTS.initialScreen,
+    },
+  },
 }
 
 let devTools = undefined;

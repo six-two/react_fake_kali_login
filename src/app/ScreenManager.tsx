@@ -5,6 +5,7 @@ import * as C from './redux/constants';
 import { ReduxState } from './redux/store';
 import ScreenGrubMain from './ScreenGrubMain';
 import ScreenGrubAdvanced from './ScreenGrubAdvanced';
+import ScreenPlymouthBoot from './ScreenPlymouthBoot';
 import ScreenLogin from './ScreenLogin';
 import ScreenOff from './TurnedOffScreen';
 import ScreenSuspend from './ScreenSuspend';
@@ -25,6 +26,8 @@ class ScreenManager extends React.Component<Props> {
         return <ScreenGrubMain />
       case C.SCREEN_GRUB_ADVANCED:
         return <ScreenGrubAdvanced />
+      case C.SCREEN_PLYMOUTH_BOOT:
+        return <ScreenPlymouthBoot />
       case C.SCREEN_LOGIN:
         return <ScreenLogin>
           <LoginDialog />

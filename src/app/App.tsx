@@ -6,8 +6,11 @@ import ScreenManager from './ScreenManager';
 import '../css/App.scss';
 
 // TODOs
-// Update github projects page
-// Diasble autofill on password fields
+// Disable autofill on password fields (in Firefox)
+// Allow setting consts through url params
+// Fix menu bugs
+// Disk Password screen
+// More boot steps
 
 // --- Nice to have ---
 

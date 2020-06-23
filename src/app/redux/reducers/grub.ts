@@ -1,9 +1,9 @@
 import * as Actions from '../actions';
 import * as C from '../constants';
-import { ReduxVariables } from '../store';
+import { ReduxVariables, ReduxConstants } from '../store';
 
 
-export default function reducer(state: ReduxVariables, action: Actions.Action): ReduxVariables {
+export default function reducer(state: ReduxVariables, action: Actions.Action, constants: ReduxConstants): ReduxVariables {
   switch (action.type) {
     case C.SET_GRUB_MAIN_SELECTED: {
       let payload = action.payload as number;
@@ -29,6 +29,8 @@ export default function reducer(state: ReduxVariables, action: Actions.Action): 
     }
     case C.SET_KERNEL_AND_BOOT: {
       let payload = action.payload as string;
+      let nextScreen = constants.cryptDevice ? C.SCREEN_PLYMOUTH_PASSWORD
+        : C.SCREEN_PLYMOUTH_BOOT;
       return {
         ...state,
         grub: {
@@ -37,7 +39,7 @@ export default function reducer(state: ReduxVariables, action: Actions.Action): 
           showTimeout: false,
         },
         screen: {
-          name: C.SCREEN_LOGIN,//TODO DBG
+          name: nextScreen,
           changeTime: new Date(),
         },
       };

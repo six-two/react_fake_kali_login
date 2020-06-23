@@ -5,9 +5,10 @@ $login-buttons-bg: #23252e;
 
 @import "global";
 @import "layout";
+@import "grub";
+@import "plymouth";
 @import "status_bar";
 @import "login";
-@import "grub";
 
 .screen-off {
   background-color: black;
