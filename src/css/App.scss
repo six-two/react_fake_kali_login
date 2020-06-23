@@ -3,6 +3,7 @@ $bar-bg: #283449;
 $blue: #2777ff;
 $login-buttons-bg: #23252e;
 
+@import "global";
 @import "layout";
 @import "status_bar";
 @import "login";

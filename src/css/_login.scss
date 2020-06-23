@@ -29,12 +29,15 @@
         background-color: #23353f;
         color: #ffffff;
         border-radius: 5px;
-        border: none;
-        outline: none;
         margin: 5px 20px 5px 0px;
         padding: 0px 10px;
         height: 34px;
         width: 200px;
+      }
+
+      input::placeholder {
+        color: #777;
+        opacity: 1; /* Firefox */
       }
     }
 

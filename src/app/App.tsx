@@ -21,7 +21,7 @@ class App extends React.Component<Props, State> {
   }
 
   render() {
-    return <div className="App">
+    return <div className="app">
       <h1>Nothing to see here</h1>
       {this.props.isRunning && (
         <FullscreenManager alwaysShowContents={DEBUG}>
