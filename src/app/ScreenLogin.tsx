@@ -1,14 +1,16 @@
 import React from 'react';
-import StatusBar from './StatusBar';
+import { connect } from 'react-redux';
+import { ReduxState } from './redux/store';
 import { setLoginOpenMenu } from './redux/actions';
+import StatusBar from './StatusBar';
 import imageLoginBackground from '../img/background.jpg';
 
 
-export default class ScreenLogin extends React.Component {
+class ScreenLogin extends React.Component<Props> {
   render() {
     return <div className="screen-login">
       <img className="fill-screen" src={imageLoginBackground} alt=""></img>
-      <div className="fill-screen v-flex" onClick={() => setLoginOpenMenu()}>
+      <div className="fill-screen v-flex" onClick={this.closeMenu}>
         <StatusBar />
         <div className="expand"></div>
         {this.props.children}
@@ -16,4 +18,24 @@ export default class ScreenLogin extends React.Component {
       </div>
     </div>
   }
+
+  closeMenu = () => {
+    if (this.props.isMenuOpen) {
+      setLoginOpenMenu(undefined);
+    }
+  }
 }
+
+interface Props {
+  isMenuOpen: boolean,
+}
+
+const mapStateToProps = (state: ReduxState, ownProps: any) => {
+  return {
+    ...ownProps,
+    isMenuOpen: state.login.openMenu !== undefined,
+  };
+};
+
+const ReduxScreenLogin = connect(mapStateToProps)(ScreenLogin);
+export default ReduxScreenLogin;
