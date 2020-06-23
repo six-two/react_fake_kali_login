@@ -78,3 +78,17 @@ export function setGrubMainSelectedIndex(newValue: number) {
     payload: newValue,
   });
 }
+
+export function setGrubAdvancedSelectedIndex(newValue: number) {
+  d({
+    type: C.SET_GRUB_ADVANCED_SELECTED,
+    payload: newValue,
+  });
+}
+
+export function setKernelAndBoot(kernelName: string){
+  d({
+    type: C.SET_KERNEL_AND_BOOT,
+    payload: kernelName,
+  });
+}

@@ -61,8 +61,8 @@ export const fallbackState: ReduxState = {
   },
   boot: {
     kernel: {
-      default: "5.6.0-kali2",
-      advancedOptions: ["5.6.0-kali2", "5.6.0-kali1"],
+      default: "5.6.0-kali2-amd",
+      advancedOptions: ["5.6.0-kali2-amd", "5.6.0-kali1-amd"],
     },
     selectedMain: 0,
     selectedAdvanced: 0,

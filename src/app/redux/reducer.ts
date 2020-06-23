@@ -6,9 +6,9 @@ function isValidLogin(username: string, password: string): boolean {
   // Modify this function to match your usecase
   // Idea: If you want to steal someones password only return true after (s)he has input the same credentials twice
   // That way you will get no typos. The victim will likely blame the one login error on a typo
-  if (username && password){
+  if (username && password) {
     // You can check for specific credentials like this:
-    if (username === "root" && password === "toor"){
+    if (username === "root" && password === "toor") {
       console.log("Old kali default credentials");
       return true;
     }
@@ -73,6 +73,33 @@ export function reducer(state: ReduxState | undefined, action: Actions.Action): 
         boot: {
           ...state.boot,
           selectedMain: payload,
+        },
+      };
+    }
+    case C.SET_GRUB_ADVANCED_SELECTED: {
+      let payload = (action as Actions.SetNumberAction).payload;
+      return {
+        ...state,
+        boot: {
+          ...state.boot,
+          selectedAdvanced: payload,
+        },
+      };
+    }
+    case C.SET_KERNEL_AND_BOOT: {
+      let payload = (action as Actions.SetStringAction).payload;
+      return {
+        ...state,
+        boot: {
+          ...state.boot,
+          kernel: {
+            ...state.boot.kernel,
+            used: payload,
+          },
+        },
+        screen: {
+          name: C.SCREEN_LOGIN,//TODO DBG
+          changeTime: new Date(),
         },
       };
     }

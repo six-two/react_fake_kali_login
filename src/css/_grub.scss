@@ -1,13 +1,22 @@
 .screen-grub {
+  // cursor: none;//DBG
+
+  .menu {
+    margin: auto;
+    width: 50%;
+    height: 50%;
+  }
+
   .entry {
     color: white;
     font-family: monospace;
-    padding: 5px 10px;
-    width: 400px;
+    padding: 10px 10px;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .selected {
-    background-color: blue;
-    border-radius: 10px;
+    background-color: #5ba4c5;//my best guess. maybe make is see through
+    border-radius: 5px;
   }
 }

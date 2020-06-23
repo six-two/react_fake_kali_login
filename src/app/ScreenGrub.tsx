@@ -5,7 +5,9 @@ import StatusBar from './StatusBar';
 import imageGrubBackground from '../img/grub.jpg';
 
 
-const GRUB_BACK_KEY = "backspace";//should be escape, but that would exit full screen mode
+//should be escape, but that would exit full screen mode
+// So maybe use stuff in normal fullscreen mode (F11 of Firefox/Chrome)
+const GRUB_BACK_KEY = "backspace";
 
 //TODO countdown timer
 export default class ScreenLogin extends React.Component<Props> {
@@ -18,7 +20,9 @@ export default class ScreenLogin extends React.Component<Props> {
           onKeyEvent={this.onKeyEvent}>
         </KeyboardEventHandler>
         <div className="expand"></div>
-        {this.props.entries.map(this.renderEntry)}
+        <div className="menu">
+          {this.props.entries.map(this.renderEntry)}
+        </div>
         <div className="expand"></div>
       </div>
     </div>
@@ -35,17 +39,11 @@ export default class ScreenLogin extends React.Component<Props> {
     console.debug(`[Grub] key: ${key}`)
     switch (key) {
       case "up": {
-        let index = this.props.selected - 1;
-        if (index >= 0) {
-          this.props.setSelectedIndex(index);
-        }
+        this.select(this.props.selected - 1);
         break;
       }
       case "down": {
-        let index = this.props.selected + 1;
-        if (index < this.props.entries.length) {
-          this.props.setSelectedIndex(index);
-        }
+        this.select(this.props.selected + 1);
         break;
       }
       case "enter": {
@@ -55,7 +53,14 @@ export default class ScreenLogin extends React.Component<Props> {
       }
       case GRUB_BACK_KEY: {
         this.props.onBack();
+        break;
       }
+    }
+  }
+
+  select(index: number) {
+    if (index >= 0 && index < this.props.entries.length) {
+      this.props.setSelectedIndex(index);
     }
   }
 }
