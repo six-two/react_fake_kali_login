@@ -30,7 +30,9 @@ class LoginDialog extends React.Component<Props, State> {
               type="text"
               value={this.props.username}
               placeholder="Enter your username"
-              onChange={this.onUsernameChange} />
+              onChange={this.onUsernameChange}
+              autoFocus
+              autoComplete="off" />
           </KeyboardEventHandler>
           <KeyboardEventHandler
             handleKeys={["enter"]}
@@ -40,7 +42,8 @@ class LoginDialog extends React.Component<Props, State> {
               ref={this.state.passwordRef}
               value={this.props.password}
               placeholder="Enter your password"
-              onChange={this.onPasswordChange} />
+              onChange={this.onPasswordChange}
+              autoComplete="new-password" />
           </KeyboardEventHandler>
         </div>
       </div>
