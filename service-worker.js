@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/react_fake_kali_login/precache-manifest.92faad988f702def7ae3f3cd33ca19fc.js"
+  "/react_fake_kali_login/precache-manifest.ee985d5149c949da57e825178aa3c43a.js"
 );
 
 self.addEventListener('message', (event) => {
