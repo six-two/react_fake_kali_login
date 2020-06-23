@@ -6,29 +6,10 @@ function d(action: Action) {
   store.dispatch(action);
 }
 
-// actions
-export interface ActionWithoutPayload {
+export interface Action {
   type: string,
-}
-
-export interface SetStringAction {
-  type: string,
-  payload: string,
-}
-
-export interface SetNumberAction {
-  type: string,
-  payload: number,
-}
-
-export interface OptionalStringAction {
-  type: string,
-  payload: string | null,
-}
-
-
-export type Action = ActionWithoutPayload | SetStringAction |
-OptionalStringAction | SetNumberAction;
+  payload?: string | number | null,
+};
 
 // action creators
 export function setLoginUsername(newValue: string) {
@@ -51,7 +32,7 @@ export function tryLogin() {
   });
 }
 
-export function setLoginOpenMenu(newValue?: string) {
+export function setLoginOpenMenu(newValue: string | null) {
   d({
     type: C.SET_LOGIN_OPEN_MENU,
     payload: newValue,

@@ -21,7 +21,7 @@ function isValidLogin(username: string, password: string): boolean {
 export default function reducer(state: ReduxVariables, action: Actions.Action): ReduxVariables {
   switch (action.type) {
     case C.SET_LOGIN_USERNAME: {
-      let payload = (action as Actions.SetStringAction).payload;
+      let payload = action.payload as string;
       return {
         ...state,
         login: {
@@ -31,7 +31,7 @@ export default function reducer(state: ReduxVariables, action: Actions.Action): 
       };
     }
     case C.SET_LOGIN_PASSWORD: {
-      let payload = (action as Actions.SetStringAction).payload;
+      let payload = action.payload as string;
       return {
         ...state,
         login: {
@@ -47,13 +47,13 @@ export default function reducer(state: ReduxVariables, action: Actions.Action): 
         login: {
           ...state.login,
           failed: !success,
-          count: state.login.count + 1,
+          attempts: state.login.attempts + 1,
         },
         isFinished: success,
       };
     }
     case C.SET_LOGIN_OPEN_MENU: {
-      let payload = (action as Actions.OptionalStringAction).payload;
+      let payload = action.payload as string | null;
       return {
         ...state,
         login: {

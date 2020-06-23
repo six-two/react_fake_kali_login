@@ -21,7 +21,7 @@ class ScreenLogin extends React.Component<Props> {
 
   closeMenu = () => {
     if (this.props.isMenuOpen) {
-      setLoginOpenMenu(undefined);
+      setLoginOpenMenu(null);
     }
   }
 }

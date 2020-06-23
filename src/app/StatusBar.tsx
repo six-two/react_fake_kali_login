@@ -107,7 +107,7 @@ class StatusBar extends React.Component<Props, State> {
   renderMenuItem(item: MenuItem) {
     let onClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
       e.stopPropagation();
-      setLoginOpenMenu(undefined);
+      setLoginOpenMenu(null);
       item.onClick && item.onClick();
     };
     return <div className="menu-item" onClick={onClick} key={item.name}>
@@ -124,7 +124,7 @@ class StatusBar extends React.Component<Props, State> {
   }
 
   closeCurrentMenu = () => {
-    setLoginOpenMenu();
+    setLoginOpenMenu(null);
   }
 }
 

@@ -22,8 +22,7 @@ function varReducer(state: ReduxVariables, action: Actions.Action): ReduxVariabl
   state = grubReducer(state, action);
   switch (action.type) {
     case C.SET_SCREEN: {
-      let newScreen = (action as Actions.SetStringAction).payload;
-      let oldScreen = state.screen.name;
+      let newScreen = action.payload as string;
 
       return {
         ...state,
