@@ -23,7 +23,7 @@ export interface SetNumberAction {
 
 export interface OptionalStringAction {
   type: string,
-  payload?: string,
+  payload: string | null,
 }
 
 

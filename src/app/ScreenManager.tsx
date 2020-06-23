@@ -76,7 +76,7 @@ interface Props {
 const mapStateToProps = (state: ReduxState, ownProps: any) => {
   return {
     ...ownProps,
-    screen: state.screen.name,
+    screen: state.var.screen.name,
   };
 };
 

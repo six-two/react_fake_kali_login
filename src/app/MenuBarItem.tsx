@@ -1,7 +1,4 @@
 import React from 'react';
-// import Popup from "reactjs-popup";
-// import { useHover, ToggleLayer } from "react-laag";
-// import ResizeObserver from "resize-observer-polyfill";
 import TrackVisibility from 'react-on-screen';
 
 

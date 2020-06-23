@@ -3,12 +3,11 @@ import KeyboardEventHandler from 'react-keyboard-event-handler';
 import SimpleCountdown from './SimpleCountdown';
 import imageGrubBackground from '../img/grub.jpg';
 
-
 //should be escape, but that would exit full screen mode
 // So maybe use stuff in normal fullscreen mode (F11 of Firefox/Chrome)
 const GRUB_BACK_KEY = "backspace";
 
-//TODO countdown timer
+
 export default class ScreenLogin extends React.Component<Props> {
   render() {
     return <div className="screen-grub">

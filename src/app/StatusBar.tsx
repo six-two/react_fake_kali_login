@@ -140,7 +140,7 @@ interface State {
 interface Props {
   hostname: string,
   disableMenus?: boolean,
-  openMenu?: string,
+  openMenu: string | null,
 }
 
 interface MenuData {
@@ -158,8 +158,8 @@ interface MenuItem {
 const mapStateToProps = (state: ReduxState, ownProps: any) => {
   return {
     ...ownProps,
-    hostname: state.hostname,
-    openMenu: state.login.openMenu,
+    hostname: state.const.hostname,
+    openMenu: state.var.login.openMenu,
   };
 };
 

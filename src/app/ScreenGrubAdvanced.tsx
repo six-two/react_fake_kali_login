@@ -39,8 +39,8 @@ interface Props {
 const mapStateToProps = (state: ReduxState, ownProps: any) => {
   return {
     ...ownProps,
-    selected: state.boot.selectedAdvanced,
-    kernels: state.boot.kernel.advancedOptions,
+    selected: state.var.grub.selectionInAdvanced,
+    kernels: state.const.kernelList,
   };
 };
 

@@ -33,7 +33,7 @@ interface Props {
 const mapStateToProps = (state: ReduxState, ownProps: any) => {
   return {
     ...ownProps,
-    isMenuOpen: state.login.openMenu !== undefined,
+    isMenuOpen: state.var.login.openMenu !== null,
   };
 };
 

@@ -2,80 +2,84 @@ import { createStore } from 'redux';
 import { reducer } from './reducer';
 import * as C from './constants';
 
-//TODO separate constant settings from dynamic state
-
 export interface ReduxState {
+  const: ReduxConstants,
+  var: ReduxVariables,
+}
+
+// The settings that can be set by the user before the simulation is started
+// They will not change over the course of the simulation
+export interface ReduxConstants {
   hostname: string,
-  screen: ScreenState,
-  login: LoginState,
-  suspend: {
-    lastScreen?: string,
+  defaultKernel: string,
+  kernelList: string[],
+  bootTimeout: number | null,
+  cryptDevice: string | null,
+}
+
+export const DEFAULT_CONSTANTS: ReduxConstants = {
+  hostname: "Kali Linux",
+  defaultKernel: "5.6.0-kali2-amd64",
+  kernelList: ["5.6.0-kali2-amd64", "5.6.0-kali1-amd64"],
+  bootTimeout: 5,
+  cryptDevice: "sda3_crypt",
+}
+
+// The variables or "state" of the simulation.
+// Will be reset on reboot.
+export interface ReduxVariables {
+  screen: {
+    name: string,
+    changeTime: Date,
   },
-  boot: BootState,
-  decrypt: DecryptState,
+  grub: {
+    kernel: string,
+    showTimeout: boolean,
+    selectionInMain: number,
+    selectionInAdvanced: number,
+  },
+  decrypt: {
+    password: string,
+  },
+  login: {
+    username: string,
+    password: string,
+    openMenu: string | null,
+    failed: boolean,
+    attempts: number,
+  },
+  screenBeforeSuspend: string | null,
   isFinished: boolean,
 }
 
-export interface ScreenState {
-  name: string,
-  changeTime: Date,
-}
-
-export interface LoginState {
-  username: string,
-  password: string,
-  openMenu?: string,
-  failed: boolean,
-  count: number,
-}
-
-export interface BootState {
-  kernel: {
-    used?: string,
-    default: string,
-    advancedOptions: string[],
-  },
-  showTimeout: boolean,
-  timeout: number,
-  selectedMain: number,
-  selectedAdvanced: number,
-}
-
-export interface DecryptState {
-    isEncrypted: boolean,
-    password: string,//The password the user typed
-    cryptDeviceName: string,
-}
-
-export const fallbackState: ReduxState = {
-  hostname: "Kali Linux",
+export const DEFAULT_VARIABLES = {
   screen: {
-    name: C.SCREEN_GRUB,//DBG
+    name: C.SCREEN_LOGIN,
     changeTime: new Date(),
+  },
+  grub: {
+    kernel: DEFAULT_CONSTANTS.defaultKernel,
+    showTimeout: true,
+    selectionInMain: 0,
+    selectionInAdvanced: 0,
+  },
+  decrypt: {
+    password: "",
   },
   login: {
     username: "",
     password: "",
+    openMenu: null,
     failed: false,
-    count: 0,
+    attempts: 0,
   },
-  boot: {
-    kernel: {
-      default: "5.6.0-kali2-amd",
-      advancedOptions: ["5.6.0-kali2-amd", "5.6.0-kali1-amd"],
-    },
-    selectedMain: 0,
-    selectedAdvanced: 0,
-    showTimeout: true,
-    timeout: 5,
-  },
-  decrypt: {
-    isEncrypted: false,
-    password: "",
-    cryptDeviceName: "sda3_crypt",
-  },
-  suspend: {},
+  screenBeforeSuspend: null,
   isFinished: false,
+}
+
+export const FALLBACK_STATE: ReduxState = {
+  const: DEFAULT_CONSTANTS,
+  var: DEFAULT_VARIABLES,
 }
 
 let devTools = undefined;
@@ -88,5 +92,5 @@ if ((window as any).__REDUX_DEVTOOLS_EXTENSION__) {
   devTools = (window as any).__REDUX_DEVTOOLS_EXTENSION__(devToolOptions);
 }
 
-export const store = createStore(reducer, fallbackState, devTools);
+export const store = createStore(reducer, FALLBACK_STATE, devTools);
 export default store;

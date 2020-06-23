@@ -91,9 +91,9 @@ interface State {
 const mapStateToProps = (state: ReduxState, ownProps: any) => {
   return {
     ...ownProps,
-    username: state.login.username,
-    password: state.login.password,
-    showLoginError: state.login.failed,
+    username: state.var.login.username,
+    password: state.var.login.password,
+    showLoginError: state.var.login.failed,
   };
 };
 

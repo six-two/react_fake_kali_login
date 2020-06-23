@@ -56,11 +56,11 @@ interface Props {
 const mapStateToProps = (state: ReduxState, ownProps: any) => {
   return {
     ...ownProps,
-    selected: state.boot.selectedMain,
-    defaultKernel: state.boot.kernel.default,
-    lastScreenChange: state.screen.changeTime,
-    timeout: state.boot.timeout,
-    showTimeout: state.boot.showTimeout,
+    selected: state.var.grub.selectionInMain,
+    defaultKernel: state.const.defaultKernel,
+    lastScreenChange: state.var.screen.changeTime,
+    timeout: state.const.bootTimeout,
+    showTimeout: state.var.grub.showTimeout,
   };
 };
 
