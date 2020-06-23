@@ -4,9 +4,6 @@ import { ReduxState, ReduxVariables, FALLBACK_STATE } from './store';
 import loginReducer from './reducers/login';
 import grubReducer from './reducers/grub';
 
-const REDUCERS = [loginReducer, grubReducer];
-
-
 export function reducer(state: ReduxState | undefined, action: Actions.Action): ReduxState {
   if (!state) {
     console.warn("No state was supplied to reducer. Falling back to default values");
@@ -15,15 +12,14 @@ export function reducer(state: ReduxState | undefined, action: Actions.Action): 
 
   return {
     const: state.const,
-    var: varReducer(state.var),
+    var: varReducer(state.var, action),
   }
 }
 
 
 function varReducer(state: ReduxVariables, action: Actions.Action): ReduxVariables {
-  for (let reducer of REDUCERS) {
-    state = reducer(state, action);
-  }
+  state = loginReducer(state, action);
+  state = grubReducer(state, action);
   switch (action.type) {
     case C.SET_SCREEN: {
       let newScreen = (action as Actions.SetStringAction).payload;
