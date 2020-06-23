@@ -6,6 +6,7 @@ $login-buttons-bg: #23252e;
 @import "layout";
 @import "status_bar";
 @import "login";
+@import "grub";
 
 .screen-off {
   background-color: black;
@@ -15,4 +16,8 @@ $login-buttons-bg: #23252e;
 .screen-manager {
   // Reason: to see what is not covered
   background-color: red;
+}
+
+.screen-grub {
+  cursor: none;
 }

@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setScreen } from './redux/actions';
+import { setScreen, setGrubMainSelectedIndex } from './redux/actions';
 import * as C from './redux/constants';
 import { ReduxState } from './redux/store';
+import ScreenGrub from './ScreenGrub';
 import ScreenLogin from './ScreenLogin';
 import ScreenOff from './TurnedOffScreen';
 import ScreenSuspend from './ScreenSuspend';
@@ -19,6 +20,26 @@ class ScreenManager extends React.Component<Props> {
 
   renderContent() {
     switch (this.props.screen) {
+      case C.SCREEN_GRUB:
+        return <ScreenGrub entries={[{
+          title: "Kali GNU/Linux",
+          onSelected: () => {
+            //TODO set kernel
+            //TODO coupound events?
+            setScreen(C.SCREEN_LOGIN);
+          },
+        }, {
+          title: "Advanced options for K",
+          onSelected: () => {
+            setScreen(C.SCREEN_GRUB_ADVANCED);
+          },
+        }, {
+          title: "System setup",
+          onSelected: () => {
+            alert("How am I supposed to emulate this?\nI will probably just show you an error or do a normal reboot!");
+          },
+        }]} onBack={() => { }} selected={this.props.selected}
+          setSelectedIndex={setGrubMainSelectedIndex} />
       case C.SCREEN_LOGIN:
         return <ScreenLogin>
           <LoginDialog />
@@ -46,12 +67,14 @@ class ScreenManager extends React.Component<Props> {
 
 interface Props {
   screen: string,
+  selected: number,
 }
 
 const mapStateToProps = (state: ReduxState, ownProps: any) => {
   return {
     ...ownProps,
     screen: state.screen.name,
+    selected: state.boot.selectedMain,
   };
 };
 

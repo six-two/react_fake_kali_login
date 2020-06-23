@@ -1,0 +1,13 @@
+.screen-grub {
+  .entry {
+    color: white;
+    font-family: monospace;
+    padding: 5px 10px;
+    width: 400px;
+  }
+
+  .selected {
+    background-color: blue;
+    border-radius: 10px;
+  }
+}

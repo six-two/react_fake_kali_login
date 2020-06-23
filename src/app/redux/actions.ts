@@ -16,13 +16,19 @@ export interface SetStringAction {
   payload: string,
 }
 
+export interface SetNumberAction {
+  type: string,
+  payload: number,
+}
+
 export interface OptionalStringAction {
   type: string,
   payload?: string,
 }
 
 
-export type Action = ActionWithoutPayload | SetStringAction | OptionalStringAction;
+export type Action = ActionWithoutPayload | SetStringAction |
+OptionalStringAction | SetNumberAction;
 
 // action creators
 export function setLoginUsername(newValue: string) {
@@ -62,6 +68,13 @@ export function setHostname(newValue: string) {
 export function setScreen(newValue: string) {
   d({
     type: C.SET_SCREEN,
+    payload: newValue,
+  });
+}
+
+export function setGrubMainSelectedIndex(newValue: number) {
+  d({
+    type: C.SET_GRUB_MAIN_SELECTED,
     payload: newValue,
   });
 }

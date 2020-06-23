@@ -66,6 +66,16 @@ export function reducer(state: ReduxState | undefined, action: Actions.Action): 
         },
       };
     }
+    case C.SET_GRUB_MAIN_SELECTED: {
+      let payload = (action as Actions.SetNumberAction).payload;
+      return {
+        ...state,
+        boot: {
+          ...state.boot,
+          selectedMain: payload,
+        },
+      };
+    }
     case C.SET_SCREEN: {
       let newScreen = (action as Actions.SetStringAction).payload;
       let oldScreen = state.screen.name;
