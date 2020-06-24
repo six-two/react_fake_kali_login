@@ -11,7 +11,7 @@ import '../css/App.scss';
 // Disk Password screen
 // More boot steps
 // Report passwords to external url
-// setup screen + Allow setting consts through url params
+// setup screen: allow setting all variables
 // Better cover page
 
 // --- Nice to have ---

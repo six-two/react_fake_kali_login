@@ -9,12 +9,41 @@ const GENERIC_EDIT_FIELDS: InputDescription[] = [{
   checkForErrors: (value: string) => { return null; },
 }];
 
+const TIMING_FIELDS: InputDescription[] = [
+  { title: "Kernel load", settingsName: "kernelLoadDuration" },
+  { title: "Initial ramdisk load", settingsName: "initrdLoadDuration" },
+  { title: "Kali logo (boot)", settingsName: "plymountDuration" },
+  { title: "Kali logo (shutdown)", settingsName: "shutdownDuration" },
+].map((obj) => { return { ...obj, checkForErrors: checkTimingStringForErrors }; });
+
+function checkTimingStringForErrors(string: string): string | null {
+  let number = Number(string);
+  if (isNaN(number)) {
+    return "Not a valid number";
+  }
+  if (number < 0) {
+    return "Number can not be negative";
+  }
+  return null;
+}
+
+//TODO signal which fields can be left empty
+//TODO add descriptions
 class ScreenSetup extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
       settings: {
         hostname: DEFAULT_CONSTANTS.hostname,
+        // defaultKernel: DEFAULT_CONSTANTS.defaultKernel,
+        //kernels: make nice list with up down add, default?
+        bootTimeout: "" + DEFAULT_CONSTANTS.bootTimeout,
+        cryptDevice: DEFAULT_CONSTANTS.cryptDevice || "",
+        //timing
+        kernelLoadDuration: "" + DEFAULT_CONSTANTS.kernelLoadDuration,
+        initrdLoadDuration: "" + DEFAULT_CONSTANTS.initrdLoadDuration,
+        plymountDuration: "" + DEFAULT_CONSTANTS.plymountDuration,
+        shutdownDuration: "" + DEFAULT_CONSTANTS.shutdownDuration,
       },
     };
   }
@@ -48,10 +77,28 @@ class ScreenSetup extends React.Component<Props, State> {
   }
 
   render() {
-    return <div className="screen-setup">
-      {GENERIC_EDIT_FIELDS.map(this.renderGenericSetting)}
+    return <div className="setup">
+      <h1>Setup</h1>
+      Here you can configure the Kali Linux simulation. Or just skip this step by
+      pressing the <code>start</code> button.
+      Fields marked with a "?" can be left empty to diable said feature.
+
+      <button onClick={() => start(this.state.settings, true)}>Skip setup</button>
+
+      <h2>General settings</h2>
+      {this.renderSettings(GENERIC_EDIT_FIELDS)}
+
+      <h2>Timing settings</h2>
+      All values below are measured in seconds. Negative values are not allowed.
+      {this.renderSettings(TIMING_FIELDS)}
 
       <button onClick={() => start(this.state.settings, true)}>Start</button>
+    </div>
+  }
+
+  renderSettings(list: InputDescription[]) {
+    return <div className="settings">
+      {list.map(this.renderGenericSetting)}
     </div>
   }
 
@@ -103,6 +150,11 @@ function start(settings: Settings, alertOnError: boolean) {
   let copy = { ...DEFAULT_CONSTANTS };
   copy.hostname = settings.hostname;
   copy.initialScreen = C.SCREEN_LOGIN;
+  //settings
+  copy.kernelLoadDuration = Number(settings.kernelLoadDuration);
+  copy.initrdLoadDuration = Number(settings.initrdLoadDuration);
+  copy.plymountDuration = Number(settings.plymountDuration);
+  copy.shutdownDuration = Number(settings.shutdownDuration);
 
   initialSetup(copy);
   return true;
