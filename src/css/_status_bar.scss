@@ -12,49 +12,39 @@
     height: 14px;
   }
 
-  .menu-bar-item, .hostname, .clock {
+  .menu-trigger, .hostname, .clock {
     user-select: none !important;
     padding: 6px 5px;
-  }
 
-  .menu-selected {
-    border-bottom: 3px solid $blue;
-    padding-bottom: 4px;
+    height: $bar-height;
+    box-sizing: border-box;
   }
 
   .clock {
     font-weight: bold;
   }
 
-  .menu-bar-item-content {
-    border: 0px !important;
-    padding: 0px !important;
-    margin: 0px !important;
+  .menu-trigger-selected {
+    border-bottom: 3px solid $blue;
+    padding-bottom: 4px;
   }
 
-  .menu-div{
-    position: relative;
-
-    .popup-normal {
-      position: absolute;
-      top: $bar-height;
-      left: 0px;
-    }
-
-    .popup-fix-position {
-       position: "fixed";
-       top: "27px";
-       right: "0px";
-    }
+  .menu-trigger-disabled {
+    color: gray;
   }
 
-  .menu {
+  .menu-popup {
     background-color: $bar-bg;
     color: white;
 
+    position: fixed;
+    top: 27px;
+    right: 0px;
+
     .menu-item {
       padding: 4px 0px 4px 30px;
-      width: 200px;
+      width: 225px;
+      box-sizing: border-box;
 
       &:hover {
         background-color: $blue;
@@ -66,9 +56,5 @@
       float: right;
       margin-right: 7px;
     }
-  }
-
-  .menu-disabled {
-    color: gray;
   }
 }

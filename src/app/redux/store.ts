@@ -32,7 +32,7 @@ export const DEFAULT_CONSTANTS: ReduxConstants = {
   kernelLoadDuration: 0.2,
   initrdLoadDuration: 1.0,
   plymountDuration: 1.5,//DBG
-  initialScreen: C.SCREEN_GRUB,
+  initialScreen: C.SCREEN_LOGIN,
 }
 
 // The variables or "state" of the simulation.

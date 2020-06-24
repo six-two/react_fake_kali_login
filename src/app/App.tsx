@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { ReduxState } from './redux/store';
+import * as C from './redux/constants';
 import FullscreenManager from './FullscreenManager';
 import ScreenManager from './ScreenManager';
 import '../css/App.scss';
@@ -8,13 +9,10 @@ import '../css/App.scss';
 // TODOs
 // Disable autofill on password fields (in Firefox)
 // Allow setting consts through url params
-// Fix menu bugs
 // Disk Password screen
 // More boot steps
 
 // --- Nice to have ---
-
-const DEBUG = true;
 
 
 class App extends React.Component<Props, State> {
@@ -27,7 +25,7 @@ class App extends React.Component<Props, State> {
     return <div className="app">
       <h1>Nothing to see here</h1>
       {this.props.isRunning && (
-        <FullscreenManager alwaysShowContents={DEBUG}>
+        <FullscreenManager alwaysShowContents={C.DEBUG}>
           <ScreenManager />
         </FullscreenManager>
       )}

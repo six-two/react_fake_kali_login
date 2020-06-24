@@ -18,10 +18,8 @@
     "react-full-screen": "^0.2.4",
     "react-keyboard-event-handler": "^1.5.4",
     "react-live-clock": "^4.0.5",
-    "react-on-screen": "^2.1.1",
     "react-redux": "^7.2.0",
     "react-scripts": "3.4.1",
-    "reactjs-popup": "^1.5.0",
     "redux": "^4.0.5",
     "typescript": "^3.7.5"
   },

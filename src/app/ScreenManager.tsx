@@ -15,8 +15,10 @@ import ShutdownConfirmDialog from './ShutdownConfirmDialog';
 
 
 function preventContextMenu(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
-  e.preventDefault();
-  e.stopPropagation();
+  if (!C.DEBUG) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
 }
 
 class ScreenManager extends React.Component<Props> {
