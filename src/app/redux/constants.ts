@@ -1,4 +1,4 @@
-export const DEBUG = true;
+export const DEBUG = false;
 
 // action types
 export const SET_LOGIN_USERNAME = "SET_LOGIN_USERNAME";
