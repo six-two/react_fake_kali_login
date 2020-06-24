@@ -10,11 +10,15 @@ export const SET_GRUB_MAIN_SELECTED = "SET_GRUB_MAIN_SELECTED";
 export const SET_GRUB_ADVANCED_SELECTED = "SET_GRUB_ADVANCED_SELECTED";
 export const TRY_LOGIN = "TRY_LOGIN";
 export const SET_KERNEL_AND_BOOT = "SET_KERNEL_AND_BOOT";
+export const RESET_STATE = "RESET_STATE";
 
-// screens
+// power related screen
 export const SCREEN_OFF = "SCREEN_OFF";
 export const SCREEN_HIBERNATE = "SCREEN_HIBERNATE";
 export const SCREEN_SUSPEND = "SCREEN_SUSPEND";
+export const SCREEN_SHUTDOWN = "SCREEN_SHUTDOWN";
+export const SCREEN_REBOOT = "SCREEN_REBOOT";
+// normal screens
 export const SCREEN_LOGIN = "SCREEN_LOGIN";
 export const SCREEN_DIALOG_SHUTDOWN = "SCREEN_DIALOG_SHUTDOWN";
 export const SCREEN_DIALOG_REBOOT = "SCREEN_DIALOG_REBOOT";

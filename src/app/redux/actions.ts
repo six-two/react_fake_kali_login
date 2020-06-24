@@ -78,3 +78,7 @@ export function setKernelAndBoot(entryName: string, kernelName: string) {
     payload: { title: entryName, kernel: kernelName },
   });
 }
+
+export function resetState() {
+  d({ type: C.RESET_STATE });
+}

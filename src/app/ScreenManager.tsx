@@ -9,6 +9,7 @@ import ScreenConsoleBooting from './ScreenConsoleBooting';
 import ScreenPlymouthBoot from './ScreenPlymouthBoot';
 import ScreenLogin from './ScreenLogin';
 import ScreenOff from './TurnedOffScreen';
+import ScreenShutdown from './ScreenShutdown';
 import ScreenSuspend from './ScreenSuspend';
 import LoginDialog from './LoginDialog';
 import ShutdownConfirmDialog from './ShutdownConfirmDialog';
@@ -48,6 +49,8 @@ class ScreenManager extends React.Component<Props> {
         return renderShutdownConfirmDialog();
       case C.SCREEN_SUSPEND:
         return <ScreenSuspend />;
+      case C.SCREEN_SHUTDOWN:
+        return <ScreenShutdown />
       case C.SCREEN_OFF:
         return <ScreenOff />;
       default:
@@ -65,7 +68,7 @@ const renderRebootConfirmDialog = () => {
       message="Are you sure you want to close all programs and restart the computer?"
       icon="TODO"
       confirmButtonText="Restart"
-      onConfirm={() => setScreen(C.SCREEN_GRUB)}//TODO add shutting down screens. Also reset all state
+      onConfirm={() => setScreen(C.SCREEN_REBOOT)}
       onCancel={() => setScreen(C.SCREEN_LOGIN)}
     />
   </ScreenLogin>
@@ -78,7 +81,7 @@ const renderShutdownConfirmDialog = () => {
       message="Are you sure you want to close all programs and shut down the computer?"
       icon="TODO"
       confirmButtonText="Shut Down"
-      onConfirm={() => setScreen(C.SCREEN_OFF)}
+      onConfirm={() => setScreen(C.SCREEN_SHUTDOWN)}
       onCancel={() => setScreen(C.SCREEN_LOGIN)}
     />
   </ScreenLogin>

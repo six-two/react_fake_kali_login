@@ -19,6 +19,7 @@ export interface ReduxConstants {
   kernelLoadDuration: number,
   initrdLoadDuration: number,
   plymountDuration: number,
+  shutdownDuration: number,
   initialScreen: string,
 }
 
@@ -32,6 +33,7 @@ export const DEFAULT_CONSTANTS: ReduxConstants = {
   kernelLoadDuration: 0.2,
   initrdLoadDuration: 1.0,
   plymountDuration: 1.5,//DBG
+  shutdownDuration: 2.0,
   initialScreen: C.SCREEN_LOGIN,
 }
 
@@ -59,6 +61,7 @@ export interface ReduxVariables {
     failed: boolean,
     attempts: number,
   },
+  rebootAfterShutdown: boolean,
   screenBeforeSuspend: string | null,
   isFinished: boolean,
 }
@@ -86,6 +89,7 @@ export const DEFAULT_VARIABLES = {
     attempts: 0,
   },
   screenBeforeSuspend: null,
+  rebootAfterShutdown: false,
   isFinished: false,
 }
 
