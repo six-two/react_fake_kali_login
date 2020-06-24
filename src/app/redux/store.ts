@@ -5,6 +5,7 @@ import * as C from './constants';
 export interface ReduxState {
   const: ReduxConstants,
   var: ReduxVariables,
+  isSetupDone: boolean,
 }
 
 // The settings that can be set by the user before the simulation is started
@@ -95,13 +96,8 @@ export const DEFAULT_VARIABLES = {
 
 export const FALLBACK_STATE: ReduxState = {
   const: DEFAULT_CONSTANTS,
-  var: {
-    ...DEFAULT_VARIABLES,
-    screen: {
-      ...DEFAULT_VARIABLES.screen,
-      name: DEFAULT_CONSTANTS.initialScreen,
-    },
-  },
+  var: DEFAULT_VARIABLES,
+  isSetupDone: false,
 }
 
 let devTools = undefined;

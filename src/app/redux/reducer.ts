@@ -12,9 +12,20 @@ export function reducer(state: ReduxState | undefined, action: Actions.Action): 
     state = FALLBACK_STATE;
   }
 
-  return {
-    const: state.const,
-    var: varReducer(state.var, action, state.const),
+  // This is the only event that is allowed to change the ReduxConstants
+  if (action.type === C.INITIAL_SETUP) {
+    let constants = action.payload as ReduxConstants;
+    let vars = setScreen(constants.initialScreen, DEFAULT_VARIABLES, constants);
+    return {
+      const: constants,
+      var: vars,
+      isSetupDone: true,
+    }
+  } else {
+    return {
+      ...state,
+      var: varReducer(state.var, action, state.const),
+    }
   }
 }
 
@@ -30,45 +41,41 @@ function miscReducer(state: ReduxVariables, action: Actions.Action, constants: R
   switch (action.type) {
     case C.SET_SCREEN: {
       let newScreen = action.payload as string;
-
-      // skip password if no crypt device exists
-      if (newScreen === C.SCREEN_PLYMOUTH_PASSWORD && !constants.cryptDevice) {
-        newScreen = C.SCREEN_PLYMOUTH_BOOT;
-      }
-
-      // Handle reboots
-      let rebootAfterShutdown = false;
-      if (newScreen === C.SCREEN_REBOOT) {
-        rebootAfterShutdown = true;
-        newScreen = C.SCREEN_SHUTDOWN;
-      }
-
-      // Handle suspends
-      let screenBeforeSuspend = newScreen === C.SCREEN_SUSPEND ?
-        state.screen.name : null;
-
-      return {
-        ...state,
-        screen: {
-          name: newScreen,
-          changeTime: new Date(),
-        },
-        rebootAfterShutdown: rebootAfterShutdown,
-        screenBeforeSuspend: screenBeforeSuspend,
-      };
+      return setScreen(newScreen, state, constants);
     }
     case C.RESET_STATE: {
-      let cleanState = DEFAULT_VARIABLES;
-      return {
-        ...cleanState,
-        screen: {
-          ...cleanState.screen,
-          changeTime: new Date(),
-        },
-      };
+      return setScreen(DEFAULT_VARIABLES.screen.name, DEFAULT_VARIABLES, constants);
     }
   }
   return state;
+}
+
+export function setScreen(newScreen: string, state: ReduxVariables, constants: ReduxConstants): ReduxVariables {
+  // skip password if no crypt device exists
+  if (newScreen === C.SCREEN_PLYMOUTH_PASSWORD && !constants.cryptDevice) {
+    newScreen = C.SCREEN_PLYMOUTH_BOOT;
+  }
+
+  // Handle reboots
+  let rebootAfterShutdown = false;
+  if (newScreen === C.SCREEN_REBOOT) {
+    rebootAfterShutdown = true;
+    newScreen = C.SCREEN_SHUTDOWN;
+  }
+
+  // Handle suspends
+  let screenBeforeSuspend = newScreen === C.SCREEN_SUSPEND ?
+    state.screen.name : null;
+
+  return {
+    ...state,
+    screen: {
+      name: newScreen,
+      changeTime: new Date(),
+    },
+    rebootAfterShutdown: rebootAfterShutdown,
+    screenBeforeSuspend: screenBeforeSuspend,
+  };
 }
 
 export default reducer;

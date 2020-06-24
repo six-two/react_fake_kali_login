@@ -1,4 +1,4 @@
-export const DEBUG = false;
+export const DEBUG = true;
 
 // action types
 export const SET_LOGIN_USERNAME = "SET_LOGIN_USERNAME";
@@ -11,6 +11,7 @@ export const SET_GRUB_ADVANCED_SELECTED = "SET_GRUB_ADVANCED_SELECTED";
 export const TRY_LOGIN = "TRY_LOGIN";
 export const SET_KERNEL_AND_BOOT = "SET_KERNEL_AND_BOOT";
 export const RESET_STATE = "RESET_STATE";
+export const INITIAL_SETUP = "INITIAL_SETUP";
 
 // power related screen
 export const SCREEN_OFF = "SCREEN_OFF";

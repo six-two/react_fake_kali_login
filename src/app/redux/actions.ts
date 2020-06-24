@@ -1,5 +1,5 @@
 //Needs to be here to prevent cyclic references
-import store from './store';
+import store, { ReduxConstants } from './store';
 import * as C from './constants';
 
 function d(action: Action) {
@@ -8,7 +8,7 @@ function d(action: Action) {
 
 export interface Action {
   type: string,
-  payload?: string | number | SetKernelAndBootPayload | null,
+  payload?: string | number | SetKernelAndBootPayload | ReduxConstants | null,
 };
 
 export interface SetKernelAndBootPayload {
@@ -76,6 +76,13 @@ export function setKernelAndBoot(entryName: string, kernelName: string) {
   d({
     type: C.SET_KERNEL_AND_BOOT,
     payload: { title: entryName, kernel: kernelName },
+  });
+}
+
+export function initialSetup(constants: ReduxConstants) {
+  d({
+    type: C.INITIAL_SETUP,
+    payload: constants,
   });
 }
 
