@@ -1,5 +1,5 @@
 import React from 'react';
-import { ReduxState, ReduxConstants, DEFAULT_CONSTANTS } from './redux/store';
+import { DEFAULT_CONSTANTS } from './redux/store';
 import * as C from './redux/constants';
 import { initialSetup } from './redux/actions';
 
@@ -20,15 +20,38 @@ class ScreenSetup extends React.Component<Props, State> {
   }
 
   componentDidMount() {
-    // TODO read params from url
-    // if url.params['setup'] === 'skip', call this.start(false) immediately
+    // read url (hash) params
+    // if hash has "setup=skip": immediately start the simulation
+    let hash = window.location.hash;
+    let settings = { ...this.state.settings };
+    if (hash) {
+      let setup;
+      let params = new URLSearchParams(hash.substr(1));
+      for (let [key, value] of params.entries()) {
+        if (key === "setup") {
+          setup = value; //if multiple definitions: only keep the last value
+        } else {
+          if (settings[key] !== undefined) {
+            console.log(`Using url parameter: ${key}`);
+            settings[key] = value;
+          } else {
+            console.warn(`Unknown url parameter: ${key}`);
+          }
+        }
+      }
+      this.setState({ settings: settings });
+      if (setup === "skip") {
+        console.log("Trying to skip setup");
+        start(settings, false);
+      }
+    }
   }
 
   render() {
     return <div className="screen-setup">
       {GENERIC_EDIT_FIELDS.map(this.renderGenericSetting)}
 
-      <button onClick={() => this.start(true)}>Start</button>
+      <button onClick={() => start(this.state.settings, true)}>Start</button>
     </div>
   }
 
@@ -51,7 +74,7 @@ class ScreenSetup extends React.Component<Props, State> {
   }
 
   renderSetting(title: string, inputDom: any, errorMessage: string | null) {
-    return <div className="setting">
+    return <div key={title} className="setting">
       <div className="label">
         {title}
       </div>
@@ -63,33 +86,35 @@ class ScreenSetup extends React.Component<Props, State> {
       </div>
     </div>
   }
+}
 
-  start(alertOnError: boolean) {
-    for (let setting of GENERIC_EDIT_FIELDS) {
-      let value = this.state.settings[setting.settingsName];
-      let errorMessage = setting.checkForErrors(value);
-      if (errorMessage) {
-        let message = `The value you supplied for "${setting.title}" is not valid!`;
-        console.log(message);
-        alertOnError && alert(message);
-        return;
-      }
+function start(settings: Settings, alertOnError: boolean) {
+  for (let setting of GENERIC_EDIT_FIELDS) {
+    let value = settings[setting.settingsName];
+    let errorMessage = setting.checkForErrors(value);
+    if (errorMessage) {
+      let message = `The value you supplied for "${setting.title}" is not valid!`;
+      console.log(message);
+      alertOnError && alert(message);
+      return false;
     }
-
-    //TODO actully set redux stuff
-    let copy = { ...DEFAULT_CONSTANTS };
-    copy.hostname = this.state.settings.hostname;
-    copy.initialScreen = C.SCREEN_LOGIN;//DBG
-
-    initialSetup(copy);
   }
+
+  let copy = { ...DEFAULT_CONSTANTS };
+  copy.hostname = settings.hostname;
+  copy.initialScreen = C.SCREEN_LOGIN;
+
+  initialSetup(copy);
+  return true;
 }
 
 interface State {
-  settings: {
-    hostname: string,
-    [key: string]: string,
-  }
+  settings: Settings,
+}
+
+interface Settings {
+  hostname: string,
+  [key: string]: string,
 }
 
 interface Props {

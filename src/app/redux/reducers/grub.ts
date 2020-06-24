@@ -1,6 +1,6 @@
 import * as Actions from '../actions';
 import * as C from '../constants';
-import { ReduxVariables, ReduxConstants } from '../store';
+import { ReduxVariables } from '../store';
 
 
 export default function reducer(state: ReduxVariables, action: Actions.Action): ReduxVariables {
