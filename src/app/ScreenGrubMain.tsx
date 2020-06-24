@@ -9,6 +9,8 @@ import ScreenGrub from './ScreenGrub';
 
 const DO_NOTHING = () => { };
 
+const DEFAULT_TITLE = "Kali GNU/Linux";
+
 const ADVANCED_OPTIONS = {
   title: "Advanced options for Kali GNU/Linux",
   onSelected: () => {
@@ -28,9 +30,9 @@ const SYSTEM_SETUP = {
 class ScreenGrubMain extends React.Component<Props> {
   render() {
     let startNormal = {
-      title: "Kali GNU/Linux",
+      title: DEFAULT_TITLE,
       onSelected: () => {
-        setKernelAndBoot(this.props.defaultKernel);
+        setKernelAndBoot(DEFAULT_TITLE, this.props.defaultKernel);
       },
     };
     const entries = [startNormal, ADVANCED_OPTIONS, SYSTEM_SETUP];

@@ -19,15 +19,18 @@ export function reducer(state: ReduxState | undefined, action: Actions.Action): 
 
 function varReducer(state: ReduxVariables, action: Actions.Action, constants: ReduxConstants): ReduxVariables {
   state = loginReducer(state, action);
-  state = grubReducer(state, action, constants);
-  state = miscReducer(state, action);
+  state = grubReducer(state, action);
+  state = miscReducer(state, action, constants);
   return state;
 }
 
-function miscReducer(state: ReduxVariables, action: Actions.Action): ReduxVariables {
+function miscReducer(state: ReduxVariables, action: Actions.Action, constants: ReduxConstants): ReduxVariables {
   switch (action.type) {
     case C.SET_SCREEN: {
       let newScreen = action.payload as string;
+      if (newScreen === C.SCREEN_PLYMOUTH_PASSWORD && !constants.cryptDevice) {
+        newScreen = C.SCREEN_PLYMOUTH_BOOT; // skip password if no crypt device exists
+      }
 
       return {
         ...state,

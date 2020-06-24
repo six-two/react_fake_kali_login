@@ -1,3 +1,23 @@
+$console-font-size: 12px;
+
+.screen-console-boot {
+  cursor: none;
+  background-color: black;
+  color: white;
+  font-size: $console-font-size;
+  font-family: monospace;
+
+  div {
+    margin-top: 2px;
+    margin-left: 2px;
+  }
+
+  .boot-entry-name {
+    margin-left: 15px;
+    margin-bottom: $console-font-size;
+  }
+}
+
 .screen-plymouth-boot {
   cursor: none;
 }

@@ -5,6 +5,7 @@ import * as C from './redux/constants';
 import { ReduxState } from './redux/store';
 import ScreenGrubMain from './ScreenGrubMain';
 import ScreenGrubAdvanced from './ScreenGrubAdvanced';
+import ScreenConsoleBooting from './ScreenConsoleBooting';
 import ScreenPlymouthBoot from './ScreenPlymouthBoot';
 import ScreenLogin from './ScreenLogin';
 import ScreenOff from './TurnedOffScreen';
@@ -13,9 +14,14 @@ import LoginDialog from './LoginDialog';
 import ShutdownConfirmDialog from './ShutdownConfirmDialog';
 
 
+function preventContextMenu(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
+  e.preventDefault();
+  e.stopPropagation();
+}
+
 class ScreenManager extends React.Component<Props> {
   render() {
-    return <div className="screen-manager fill-screen">
+    return <div className="screen-manager fill-screen" onContextMenu={preventContextMenu}>
       {this.renderContent()}
     </div>
   }
@@ -26,6 +32,8 @@ class ScreenManager extends React.Component<Props> {
         return <ScreenGrubMain />
       case C.SCREEN_GRUB_ADVANCED:
         return <ScreenGrubAdvanced />
+      case C.SCREEN_CONSOLE_BOOTING:
+        return <ScreenConsoleBooting />
       case C.SCREEN_PLYMOUTH_BOOT:
         return <ScreenPlymouthBoot />
       case C.SCREEN_LOGIN:
@@ -41,7 +49,9 @@ class ScreenManager extends React.Component<Props> {
       case C.SCREEN_OFF:
         return <ScreenOff />;
       default:
-        return <h1>{`Unknown screen: "${this.props.screen}"`}</h1>
+        return <h1 style={{ color: "red" }}>
+          {`Unknown screen: "${this.props.screen}"`}
+        </h1>
     }
   }
 }

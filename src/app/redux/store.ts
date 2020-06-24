@@ -15,7 +15,10 @@ export interface ReduxConstants {
   kernelList: string[],
   bootTimeout: number | null,
   cryptDevice: string | null,
-  plymountDuration: number,//in seconds
+  // Durations are measured in seconds (as floats)
+  kernelLoadDuration: number,
+  initrdLoadDuration: number,
+  plymountDuration: number,
   initialScreen: string,
 }
 
@@ -26,7 +29,9 @@ export const DEFAULT_CONSTANTS: ReduxConstants = {
   bootTimeout: 5,
   // cryptDevice: "sda3_crypt",
   cryptDevice: null,
-  plymountDuration: 1.5,
+  kernelLoadDuration: 0.2,
+  initrdLoadDuration: 1.0,
+  plymountDuration: 1.5,//DBG
   initialScreen: C.SCREEN_GRUB,
 }
 
@@ -42,6 +47,7 @@ export interface ReduxVariables {
     showTimeout: boolean,
     selectionInMain: number,
     selectionInAdvanced: number,
+    selectedEntryName: string | null,
   },
   decrypt: {
     password: string,
@@ -67,6 +73,7 @@ export const DEFAULT_VARIABLES = {
     showTimeout: true,
     selectionInMain: 0,
     selectionInAdvanced: 0,
+    selectedEntryName: null,
   },
   decrypt: {
     password: "",

@@ -14,12 +14,11 @@ class ScreenGrubAdvanced extends React.Component<Props> {
   render() {
     let entries = [];
     for (let kernel of this.props.kernels) {
-      let onSelected = () => setKernelAndBoot(kernel);
-
       for (let template of TEMPLATES) {
+        let title = template.replace("%s", kernel)
         entries.push({
-          title: template.replace("%s", kernel),
-          onSelected: onSelected,
+          title: title,
+          onSelected: () => setKernelAndBoot(title, kernel),
         });
       }
     }

@@ -8,8 +8,13 @@ function d(action: Action) {
 
 export interface Action {
   type: string,
-  payload?: string | number | null,
+  payload?: string | number | SetKernelAndBootPayload | null,
 };
+
+export interface SetKernelAndBootPayload {
+  title: string,
+  kernel: string,
+}
 
 // action creators
 export function setLoginUsername(newValue: string) {
@@ -67,9 +72,9 @@ export function setGrubAdvancedSelectedIndex(newValue: number) {
   });
 }
 
-export function setKernelAndBoot(kernelName: string){
+export function setKernelAndBoot(entryName: string, kernelName: string) {
   d({
     type: C.SET_KERNEL_AND_BOOT,
-    payload: kernelName,
+    payload: { title: entryName, kernel: kernelName },
   });
 }
