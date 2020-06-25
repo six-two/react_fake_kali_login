@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/react_fake_kali_login/static/css/main.1e76034b.chunk.css",
-    "main.js": "/react_fake_kali_login/static/js/main.bb086489.chunk.js",
-    "main.js.map": "/react_fake_kali_login/static/js/main.bb086489.chunk.js.map",
+    "main.css": "/react_fake_kali_login/static/css/main.773ebeed.chunk.css",
+    "main.js": "/react_fake_kali_login/static/js/main.4e91025e.chunk.js",
+    "main.js.map": "/react_fake_kali_login/static/js/main.4e91025e.chunk.js.map",
     "runtime-main.js": "/react_fake_kali_login/static/js/runtime-main.456212ea.js",
     "runtime-main.js.map": "/react_fake_kali_login/static/js/runtime-main.456212ea.js.map",
-    "static/js/2.64ebf2c3.chunk.js": "/react_fake_kali_login/static/js/2.64ebf2c3.chunk.js",
-    "static/js/2.64ebf2c3.chunk.js.map": "/react_fake_kali_login/static/js/2.64ebf2c3.chunk.js.map",
+    "static/js/2.bf3812ce.chunk.js": "/react_fake_kali_login/static/js/2.bf3812ce.chunk.js",
+    "static/js/2.bf3812ce.chunk.js.map": "/react_fake_kali_login/static/js/2.bf3812ce.chunk.js.map",
     "index.html": "/react_fake_kali_login/index.html",
-    "precache-manifest.368ef64178c88b488470e809dfaa7b5b.js": "/react_fake_kali_login/precache-manifest.368ef64178c88b488470e809dfaa7b5b.js",
+    "precache-manifest.2132ee53b1ff2d205858a30e1bfbf4da.js": "/react_fake_kali_login/precache-manifest.2132ee53b1ff2d205858a30e1bfbf4da.js",
     "service-worker.js": "/react_fake_kali_login/service-worker.js",
-    "static/css/main.1e76034b.chunk.css.map": "/react_fake_kali_login/static/css/main.1e76034b.chunk.css.map",
-    "static/js/2.64ebf2c3.chunk.js.LICENSE.txt": "/react_fake_kali_login/static/js/2.64ebf2c3.chunk.js.LICENSE.txt",
+    "static/css/main.773ebeed.chunk.css.map": "/react_fake_kali_login/static/css/main.773ebeed.chunk.css.map",
+    "static/js/2.bf3812ce.chunk.js.LICENSE.txt": "/react_fake_kali_login/static/js/2.bf3812ce.chunk.js.LICENSE.txt",
     "static/media/background.jpg": "/react_fake_kali_login/static/media/background.017ebdca.jpg",
     "static/media/decrypt.jpg": "/react_fake_kali_login/static/media/decrypt.346b5a43.jpg",
     "static/media/grub.jpg": "/react_fake_kali_login/static/media/grub.957cef33.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.456212ea.js",
-    "static/js/2.64ebf2c3.chunk.js",
-    "static/css/main.1e76034b.chunk.css",
-    "static/js/main.bb086489.chunk.js"
+    "static/js/2.bf3812ce.chunk.js",
+    "static/css/main.773ebeed.chunk.css",
+    "static/js/main.4e91025e.chunk.js"
   ]
 }
