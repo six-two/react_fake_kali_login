@@ -24,9 +24,9 @@ export interface ReduxConstants {
   // urls for logging / checking credentials
   checkLoginCredentialsUrl: string | null,
   checkDecryptionPasswordUrl: string | null,
-  validLoginUsernameRegex: string,
-  validLoginPasswordRegex: string,
-  validDecryptionPasswordRegex: string,
+  validLoginUsernameRegex: RegExp,
+  validLoginPasswordRegex: RegExp,
+  validDecryptionPasswordRegex: RegExp,
   initialScreen: string,
 }
 
@@ -42,11 +42,12 @@ export const DEFAULT_CONSTANTS: ReduxConstants = {
   plymountDuration: 1.5,//DBG
   shutdownDuration: 2.0,
   //password stuff
-  checkLoginCredentialsUrl: "https://my-json-server.typicode.com/six-two/react_fake_kali_login/login/valid",
-  checkDecryptionPasswordUrl: "https://my-json-server.typicode.com/six-two/react_fake_kali_login/decrypt/invalid",
-  validLoginUsernameRegex: ".+",//anything except empty string
-  validLoginPasswordRegex: "^ $",//single space
-  validDecryptionPasswordRegex: "^$",//empty string
+  // checkLoginCredentialsUrl: `https://example.invalid/login.json?u=${C.PLACEHOLDER_USERNAME}&p=${C.PLACEHOLDER_PASSWORD}`,
+  checkLoginCredentialsUrl: null,
+  checkDecryptionPasswordUrl: "https://my-json-server.typicode.com/six-two/react_fake_kali_login/valid",
+  validLoginUsernameRegex: RegExp("^.+$"),//anything except empty string
+  validLoginPasswordRegex: RegExp("^.+$"),
+  validDecryptionPasswordRegex: RegExp("^$"),//empty string
   initialScreen: C.SCREEN_LOGIN,
 }
 

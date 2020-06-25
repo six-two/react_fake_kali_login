@@ -1,7 +1,6 @@
 import { ReduxState } from './redux/store';
+import * as C from './redux/constants';
 
-export const USERNAME_PLACEHOLDER = "<username>";
-export const PASSWORD_PLACEHOLDER = "<password>";
 
 export async function isLoginValid(state: ReduxState) {
   let username = state.var.login.username;
@@ -18,20 +17,42 @@ export async function isLoginValid(state: ReduxState) {
   }
   // use regexes to check validity
   let validUsername = Boolean(username.match(state.const.validLoginUsernameRegex));
-  let validPassword = Boolean(username.match(state.const.validLoginPasswordRegex));
+  let validPassword = Boolean(password.match(state.const.validLoginPasswordRegex));
   console.log(`Comparing login credentials to regex.\n - validUsername: ${validUsername}\n - validPassword: ${validPassword}`);
   return validUsername && validPassword;
 }
 
+export async function isDecryptPasswordValid(state: ReduxState) {
+  let password = state.var.decrypt.password;
+  let url = state.const.checkDecryptionPasswordUrl;
+
+  if (url !== null) {
+    // query the url to check password
+    let serverResponse = await checkCredentialsViaServer(url, null, password);
+    if (serverResponse !== null) {
+      // got a valid server response
+      return serverResponse;
+    }
+  }
+  // use regex to check validity
+  let validPassword = Boolean(password.match(state.const.validDecryptionPasswordRegex));
+  console.log(`Comparing decrypt password to regex. Match: ${validPassword}`);
+  return validPassword;
+}
+
 async function checkCredentialsViaServer(urlTemplate: string, username: string | null,
   password: string) {
-  let url = urlTemplate.replace(PASSWORD_PLACEHOLDER, password);
+  let url = urlTemplate.replace(C.PLACEHOLDER_PASSWORD, password);
   if (username !== null) {
-    url = url.replace(USERNAME_PLACEHOLDER, username);
+    url = url.replace(C.PLACEHOLDER_USERNAME, username);
   }
 
+  console.log(`Checking credentials via url: "${url}"`)
   let response = await http<VerifyCredentialsResponse>(url);
-  return response ? response.isValid : null;
+
+  const isValid = response && response.isValid !== undefined ? response.isValid : null;
+  console.log("Server response:", isValid);
+  return isValid;
 }
 
 async function http<T>(url: string): Promise<T | null> {

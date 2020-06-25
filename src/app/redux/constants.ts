@@ -1,5 +1,8 @@
 export const DEBUG = true;
 
+export const PLACEHOLDER_USERNAME = "<username>";
+export const PLACEHOLDER_PASSWORD = "<password>";
+
 // action types
 export const SET_LOGIN_USERNAME = "SET_LOGIN_USERNAME";
 export const SET_LOGIN_PASSWORD = "SET_LOGIN_PASSWORD";
