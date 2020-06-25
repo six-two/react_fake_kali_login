@@ -44,6 +44,14 @@ class ScreenSetup extends React.Component<Props, State> {
         initrdLoadDuration: "" + DEFAULT_CONSTANTS.initrdLoadDuration,
         plymountDuration: "" + DEFAULT_CONSTANTS.plymountDuration,
         shutdownDuration: "" + DEFAULT_CONSTANTS.shutdownDuration,
+        // server verification
+        checkLoginCredentialsUrl: DEFAULT_CONSTANTS.checkLoginCredentialsUrl || "",
+        checkDecryptionPasswordUrl: DEFAULT_CONSTANTS.checkDecryptionPasswordUrl || "",
+        serverRequestTimeout: "" + DEFAULT_CONSTANTS.serverRequestTimeout,
+        // local verification
+        validLoginUsernameRegex: DEFAULT_CONSTANTS.validLoginUsernameRegex.source,
+        validLoginPasswordRegex: DEFAULT_CONSTANTS.validLoginPasswordRegex.source,
+        validDecryptionPasswordRegex: DEFAULT_CONSTANTS.validDecryptionPasswordRegex.source,
       },
     };
   }
@@ -57,11 +65,15 @@ class ScreenSetup extends React.Component<Props, State> {
       let setup;
       let params = new URLSearchParams(hash.substr(1));
       for (let [key, value] of params.entries()) {
+        value = decodeURIComponent(value);
+        if (value === "null"){
+          value = "";
+        }
         if (key === "setup") {
           setup = value; //if multiple definitions: only keep the last value
         } else {
           if (settings[key] !== undefined) {
-            console.log(`Using url parameter: ${key}`);
+            console.log(`Using url parameter: ${key} -> ${value}`);
             settings[key] = value;
           } else {
             console.warn(`Unknown url parameter: ${key}`);
@@ -76,7 +88,21 @@ class ScreenSetup extends React.Component<Props, State> {
     }
   }
 
+  getParamString() {
+    let params = [];
+    for (let [key, value] of Object.entries(this.state.settings)) {
+      value = encodeURIComponent(value);
+      if (value === "") {
+        value = "null";
+      }
+      params.push(`${key}=${value}`);
+    }
+    return params.join("&");
+  }
+
   render() {
+    // window.location.hash = "#" + this.getParamString();
+    console.log(this.getParamString());
     return <div className="setup">
       <h1>Setup</h1>
       Here you can configure the Kali Linux simulation. Or just skip this step by
@@ -166,6 +192,22 @@ interface State {
 
 interface Settings {
   hostname: string,
+  bootTimeout: string,
+  cryptDevice: string,
+  //timing
+  kernelLoadDuration: string,
+  initrdLoadDuration: string,
+  plymountDuration: string,
+  shutdownDuration: string,
+  // server verification
+  checkLoginCredentialsUrl: string,
+  checkDecryptionPasswordUrl: string,
+  serverRequestTimeout: string,
+  // local verification
+  validLoginUsernameRegex: string,
+  validLoginPasswordRegex: string,
+  validDecryptionPasswordRegex: string,
+
   [key: string]: string,
 }
 

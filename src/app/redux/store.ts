@@ -27,6 +27,8 @@ export interface ReduxConstants {
   validLoginUsernameRegex: RegExp,
   validLoginPasswordRegex: RegExp,
   validDecryptionPasswordRegex: RegExp,
+  serverRequestTimeout: number,
+
   initialScreen: string,
 }
 
@@ -42,12 +44,14 @@ export const DEFAULT_CONSTANTS: ReduxConstants = {
   plymountDuration: 1.5,//DBG
   shutdownDuration: 2.0,
   //password stuff
-  // checkLoginCredentialsUrl: `https://example.invalid/login.json?u=${C.PLACEHOLDER_USERNAME}&p=${C.PLACEHOLDER_PASSWORD}`,
-  checkLoginCredentialsUrl: null,
+  checkLoginCredentialsUrl: `https://example.invalid/login.json` +
+    `?u=${C.PLACEHOLDER_USERNAME}&p=${C.PLACEHOLDER_PASSWORD}`,
+  // checkLoginCredentialsUrl: null,
   checkDecryptionPasswordUrl: "https://my-json-server.typicode.com/six-two/react_fake_kali_login/valid",
   validLoginUsernameRegex: RegExp("^.+$"),//anything except empty string
   validLoginPasswordRegex: RegExp("^.+$"),
   validDecryptionPasswordRegex: RegExp("^$"),//empty string
+  serverRequestTimeout: 2.0,
   initialScreen: C.SCREEN_LOGIN,
 }
 
