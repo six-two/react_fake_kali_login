@@ -41,7 +41,7 @@ export default function reducer(state: ReduxVariables, action: Actions.Action): 
       };
     }
     case C.TRY_LOGIN: {
-      let success = isValidLogin(state.login.username, state.login.password);
+      let success = action.payload as boolean;
       return {
         ...state,
         login: {

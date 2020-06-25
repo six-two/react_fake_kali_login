@@ -3,6 +3,7 @@ import KeyboardEventHandler from 'react-keyboard-event-handler';
 import { connect } from 'react-redux';
 import { setLoginUsername, setLoginPassword, tryLogin } from './redux/actions';
 import { ReduxState } from './redux/store';
+import { isLoginValid } from './VerifyCredentials';
 import imageUser from '../img/user.png';
 
 
@@ -69,7 +70,7 @@ class LoginDialog extends React.Component<Props, State> {
   }
 
   onLogin = () => {
-    tryLogin();
+    isLoginValid(this.props.reduxState).then(isValid => tryLogin(isValid));
   }
 
   onCancel = () => {
@@ -85,6 +86,7 @@ interface Props {
   username: string,
   password: string,
   showLoginError: boolean,
+  reduxState: ReduxState,
 }
 
 interface State {
@@ -97,6 +99,7 @@ const mapStateToProps = (state: ReduxState, ownProps: any) => {
     username: state.var.login.username,
     password: state.var.login.password,
     showLoginError: state.var.login.failed,
+    reduxState: state,
   };
 };
 

@@ -8,7 +8,7 @@ function d(action: Action) {
 
 export interface Action {
   type: string,
-  payload?: string | number | SetKernelAndBootPayload | ReduxConstants | null,
+  payload?: string | number | boolean | SetKernelAndBootPayload | ReduxConstants | null,
 };
 
 export interface SetKernelAndBootPayload {
@@ -31,9 +31,10 @@ export function setLoginPassword(newValue: string) {
   });
 }
 
-export function tryLogin() {
+export function tryLogin(success: boolean) {
   d({
     type: C.TRY_LOGIN,
+    payload: success,
   });
 }
 
