@@ -1,5 +1,8 @@
 export const DEBUG = true;
 
+//TODO make this an user selectable option, make user choose cover
+export const URL_SIMULATION = "/posts/2020/06/29/security_advice.html";
+
 export const PLACEHOLDER_USERNAME = "<username>";
 export const PLACEHOLDER_PASSWORD = "<password>";
 
@@ -15,6 +18,7 @@ export const TRY_LOGIN = "TRY_LOGIN";
 export const SET_KERNEL_AND_BOOT = "SET_KERNEL_AND_BOOT";
 export const RESET_STATE = "RESET_STATE";
 export const INITIAL_SETUP = "INITIAL_SETUP";
+export const SET_SETUP_DONE = "SET_SETUP_DONE";//should only be used for browser history
 
 // power related screen
 export const SCREEN_OFF = "SCREEN_OFF";

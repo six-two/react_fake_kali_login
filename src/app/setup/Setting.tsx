@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Setting(props: Props) {
   let hasErrorClass = props.errorMessage ? " has-error" : "";
-  return <div key={props.name} className="setting">
+  return <div className="setting">
     <div className="label">
       {props.name}
     </div>

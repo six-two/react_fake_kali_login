@@ -64,12 +64,12 @@ const INITIAL_SCREEN: SettingsInfo = {
   type: C.TYPE_INITIAL_SCREEN,
 };
 
-const EMPTY: SettingsInfo = {
-  title: "",
-  name: "",
-  description: "",
-  type: C.TYPE_TODO,
-};
+// const EMPTY: SettingsInfo = {
+//   title: "",
+//   name: "",
+//   description: "",
+//   type: C.TYPE_TODO,
+// };
 
 
 export const FIELDS_TIMING = [KERNEL_DURATION, INITRD_DURATION, BOOT_LOGO_DURATION,

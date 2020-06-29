@@ -81,6 +81,8 @@ export function setKernelAndBoot(entryName: string, kernelName: string) {
 }
 
 export function initialSetup(constants: ReduxConstants) {
+  window.history.pushState({ stage: "simulation" }, "", C.URL_SIMULATION);
+
   d({
     type: C.INITIAL_SETUP,
     payload: constants,
@@ -89,4 +91,8 @@ export function initialSetup(constants: ReduxConstants) {
 
 export function resetState() {
   d({ type: C.RESET_STATE });
+}
+
+export function onHistoryPopState(setupIsDone: boolean) {
+  d({ type: C.SET_SETUP_DONE, payload: setupIsDone });
 }

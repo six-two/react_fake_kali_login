@@ -4,7 +4,7 @@ export default class DropdownChooser extends React.Component<Props> {
   render() {
     let options = [...this.props.optionMap.entries()];
     return <select value={this.props.value} onChange={this.onChange}>
-      {options.map(([key, value]) => <option value={key}>{value}</option>)}
+      {options.map(([key, value]) => <option key={key} value={key}>{value}</option>)}
     </select>
   }
 

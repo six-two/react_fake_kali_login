@@ -13,18 +13,28 @@ export function reducer(state: ReduxState | undefined, action: Actions.Action): 
   }
 
   // This is the only event that is allowed to change the ReduxConstants
-  if (action.type === C.INITIAL_SETUP) {
-    let constants = action.payload as ReduxConstants;
-    let vars = setScreen(constants.initialScreen, DEFAULT_VARIABLES, constants);
-    return {
-      const: constants,
-      var: vars,
-      isSetupDone: true,
+  switch (action.type) {
+    case C.INITIAL_SETUP: {
+      let constants = action.payload as ReduxConstants;
+      let vars = setScreen(constants.initialScreen, DEFAULT_VARIABLES, constants);
+      return {
+        const: constants,
+        var: vars,
+        isSetupDone: true,
+      };
     }
-  } else {
-    return {
-      ...state,
-      var: varReducer(state.var, action, state.const),
+    case C.SET_SETUP_DONE: {
+      let isSetupDone = action.payload as boolean;
+      return {
+        ...state,
+        isSetupDone: isSetupDone,
+      };
+    }
+    default: {
+      return {
+        ...state,
+        var: varReducer(state.var, action, state.const),
+      };
     }
   }
 }

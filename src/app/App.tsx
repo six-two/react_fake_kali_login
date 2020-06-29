@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { ReduxState } from './redux/store';
+import { ReduxState, ReduxConstants } from './redux/store';
 import * as C from './redux/constants';
 import FullscreenManager from './FullscreenManager';
 import ScreenManager from './ScreenManager';
@@ -26,7 +26,7 @@ class App extends React.Component<Props, State> {
   render() {
     if (this.props.showSetup) {
       return <div className="app">
-        <Setup />
+        <Setup constants={this.props.constants} />
       </div>
     } else {
       return <div className="app">
@@ -34,7 +34,7 @@ class App extends React.Component<Props, State> {
         <p>To start the fake kali login press the following key combination: <code>Ctrl+Space</code>.
         This will open up the fake login screen in fullscreen mode.
       To go back here / exit the simulation just press the <code>Escape</code> key.
-                    If you have finished the simulation and want to start it again
+                        If you have finished the simulation and want to start it again
        just reload the page (you can press <code>F5</code> to do that) and press <code>Ctrl+Space</code> again.</p>
         {this.props.isRunning && (
           <FullscreenManager alwaysShowContents={C.DEBUG}>
@@ -57,6 +57,7 @@ interface Props {
   username: string,
   password: string,
   showSetup: boolean,
+  constants: ReduxConstants,
 }
 
 const mapStateToProps = (state: ReduxState, ownProps: any) => {
@@ -66,6 +67,7 @@ const mapStateToProps = (state: ReduxState, ownProps: any) => {
     username: state.var.login.username,
     password: state.var.login.password,
     showSetup: !state.isSetupDone,
+    constants: state.const,
   };
 };
 

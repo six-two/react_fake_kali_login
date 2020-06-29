@@ -1,12 +1,11 @@
 import React from 'react';
-import { DEFAULT_CONSTANTS } from '../redux/store';
-import * as C from '../redux/constants';
+import { ReduxConstants } from '../redux/store';
 import { initialSetup } from '../redux/actions';
 import Setting from './Setting';
 import { Settings } from './State';
 import { renderInput, checkInput } from './SettingsInput';
 import { SettingsInfo, FIELDS_GENERAL, FIELDS_TIMING } from './SettingInfos';
-import { isValid, parseSettings, defaultSettings, parseUrl } from './State';
+import { isValid, parseSettings, asSettings, parseUrl } from './State';
 
 
 //TODO signal which fields can be left empty
@@ -15,7 +14,7 @@ class ScreenSetup extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      settings: defaultSettings(),
+      settings: asSettings(props.constants),
     };
   }
 
@@ -25,7 +24,7 @@ class ScreenSetup extends React.Component<Props, State> {
       this.setState({ settings: parsed.settings });
       if (parsed.skipSetup) {
         console.log("Trying to skip setup");
-        start(parsed.settings, false);
+        this.start(parsed.settings, false);
       }
     }
   }
@@ -44,14 +43,14 @@ class ScreenSetup extends React.Component<Props, State> {
 
   render() {
     // window.location.hash = "#" + this.getParamString();
-    console.log(this.getParamString());
+    // console.log(this.getParamString());
     return <div className="setup">
       <h1>Setup</h1>
       Here you can configure the Kali Linux simulation. Or just skip this step by
-      pressing the <code>start</code> button.
+      pressing the <code>Start</code> button.
       Fields marked with a "?" can be left empty to diable said feature.
 
-      <button onClick={() => start(this.state.settings, true)}>Skip setup</button>
+      <button onClick={() => this.start(this.state.settings, true)}>Skip setup</button>
 
       <h2>General settings</h2>
       {this.renderSettings(FIELDS_GENERAL)}
@@ -60,7 +59,7 @@ class ScreenSetup extends React.Component<Props, State> {
       All values below are measured in seconds. Negative values are not allowed.
       {this.renderSettings(FIELDS_TIMING)}
 
-      <button onClick={() => start(this.state.settings, true)}>Start</button>
+      <button onClick={() => this.start(this.state.settings, true)}>Start</button>
     </div>
   }
 
@@ -79,30 +78,33 @@ class ScreenSetup extends React.Component<Props, State> {
       this.setState({ settings: copy });
     }
 
-    return <Setting name={setting.title} errorMessage={errorMessage}>
+    return <Setting key={setting.name} name={setting.title} errorMessage={errorMessage}>
       {renderInput(setting.type, value, onChangeCallback)}
     </Setting>
   }
-}
 
-function start(settings: Settings, alertOnError: boolean) {
-  if (isValid(settings)) {
-    let constants = parseSettings(settings);
-    initialSetup(constants);
-    return true;
-  } else {
-    if (alertOnError) {
-      alert("Please check your inputs. At least one of them has an invalid value");
+  start(settings: Settings, alertOnError: boolean) {
+    if (isValid(settings)) {
+      let constants = parseSettings(settings);
+      window.location.hash = "";
+      initialSetup(constants);
+      return true;
+    } else {
+      if (alertOnError) {
+        alert("Please check your inputs. At least one of them has an invalid value");
+      }
+      return false;
     }
-    return false;
   }
 }
+
 
 interface State {
   settings: Settings,
 }
 
 interface Props {
+  constants: ReduxConstants,
 }
 
 export default ScreenSetup;

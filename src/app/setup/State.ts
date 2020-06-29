@@ -25,27 +25,27 @@ export interface Settings {
   [key: string]: string,
 }
 
-export function defaultSettings(): Settings {
+export function asSettings(constants: ReduxConstants): Settings {
   return {
-    hostname: DEFAULT_CONSTANTS.hostname,
-    // defaultKernel: DEFAULT_CONSTANTS.defaultKernel,
+    hostname: constants.hostname,
+    // defaultKernel: constants.defaultKernel,
     //kernels: make nice list with up down add, default?
-    bootTimeout: "" + DEFAULT_CONSTANTS.bootTimeout,
-    cryptDevice: DEFAULT_CONSTANTS.cryptDevice || "",
+    bootTimeout: "" + constants.bootTimeout,
+    cryptDevice: constants.cryptDevice || "",
     initialScreen: C.SCREEN_LOGIN,
     //timing
-    kernelLoadDuration: "" + DEFAULT_CONSTANTS.kernelLoadDuration,
-    initrdLoadDuration: "" + DEFAULT_CONSTANTS.initrdLoadDuration,
-    plymountDuration: "" + DEFAULT_CONSTANTS.plymountDuration,
-    shutdownDuration: "" + DEFAULT_CONSTANTS.shutdownDuration,
+    kernelLoadDuration: "" + constants.kernelLoadDuration,
+    initrdLoadDuration: "" + constants.initrdLoadDuration,
+    plymountDuration: "" + constants.plymountDuration,
+    shutdownDuration: "" + constants.shutdownDuration,
     // server verification
-    checkLoginCredentialsUrl: DEFAULT_CONSTANTS.checkLoginCredentialsUrl || "",
-    checkDecryptionPasswordUrl: DEFAULT_CONSTANTS.checkDecryptionPasswordUrl || "",
-    serverRequestTimeout: "" + DEFAULT_CONSTANTS.serverRequestTimeout,
+    checkLoginCredentialsUrl: constants.checkLoginCredentialsUrl || "",
+    checkDecryptionPasswordUrl: constants.checkDecryptionPasswordUrl || "",
+    serverRequestTimeout: "" + constants.serverRequestTimeout,
     // local verification
-    validLoginUsernameRegex: DEFAULT_CONSTANTS.validLoginUsernameRegex.source,
-    validLoginPasswordRegex: DEFAULT_CONSTANTS.validLoginPasswordRegex.source,
-    validDecryptionPasswordRegex: DEFAULT_CONSTANTS.validDecryptionPasswordRegex.source,
+    validLoginUsernameRegex: constants.validLoginUsernameRegex.source,
+    validLoginPasswordRegex: constants.validLoginPasswordRegex.source,
+    validDecryptionPasswordRegex: constants.validDecryptionPasswordRegex.source,
   };
 }
 

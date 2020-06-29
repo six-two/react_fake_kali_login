@@ -28,6 +28,13 @@ export function renderInput(type: string, value: string, onValueChange: (value: 
   }
 }
 
+function StringInputView(props: RenderInputProps): JSX.Element {
+  let onChangeCallback = (e: React.ChangeEvent<HTMLInputElement>) => {
+    props.setValue(e.target.value);
+  }
+  return <input value={props.value} onChange={onChangeCallback} />
+}
+
 export function checkInput(type: string, value: string): string | null {
   switch (type) {
     case C.TYPE_STRING: {
@@ -54,15 +61,6 @@ export function checkInput(type: string, value: string): string | null {
   }
 }
 
-
-function StringInputView(props: RenderInputProps): JSX.Element {
-  let onChangeCallback = (e: React.ChangeEvent<HTMLInputElement>) => {
-    props.setValue(e.target.value);
-  }
-  return <input value={props.value} onChange={onChangeCallback} />
-}
-
-
 function checkTimingStringForErrors(value: string): string | null {
   if (!value.trim()) {
     return "Empty field is not allowed";
@@ -73,13 +71,6 @@ function checkTimingStringForErrors(value: string): string | null {
   }
   if (number < 0) {
     return "Number can not be negative";
-  }
-  return null;
-}
-
-function checkNonEmptyStringForErrors(string: string): string | null {
-  if (!string.trim()) {
-    return "Empty field is not allowed";
   }
   return null;
 }
