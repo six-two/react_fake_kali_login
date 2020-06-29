@@ -4,7 +4,7 @@ import { ReduxState } from './redux/store';
 import * as C from './redux/constants';
 import FullscreenManager from './FullscreenManager';
 import ScreenManager from './ScreenManager';
-import Setup from './ScreenSetup';
+import Setup from './setup/ScreenSetup';
 import '../css/App.scss';
 
 // TODOs
