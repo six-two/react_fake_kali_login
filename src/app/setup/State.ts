@@ -7,6 +7,7 @@ export interface Settings {
   hostname: string,
   bootTimeout: string,
   cryptDevice: string,
+  initialScreen: string,
   //timing
   kernelLoadDuration: string,
   initrdLoadDuration: string,
@@ -31,6 +32,7 @@ export function defaultSettings(): Settings {
     //kernels: make nice list with up down add, default?
     bootTimeout: "" + DEFAULT_CONSTANTS.bootTimeout,
     cryptDevice: DEFAULT_CONSTANTS.cryptDevice || "",
+    initialScreen: C.SCREEN_LOGIN,
     //timing
     kernelLoadDuration: "" + DEFAULT_CONSTANTS.kernelLoadDuration,
     initrdLoadDuration: "" + DEFAULT_CONSTANTS.initrdLoadDuration,
@@ -68,7 +70,7 @@ export function parseSettings(settings: Settings): ReduxConstants {
   let constants = { ...DEFAULT_CONSTANTS };
   constants.hostname = settings.hostname;
   constants.bootTimeout = Number(settings.bootTimeout);
-  constants.initialScreen = C.SCREEN_LOGIN;
+  constants.initialScreen = settings.initialScreen;
   //timing
   constants.kernelLoadDuration = Number(settings.kernelLoadDuration);
   constants.initrdLoadDuration = Number(settings.initrdLoadDuration);

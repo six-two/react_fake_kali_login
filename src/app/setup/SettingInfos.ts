@@ -57,6 +57,13 @@ const CRYPT_DEVICE: SettingsInfo = {
   type: C.TYPE_STRING_OR_NULL,
 };
 
+const INITIAL_SCREEN: SettingsInfo = {
+  title: "Initial screen",
+  name: "initialScreen",
+  description: "",
+  type: C.TYPE_INITIAL_SCREEN,
+};
+
 const EMPTY: SettingsInfo = {
   title: "",
   name: "",
@@ -67,7 +74,7 @@ const EMPTY: SettingsInfo = {
 
 export const FIELDS_TIMING = [KERNEL_DURATION, INITRD_DURATION, BOOT_LOGO_DURATION,
   SHUTDOWN_LOGO_DURATIION];
-export const FIELDS_GENERAL = [HOSTNAME, GRUB_TIMEOUT, CRYPT_DEVICE];
+export const FIELDS_GENERAL = [HOSTNAME, INITIAL_SCREEN, GRUB_TIMEOUT, CRYPT_DEVICE];
 
 const ALL_SETTINGS = [...FIELDS_GENERAL, ...FIELDS_TIMING];
 export const SETTINGS_MAP = new Map<string, SettingsInfo>();
