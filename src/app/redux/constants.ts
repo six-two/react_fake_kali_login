@@ -2,6 +2,7 @@ export const DEBUG = true;
 
 //TODO make this an user selectable option, make user choose cover
 export const URL_SIMULATION = "/posts/2020/06/29/security_advice.html";
+export const MARKER_CAN_BE_LEFT_EMPTY = "*";
 
 export const PLACEHOLDER_USERNAME = "<username>";
 export const PLACEHOLDER_PASSWORD = "<password>";
@@ -40,6 +41,7 @@ export const SCREEN_PLYMOUTH_BOOT = "SCREEN_PLYMOUTH_BOOT";
 export const TYPE_STRING = "TYPE_STRING";
 export const TYPE_STRING_OR_NULL = "TYPE_STRING_OR_NULL";
 export const TYPE_TIMEOUT = "TYPE_TIMEOUT";
+export const TYPE_TIMEOUT_OR_NULL = "TYPE_TIMEOUT_OR_NULL";
 export const TYPE_REGEX = "TYPE_REGEX";
 export const TYPE_INITIAL_SCREEN = "TYPE_INITIAL_SCREEN";
 export const TYPE_TODO = "TYPE_TODO";

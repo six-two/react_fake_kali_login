@@ -47,7 +47,7 @@ const GRUB_TIMEOUT: SettingsInfo = {
   title: "Grub timeout",
   name: "bootTimeout",
   description: "",
-  type: C.TYPE_TIMEOUT,
+  type: C.TYPE_TIMEOUT_OR_NULL,
 };
 
 const CRYPT_DEVICE: SettingsInfo = {

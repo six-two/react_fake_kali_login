@@ -1,7 +1,7 @@
 import { ReduxConstants, DEFAULT_CONSTANTS } from '../redux/store';
 import * as C from '../redux/constants';
 import { SETTINGS_MAP } from './SettingInfos';
-import { checkInput } from './SettingsInput';
+import { checkInput } from './Types';
 
 export interface Settings {
   hostname: string,
@@ -30,7 +30,7 @@ export function asSettings(constants: ReduxConstants): Settings {
     hostname: constants.hostname,
     // defaultKernel: constants.defaultKernel,
     //kernels: make nice list with up down add, default?
-    bootTimeout: "" + constants.bootTimeout,
+    bootTimeout: constants.bootTimeout ? "" + constants.bootTimeout : "",
     cryptDevice: constants.cryptDevice || "",
     initialScreen: C.SCREEN_LOGIN,
     //timing
@@ -69,7 +69,7 @@ export function isValid(settings: Settings): boolean {
 export function parseSettings(settings: Settings): ReduxConstants {
   let constants = { ...DEFAULT_CONSTANTS };
   constants.hostname = settings.hostname;
-  constants.bootTimeout = Number(settings.bootTimeout);
+  constants.bootTimeout = settings.bootTimeout ? Number(settings.bootTimeout) : null;
   constants.initialScreen = settings.initialScreen;
   //timing
   constants.kernelLoadDuration = Number(settings.kernelLoadDuration);

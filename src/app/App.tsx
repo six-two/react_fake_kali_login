@@ -4,18 +4,19 @@ import { ReduxState, ReduxConstants } from './redux/store';
 import * as C from './redux/constants';
 import FullscreenManager from './FullscreenManager';
 import ScreenManager from './ScreenManager';
-import Setup from './setup/ScreenSetup';
+import Setup from './setup/Setup';
 import '../css/App.scss';
 
 // TODOs
 // Disk Password screen
 // More boot steps
 // Report passwords to external url
-// setup screen: allow setting all variables
+// setup screen: allow setting all variables, fix bugs
 // Better cover page
 
 // --- Nice to have ---
 // Disable autofill on password fields (in Firefox)
+// preload images so they will not be displayed a secont too late
 
 class App extends React.Component<Props, State> {
   constructor(props: Props) {

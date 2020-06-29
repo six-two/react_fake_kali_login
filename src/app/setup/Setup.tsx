@@ -1,16 +1,17 @@
 import React from 'react';
 import { ReduxConstants } from '../redux/store';
 import { initialSetup } from '../redux/actions';
+import * as C from '../redux/constants';
 import Setting from './Setting';
 import { Settings } from './State';
-import { renderInput, checkInput } from './SettingsInput';
+import { renderInput, checkInput, allowsEmptyInput } from './Types';
 import { SettingsInfo, FIELDS_GENERAL, FIELDS_TIMING } from './SettingInfos';
 import { isValid, parseSettings, asSettings, parseUrl } from './State';
 
 
 //TODO signal which fields can be left empty
 //TODO add descriptions
-class ScreenSetup extends React.Component<Props, State> {
+class SetupView extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
@@ -48,7 +49,7 @@ class ScreenSetup extends React.Component<Props, State> {
       <h1>Setup</h1>
       Here you can configure the Kali Linux simulation. Or just skip this step by
       pressing the <code>Start</code> button.
-      Fields marked with a "?" can be left empty to diable said feature.
+      Fields marked with a "{C.MARKER_CAN_BE_LEFT_EMPTY}" can be left empty to diable said feature.
 
       <button onClick={() => this.start(this.state.settings, true)}>Skip setup</button>
 
@@ -72,13 +73,15 @@ class ScreenSetup extends React.Component<Props, State> {
   renderGenericSetting = (setting: SettingsInfo) => {
     let value = this.state.settings[setting.name];
     let errorMessage = checkInput(setting.type, value);
+    let canBeEmpty = allowsEmptyInput(setting.type);
     let onChangeCallback = (newValue: string) => {
       let copy = { ...this.state.settings };
       copy[setting.name] = newValue;
       this.setState({ settings: copy });
     }
 
-    return <Setting key={setting.name} name={setting.title} errorMessage={errorMessage}>
+    return <Setting key={setting.name} name={setting.title}
+      canBeEmpty={canBeEmpty} errorMessage={errorMessage}>
       {renderInput(setting.type, value, onChangeCallback)}
     </Setting>
   }
@@ -107,4 +110,4 @@ interface Props {
   constants: ReduxConstants,
 }
 
-export default ScreenSetup;
+export default SetupView;
