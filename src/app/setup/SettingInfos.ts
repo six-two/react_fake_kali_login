@@ -64,6 +64,28 @@ const INITIAL_SCREEN: SettingsInfo = {
   type: C.TYPE_INITIAL_SCREEN,
 };
 
+const CHECK_DECRYPT_PASS_URL: SettingsInfo = {
+  title: "Check disk password URL",
+  name: "checkDecryptionPasswordUrl",
+  description: "",
+  type: C.TYPE_TEMPLATE_URL_PASS,
+};
+
+const CHECK_LOGIN_URL: SettingsInfo = {
+  title: "Check login URL",
+  name: "checkLoginCredentialsUrl",
+  description: "",
+  type: C.TYPE_TEMPLATE_URL_USER_PASS,
+};
+
+const URL_VERIFICATION_TIMEOUT: SettingsInfo = {
+  title: "Server verification timeout",
+  name: "serverRequestTimeout",
+  description: "",
+  type: C.TYPE_TIMEOUT,
+};
+
+
 // const EMPTY: SettingsInfo = {
 //   title: "",
 //   name: "",
@@ -75,8 +97,9 @@ const INITIAL_SCREEN: SettingsInfo = {
 export const FIELDS_TIMING = [KERNEL_DURATION, INITRD_DURATION, BOOT_LOGO_DURATION,
   SHUTDOWN_LOGO_DURATIION];
 export const FIELDS_GENERAL = [HOSTNAME, INITIAL_SCREEN, GRUB_TIMEOUT, CRYPT_DEVICE];
+export const FIELDS_CREDENTIAL = [CHECK_DECRYPT_PASS_URL, CHECK_LOGIN_URL, URL_VERIFICATION_TIMEOUT];
 
-const ALL_SETTINGS = [...FIELDS_GENERAL, ...FIELDS_TIMING];
+const ALL_SETTINGS = [...FIELDS_GENERAL, ...FIELDS_TIMING, ...FIELDS_CREDENTIAL];
 export const SETTINGS_MAP = new Map<string, SettingsInfo>();
 for (let s of ALL_SETTINGS) {
   SETTINGS_MAP.set(s.name, s);

@@ -47,7 +47,9 @@ export const DEFAULT_CONSTANTS: ReduxConstants = {
   checkLoginCredentialsUrl: `https://example.invalid/login.json` +
     `?u=${C.PLACEHOLDER_USERNAME}&p=${C.PLACEHOLDER_PASSWORD}`,
   // checkLoginCredentialsUrl: null,
-  checkDecryptionPasswordUrl: "https://my-json-server.typicode.com/six-two/react_fake_kali_login/valid",
+  // checkDecryptionPasswordUrl: "https://my-json-server.typicode.com/six-two/react_fake_kali_login/valid",
+  checkDecryptionPasswordUrl: `http://localhost:3333/decrypt` +
+    `?p=${C.PLACEHOLDER_PASSWORD}`,
   validLoginUsernameRegex: RegExp("^.+$"),//anything except empty string
   validLoginPasswordRegex: RegExp("^.+$"),
   validDecryptionPasswordRegex: RegExp("^$"),//empty string

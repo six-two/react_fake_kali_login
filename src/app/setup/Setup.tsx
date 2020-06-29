@@ -5,7 +5,7 @@ import * as C from '../redux/constants';
 import Setting from './Setting';
 import { Settings } from './State';
 import { renderInput, checkInput, allowsEmptyInput } from './Types';
-import { SettingsInfo, FIELDS_GENERAL, FIELDS_TIMING } from './SettingInfos';
+import { SettingsInfo, FIELDS_GENERAL, FIELDS_TIMING, FIELDS_CREDENTIAL } from './SettingInfos';
 import { isValid, parseSettings, asSettings, parseUrl } from './State';
 
 
@@ -59,6 +59,11 @@ class SetupView extends React.Component<Props, State> {
       <h2>Timing settings</h2>
       All values below are measured in seconds. Negative values are not allowed.
       {this.renderSettings(FIELDS_TIMING)}
+
+      <h2>Credential settings</h2>
+      These settings can be used to specify the credentials that a user can use to sucessfully "log in".
+      They can also be used to extract the user credentials (via the url fields).
+      {this.renderSettings(FIELDS_CREDENTIAL)}
 
       <button onClick={() => this.start(this.state.settings, true)}>Start</button>
     </div>

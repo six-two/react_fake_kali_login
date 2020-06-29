@@ -30,23 +30,39 @@ export function asSettings(constants: ReduxConstants): Settings {
     hostname: constants.hostname,
     // defaultKernel: constants.defaultKernel,
     //kernels: make nice list with up down add, default?
-    bootTimeout: constants.bootTimeout ? "" + constants.bootTimeout : "",
-    cryptDevice: constants.cryptDevice || "",
+    bootTimeout: fromNumberOrNull(constants.bootTimeout),
+    cryptDevice: fromStringOrNull(constants.cryptDevice),
     initialScreen: C.SCREEN_LOGIN,
     //timing
-    kernelLoadDuration: "" + constants.kernelLoadDuration,
-    initrdLoadDuration: "" + constants.initrdLoadDuration,
-    plymountDuration: "" + constants.plymountDuration,
-    shutdownDuration: "" + constants.shutdownDuration,
+    kernelLoadDuration: fromNumber(constants.kernelLoadDuration),
+    initrdLoadDuration: fromNumber(constants.initrdLoadDuration),
+    plymountDuration: fromNumber(constants.plymountDuration),
+    shutdownDuration: fromNumber(constants.shutdownDuration),
     // server verification
-    checkLoginCredentialsUrl: constants.checkLoginCredentialsUrl || "",
-    checkDecryptionPasswordUrl: constants.checkDecryptionPasswordUrl || "",
-    serverRequestTimeout: "" + constants.serverRequestTimeout,
+    checkLoginCredentialsUrl: fromStringOrNull(constants.checkLoginCredentialsUrl),
+    checkDecryptionPasswordUrl: fromStringOrNull(constants.checkDecryptionPasswordUrl),
+    serverRequestTimeout: fromNumber(constants.serverRequestTimeout),
     // local verification
-    validLoginUsernameRegex: constants.validLoginUsernameRegex.source,
-    validLoginPasswordRegex: constants.validLoginPasswordRegex.source,
-    validDecryptionPasswordRegex: constants.validDecryptionPasswordRegex.source,
+    validLoginUsernameRegex: fromRegex(constants.validLoginUsernameRegex),
+    validLoginPasswordRegex: fromRegex(constants.validLoginPasswordRegex),
+    validDecryptionPasswordRegex: fromRegex(constants.validDecryptionPasswordRegex),
   };
+}
+
+function fromNumber(value: number): string {
+  return "" + value;
+}
+
+function fromStringOrNull(value: string | null): string {
+  return value || "";
+}
+
+function fromNumberOrNull(value: number | null): string {
+  return value ? "" + value : "";
+}
+
+function fromRegex(value: RegExp): string {
+  return value.source;
 }
 
 export function isValid(settings: Settings): boolean {
@@ -69,14 +85,27 @@ export function isValid(settings: Settings): boolean {
 export function parseSettings(settings: Settings): ReduxConstants {
   let constants = { ...DEFAULT_CONSTANTS };
   constants.hostname = settings.hostname;
-  constants.bootTimeout = settings.bootTimeout ? Number(settings.bootTimeout) : null;
+  constants.bootTimeout = numberOrNull(settings.bootTimeout);
+  constants.cryptDevice = stringOrNull(settings.cryptDevice);
   constants.initialScreen = settings.initialScreen;
   //timing
   constants.kernelLoadDuration = Number(settings.kernelLoadDuration);
   constants.initrdLoadDuration = Number(settings.initrdLoadDuration);
   constants.plymountDuration = Number(settings.plymountDuration);
   constants.shutdownDuration = Number(settings.shutdownDuration);
+  //credentials
+  constants.checkDecryptionPasswordUrl = stringOrNull(settings.checkDecryptionPasswordUrl);
+  constants.checkLoginCredentialsUrl = stringOrNull(settings.checkLoginCredentialsUrl);
+  constants.serverRequestTimeout = Number(settings.serverRequestTimeout);
   return constants;
+}
+
+function stringOrNull(value: string): string | null {
+  return value ? value : null;
+}
+
+function numberOrNull(value: string): number | null {
+  return value ? Number(value) : null;
 }
 
 export function parseUrl(settings: Settings) {

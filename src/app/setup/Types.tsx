@@ -12,7 +12,8 @@ export interface RenderInputProps {
 }
 
 export function allowsEmptyInput(type: string): boolean {
-  if (type === C.TYPE_STRING_OR_NULL || type === C.TYPE_TIMEOUT_OR_NULL) {
+  if (type === C.TYPE_STRING_OR_NULL || type === C.TYPE_TIMEOUT_OR_NULL
+    || type === C.TYPE_TEMPLATE_URL_PASS || type === C.TYPE_TEMPLATE_URL_USER_PASS) {
     return true;
   }
   return false;
@@ -23,7 +24,9 @@ export function renderInput(type: string, value: string, onValueChange: (value: 
     case C.TYPE_STRING:
     case C.TYPE_STRING_OR_NULL:
     case C.TYPE_TIMEOUT:
-    case C.TYPE_TIMEOUT_OR_NULL: {
+    case C.TYPE_TIMEOUT_OR_NULL:
+    case C.TYPE_TEMPLATE_URL_PASS:
+    case C.TYPE_TEMPLATE_URL_USER_PASS: {
       return <StringInputView value={value} setValue={onValueChange} />
     }
     case C.TYPE_INITIAL_SCREEN: {
@@ -31,7 +34,7 @@ export function renderInput(type: string, value: string, onValueChange: (value: 
     }
     default:
       console.error(`Unknown type: "${type}"`)
-      return <div>ERROR</div>;
+      return <div>ERROR: Unknown input type</div>;
   }
 }
 
@@ -53,7 +56,7 @@ export function checkInput(type: string, value: string): string | null {
     }
     case C.TYPE_TIMEOUT_OR_NULL:
     case C.TYPE_TIMEOUT: {
-      if (type === C.TYPE_TIMEOUT_OR_NULL && !value){
+      if (type === C.TYPE_TIMEOUT_OR_NULL && !value) {
         return null;
       }
       return checkTimingStringForErrors(value);
@@ -63,6 +66,14 @@ export function checkInput(type: string, value: string): string | null {
         return `Not a valid initial screen: "${value}"`;
       }
       return null;
+    }
+    case C.TYPE_TEMPLATE_URL_PASS:
+    case C.TYPE_TEMPLATE_URL_USER_PASS: {
+      let placeholders = [C.PLACEHOLDER_PASSWORD];
+      if (type === C.TYPE_TEMPLATE_URL_USER_PASS) {
+        placeholders.push(C.PLACEHOLDER_USERNAME);
+      }
+      return checkUrlForPlaceholders(value, placeholders);
     }
     default:
       console.error(`Unknown type: "${type}"`)
@@ -79,4 +90,19 @@ function checkTimingStringForErrors(value: string): string | null {
     return "Number can not be negative";
   }
   return null;
+}
+
+function checkUrlForPlaceholders(urlText: string, placeholders: string[]) {
+  try {
+    let url = new URL(urlText);
+    for (let p of placeholders){
+      if (urlText.indexOf(p) < 0){
+        return `The url should contain the placeholder "${p}"`;
+      }
+    }
+    return null;
+  } catch (e) {
+    console.debug("This error is probably related to url parsing",e);
+    return "Unvalid URL format";
+  }
 }

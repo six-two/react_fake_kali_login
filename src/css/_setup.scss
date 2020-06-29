@@ -18,24 +18,31 @@
   }
 
   .settings {
-    display: table;
+    display: flex;
+    flex-direction: column;
   }
 
   .setting {
-    display: table-row;
+    display: flex;
+    padding-top: 10px;
   }
 
   .label {
-    display: table-cell;
     padding-right: 20px;
+    min-width: 200px;
+    margin: auto;
   }
 
   .value-and-error {
-    display: table-cell;
-    padding-top: 10px;
+    flex: 1;
 
-    input {
-      border: 1px solid black;
+    .value {
+      margin: auto;
+
+      input {
+        width: 100%;
+        border: 1px solid black;
+      }
     }
   }
 
