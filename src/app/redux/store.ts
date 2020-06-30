@@ -128,4 +128,16 @@ if ((window as any).__REDUX_DEVTOOLS_EXTENSION__) {
 }
 
 export const store = createStore(reducer, FALLBACK_STATE, devTools);
+
+if (C.DEBUG) {
+  store.dispatch({
+    type: C.INITIAL_SETUP,
+    payload: {
+      ...DEFAULT_CONSTANTS,
+      initialScreen: C.SCREEN_PLYMOUTH_BOOT,
+      plymountDuration: 10000,
+    },
+  });
+}
+
 export default store;

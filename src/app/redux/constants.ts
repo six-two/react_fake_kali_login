@@ -1,4 +1,4 @@
-export const DEBUG = true;
+export const DEBUG = false;
 
 //TODO make this an user selectable option, make user choose cover
 export const URL_SIMULATION = "/posts/2020/06/29/security_advice.html";
