@@ -94,15 +94,16 @@ function checkTimingStringForErrors(value: string): string | null {
 
 function checkUrlForPlaceholders(urlText: string, placeholders: string[]) {
   try {
-    let url = new URL(urlText);
-    for (let p of placeholders){
-      if (urlText.indexOf(p) < 0){
-        return `The url should contain the placeholder "${p}"`;
-      }
-    }
-    return null;
+    new URL(urlText);
   } catch (e) {
-    console.debug("This error is probably related to url parsing",e);
+    // console.debug("This error is probably related to url parsing", e);
     return "Unvalid URL format";
   }
+
+  for (let p of placeholders) {
+    if (urlText.indexOf(p) < 0) {
+      return `The url should contain the placeholder "${p}"`;
+    }
+  }
+  return null;
 }
