@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "23f840e4a0cbdb3aedac9153e3dc9c7c",
+    "revision": "f9f5c0ce7e80b282cea413c0b21eecaa",
     "url": "/react_fake_kali_login/index.html"
   },
   {
-    "revision": "ebebfe8b64258d3bceb1",
-    "url": "/react_fake_kali_login/static/css/main.78bd04b4.chunk.css"
+    "revision": "f495b02d721f94650b05",
+    "url": "/react_fake_kali_login/static/css/main.962e2566.chunk.css"
   },
   {
     "revision": "aeb236a5ecedb6854499",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react_fake_kali_login/static/js/2.aebd9707.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "ebebfe8b64258d3bceb1",
-    "url": "/react_fake_kali_login/static/js/main.3b3975b6.chunk.js"
+    "revision": "f495b02d721f94650b05",
+    "url": "/react_fake_kali_login/static/js/main.441c8f34.chunk.js"
   },
   {
     "revision": "28b6b421e8ea119986a3",
