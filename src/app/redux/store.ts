@@ -17,6 +17,7 @@ export interface ReduxConstants {
   bootTimeout: number | null,
   cryptDevice: string | null,
   // Durations are measured in seconds (as floats)
+  grubGreetingDuration: number,
   kernelLoadDuration: number,
   initrdLoadDuration: number,
   plymountDuration: number,
@@ -39,7 +40,8 @@ export const DEFAULT_CONSTANTS: ReduxConstants = {
   bootTimeout: 5,
   // cryptDevice: "sda3_crypt",
   cryptDevice: null,
-  kernelLoadDuration: 0.2,
+  grubGreetingDuration: 0.5,
+  kernelLoadDuration: 0.4,
   initrdLoadDuration: 1.0,
   plymountDuration: 1.5,//DBG
   shutdownDuration: 2.0,

@@ -1,5 +1,4 @@
 import { ReduxConstants, DEFAULT_CONSTANTS } from '../redux/store';
-import * as C from '../redux/constants';
 import { SETTINGS_MAP } from './SettingInfos';
 import { checkInput } from './Types';
 
@@ -9,6 +8,7 @@ export interface Settings {
   cryptDevice: string,
   initialScreen: string,
   //timing
+  grubGreetingDuration: string,
   kernelLoadDuration: string,
   initrdLoadDuration: string,
   plymountDuration: string,
@@ -32,8 +32,9 @@ export function asSettings(constants: ReduxConstants): Settings {
     //kernels: make nice list with up down add, default?
     bootTimeout: fromNumberOrNull(constants.bootTimeout),
     cryptDevice: fromStringOrNull(constants.cryptDevice),
-    initialScreen: C.SCREEN_LOGIN,
+    initialScreen: constants.initialScreen,
     //timing
+    grubGreetingDuration: fromNumber(constants.grubGreetingDuration),
     kernelLoadDuration: fromNumber(constants.kernelLoadDuration),
     initrdLoadDuration: fromNumber(constants.initrdLoadDuration),
     plymountDuration: fromNumber(constants.plymountDuration),
@@ -89,6 +90,7 @@ export function parseSettings(settings: Settings): ReduxConstants {
   constants.cryptDevice = stringOrNull(settings.cryptDevice);
   constants.initialScreen = settings.initialScreen;
   //timing
+  constants.grubGreetingDuration = Number(settings.grubGreetingDuration);
   constants.kernelLoadDuration = Number(settings.kernelLoadDuration);
   constants.initrdLoadDuration = Number(settings.initrdLoadDuration);
   constants.plymountDuration = Number(settings.plymountDuration);

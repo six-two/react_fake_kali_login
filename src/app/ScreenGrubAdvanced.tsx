@@ -24,7 +24,7 @@ class ScreenGrubAdvanced extends React.Component<Props> {
     }
     return <ScreenGrub
       entries={entries}
-      onBack={() => setScreen(C.SCREEN_GRUB)}
+      onBack={() => setScreen(C.SCREEN_GRUB_MENU)}
       selected={this.props.selected}
       setSelectedIndex={setGrubAdvancedSelectedIndex} />
   }

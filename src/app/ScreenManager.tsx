@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { setScreen } from './redux/actions';
 import * as C from './redux/constants';
 import { ReduxState } from './redux/store';
+import ScreenGrubGreeting from './ScreenGrubGreeting';
 import ScreenGrubMain from './ScreenGrubMain';
 import ScreenGrubAdvanced from './ScreenGrubAdvanced';
 import ScreenConsoleBooting from './ScreenConsoleBooting';
@@ -32,6 +33,8 @@ class ScreenManager extends React.Component<Props> {
   renderContent() {
     switch (this.props.screen) {
       case C.SCREEN_GRUB:
+        return <ScreenGrubGreeting />
+      case C.SCREEN_GRUB_MENU:
         return <ScreenGrubMain />
       case C.SCREEN_GRUB_ADVANCED:
         return <ScreenGrubAdvanced />

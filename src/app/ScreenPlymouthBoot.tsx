@@ -1,34 +1,24 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { setScreen } from './redux/actions';
 import * as C from './redux/constants';
-import { ReduxState } from './redux/store';
+import store, { ReduxState } from './redux/store';
+import Timeout from './TimeoutComponent';
 import imagePlymountBackground from '../img/decrypt.jpg';
 
 // TODO base it on /usr/share/plymouth/themes/kali/
-class ScreenPlymouthBoot extends React.Component<Props> {
-  componentDidMount() {
-    let durationInMs = Math.round(this.props.duration * 1000);
-    setTimeout(() => setScreen(C.SCREEN_LOGIN), durationInMs);
-  }
-
+export default class ScreenPlymouthBoot extends React.Component<Props> {
   render() {
+    let timeout = store.getState().const.plymountDuration;
     return <div className="screen-plymouth-boot">
+      <Timeout timeoutSeconds={timeout} onComplete={this.nextScreen} />
       <img className="fill-screen" src={imagePlymountBackground} alt="" />
     </div>
+  }
+
+  nextScreen = () => {
+    setScreen(C.SCREEN_LOGIN);
   }
 }
 
 interface Props {
-  duration: number,
 }
-
-const mapStateToProps = (state: ReduxState, ownProps: any) => {
-  return {
-    ...ownProps,
-    duration: state.const.plymountDuration,
-  };
-};
-
-const ReduxScreenPlymouthBoot = connect(mapStateToProps)(ScreenPlymouthBoot);
-export default ReduxScreenPlymouthBoot;

@@ -15,6 +15,13 @@ const HOSTNAME: SettingsInfo = {
   type: C.TYPE_STRING,
 };
 
+const GRUB_GREETER_DURATION: SettingsInfo = {
+  title: "Grub greeting message",
+  name: "grubGreetingDuration",
+  description: "",
+  type: C.TYPE_TIMEOUT,
+};
+
 const KERNEL_DURATION: SettingsInfo = {
   title: "Kernel load",
   name: "kernelLoadDuration",
@@ -94,8 +101,8 @@ const URL_VERIFICATION_TIMEOUT: SettingsInfo = {
 // };
 
 
-export const FIELDS_TIMING = [KERNEL_DURATION, INITRD_DURATION, BOOT_LOGO_DURATION,
-  SHUTDOWN_LOGO_DURATIION];
+export const FIELDS_TIMING = [GRUB_GREETER_DURATION, KERNEL_DURATION,
+  INITRD_DURATION, BOOT_LOGO_DURATION, SHUTDOWN_LOGO_DURATIION];
 export const FIELDS_GENERAL = [HOSTNAME, INITIAL_SCREEN, GRUB_TIMEOUT, CRYPT_DEVICE];
 export const FIELDS_CREDENTIAL = [CHECK_DECRYPT_PASS_URL, CHECK_LOGIN_URL, URL_VERIFICATION_TIMEOUT];
 
