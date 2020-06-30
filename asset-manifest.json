@@ -1,25 +1,27 @@
 {
   "files": {
-    "main.css": "/react_fake_kali_login/static/css/main.962e2566.chunk.css",
-    "main.js": "/react_fake_kali_login/static/js/main.441c8f34.chunk.js",
-    "main.js.map": "/react_fake_kali_login/static/js/main.441c8f34.chunk.js.map",
+    "main.css": "/react_fake_kali_login/static/css/main.cd79e61c.chunk.css",
+    "main.js": "/react_fake_kali_login/static/js/main.e412ddbe.chunk.js",
+    "main.js.map": "/react_fake_kali_login/static/js/main.e412ddbe.chunk.js.map",
     "runtime-main.js": "/react_fake_kali_login/static/js/runtime-main.456212ea.js",
     "runtime-main.js.map": "/react_fake_kali_login/static/js/runtime-main.456212ea.js.map",
-    "static/js/2.aebd9707.chunk.js": "/react_fake_kali_login/static/js/2.aebd9707.chunk.js",
-    "static/js/2.aebd9707.chunk.js.map": "/react_fake_kali_login/static/js/2.aebd9707.chunk.js.map",
+    "static/js/2.d8618dfe.chunk.js": "/react_fake_kali_login/static/js/2.d8618dfe.chunk.js",
+    "static/js/2.d8618dfe.chunk.js.map": "/react_fake_kali_login/static/js/2.d8618dfe.chunk.js.map",
     "index.html": "/react_fake_kali_login/index.html",
-    "precache-manifest.4cb6bfeebd46d638163637a5fd24475c.js": "/react_fake_kali_login/precache-manifest.4cb6bfeebd46d638163637a5fd24475c.js",
+    "precache-manifest.f584874afda14929eceec0aca3e3ad29.js": "/react_fake_kali_login/precache-manifest.f584874afda14929eceec0aca3e3ad29.js",
     "service-worker.js": "/react_fake_kali_login/service-worker.js",
-    "static/css/main.962e2566.chunk.css.map": "/react_fake_kali_login/static/css/main.962e2566.chunk.css.map",
-    "static/js/2.aebd9707.chunk.js.LICENSE.txt": "/react_fake_kali_login/static/js/2.aebd9707.chunk.js.LICENSE.txt",
+    "static/css/main.cd79e61c.chunk.css.map": "/react_fake_kali_login/static/css/main.cd79e61c.chunk.css.map",
+    "static/js/2.d8618dfe.chunk.js.LICENSE.txt": "/react_fake_kali_login/static/js/2.d8618dfe.chunk.js.LICENSE.txt",
     "static/media/background.jpg": "/react_fake_kali_login/static/media/background.017ebdca.jpg",
     "static/media/decrypt.jpg": "/react_fake_kali_login/static/media/decrypt.346b5a43.jpg",
-    "static/media/grub.jpg": "/react_fake_kali_login/static/media/grub.957cef33.jpg"
+    "static/media/grub.jpg": "/react_fake_kali_login/static/media/grub.957cef33.jpg",
+    "static/media/kali-logo-fade.png": "/react_fake_kali_login/static/media/kali-logo-fade.4620ddbb.png",
+    "static/media/kali-logo.png": "/react_fake_kali_login/static/media/kali-logo.36f24410.png"
   },
   "entrypoints": [
     "static/js/runtime-main.456212ea.js",
-    "static/js/2.aebd9707.chunk.js",
-    "static/css/main.962e2566.chunk.css",
-    "static/js/main.441c8f34.chunk.js"
+    "static/js/2.d8618dfe.chunk.js",
+    "static/css/main.cd79e61c.chunk.css",
+    "static/js/main.e412ddbe.chunk.js"
   ]
 }
