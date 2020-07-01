@@ -6,7 +6,7 @@ import { ReduxState } from './redux/store';
 import { PlymouthLogoShutdown } from './PlymouthBootAnimation';
 import Timeout from './TimeoutComponent';
 
-// TODO base it on /usr/share/plymouth/themes/kali/
+
 class ScreenShutdown extends React.Component<Props> {
   render() {
     return <div className="screen-plymouth-shutdown plymouth v-flex">

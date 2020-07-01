@@ -6,6 +6,10 @@ export interface ReduxState {
   const: ReduxConstants,
   var: ReduxVariables,
   isSetupDone: boolean,
+  fullscreen: {
+    requested: boolean,
+    active: boolean,
+  },
 }
 
 // The settings that can be set by the user before the simulation is started
@@ -82,7 +86,7 @@ export interface ReduxVariables {
     attempts: number,
   },
   rebootAfterShutdown: boolean,
-  screenBeforeSuspend: string | null,
+  previousScreen: string | null,
   isFinished: boolean,
 }
 
@@ -110,7 +114,7 @@ export const DEFAULT_VARIABLES = {
     failed: false,
     attempts: 0,
   },
-  screenBeforeSuspend: null,
+  previousScreen: null,
   rebootAfterShutdown: false,
   isFinished: false,
 }
@@ -119,6 +123,10 @@ export const FALLBACK_STATE: ReduxState = {
   const: DEFAULT_CONSTANTS,
   var: DEFAULT_VARIABLES,
   isSetupDone: false,
+  fullscreen: {
+    requested: false,
+    active: false,
+  }
 }
 
 let devTools = undefined;

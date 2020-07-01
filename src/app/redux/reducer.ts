@@ -22,6 +22,10 @@ export function reducer(state: ReduxState | undefined, action: Actions.Action): 
         const: constants,
         var: vars,
         isSetupDone: true,
+        fullscreen: {
+          ...state.fullscreen,
+          requested: true,
+        },
       };
     }
     case C.SET_SETUP_DONE: {
@@ -30,6 +34,26 @@ export function reducer(state: ReduxState | undefined, action: Actions.Action): 
         ...state,
         isSetupDone: isSetupDone,
       };
+    }
+    case C.SET_FULLSCREEN_IS_ACTIVE: {
+      let isFullscreenActive = action.payload as boolean;
+      return {
+        ...state,
+        fullscreen: {
+          requested: isFullscreenActive,//reset it so it can be set again later
+          active: isFullscreenActive,
+        },
+      }
+    }
+    case C.SET_FULLSCREEN_IS_REQUESTED: {
+      let value = action.payload as boolean;
+      return {
+        ...state,
+        fullscreen: {
+          ...state.fullscreen,
+          requested: value,
+        },
+      }
     }
     default: {
       return {
@@ -75,9 +99,9 @@ export function setScreen(newScreen: string, state: ReduxVariables, constants: R
     newScreen = C.SCREEN_SHUTDOWN;
   }
 
-  // Handle suspends
-  let screenBeforeSuspend = newScreen === C.SCREEN_SUSPEND ?
-    state.screen.name : null;
+  // Handle suspend and cover
+  let needsPreviousScreen = newScreen === C.SCREEN_SUSPEND || newScreen === C.SCREEN_COVER;
+  let previousScreen = needsPreviousScreen ? state.screen.name : null;
 
   return {
     ...state,
@@ -86,7 +110,7 @@ export function setScreen(newScreen: string, state: ReduxVariables, constants: R
       changeTime: new Date(),
     },
     rebootAfterShutdown: rebootAfterShutdown,
-    screenBeforeSuspend: screenBeforeSuspend,
+    previousScreen: previousScreen,
   };
 }
 

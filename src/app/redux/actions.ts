@@ -17,6 +17,20 @@ export interface SetKernelAndBootPayload {
 }
 
 // action creators
+export function requestFullscreen(newValue: boolean) {
+  d({
+    type: C.SET_FULLSCREEN_IS_REQUESTED,
+    payload: newValue,
+  });
+}
+
+export function setIsFullscreenActive(newValue: boolean) {
+  d({
+    type: C.SET_FULLSCREEN_IS_ACTIVE,
+    payload: newValue,
+  });
+}
+
 export function setLoginUsername(newValue: string) {
   d({
     type: C.SET_LOGIN_USERNAME,

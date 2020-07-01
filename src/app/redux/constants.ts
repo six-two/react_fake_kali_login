@@ -1,4 +1,4 @@
-export const DEBUG = true;
+export const DEBUG = false;
 
 //TODO make this an user selectable option, make user choose cover
 export const URL_SIMULATION = "/posts/2020/06/29/security_advice.html";
@@ -8,6 +8,8 @@ export const PLACEHOLDER_USERNAME = "<username>";
 export const PLACEHOLDER_PASSWORD = "<password>";
 
 // action types
+export const SET_FULLSCREEN_IS_REQUESTED = "SET_FULLSCREEN_IS_REQUESTED";
+export const SET_FULLSCREEN_IS_ACTIVE = "SET_FULLSCREEN_IS_ACTIVE";
 export const SET_LOGIN_USERNAME = "SET_LOGIN_USERNAME";
 export const SET_LOGIN_PASSWORD = "SET_LOGIN_PASSWORD";
 export const SET_DECRYPT_PASSWORD = "SET_DECRYPT_PASSWORD";
@@ -40,6 +42,8 @@ export const SCREEN_CONSOLE_BOOTING = "SCREEN_CONSOLE_BOOTING";
 export const SCREEN_PLYMOUTH_PASSWORD = "SCREEN_PLYMOUTH_PASSWORD";
 export const SCREEN_PLYMOUTH_CHECK_PASSWORD = "SCREEN_PLYMOUTH_CHECK_PASSWORD";
 export const SCREEN_PLYMOUTH_BOOT = "SCREEN_PLYMOUTH_BOOT";
+//
+export const SCREEN_COVER = "SCREEN_COVER";
 
 // input types
 export const TYPE_STRING = "TYPE_STRING";

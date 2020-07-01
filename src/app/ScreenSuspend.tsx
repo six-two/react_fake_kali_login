@@ -31,7 +31,7 @@ interface Props {
 const mapStateToProps = (state: ReduxState, ownProps: any) => {
   return {
     ...ownProps,
-    lastScreen: state.var.screenBeforeSuspend || "Error: suspend has no last screen set",
+    lastScreen: state.var.previousScreen || "Error: suspend has no last screen set",
     suspendStart: state.var.screen.changeTime,
   };
 };
