@@ -17,21 +17,20 @@ export default function reducer(state: ReduxVariables, action: Actions.Action): 
     }
     case C.TRY_DECRYPT: {
       let success = action.payload as boolean;
-      let newScreen;
-      if (success) {
-        newScreen = {
-          name: C.SCREEN_PLYMOUTH_BOOT,
-          changeTime: new Date(),
-        };
-      }
+      let newScreen = success ? C.SCREEN_PLYMOUTH_BOOT : C.SCREEN_PLYMOUTH_PASSWORD;
+      let password = success ? state.decrypt.password : "";
       return {
         ...state,
         decrypt: {
           ...state.decrypt,
+          password: password,
           failed: !success,
           attempts: state.decrypt.attempts + 1,
         },
-        screen: newScreen || state.screen,
+        screen: {
+          name: newScreen,
+          changeTime: new Date(),
+        },
       };
     }
     default: {

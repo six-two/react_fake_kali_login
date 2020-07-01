@@ -141,6 +141,7 @@ if (C.DEBUG) {
       initialScreen: C.SCREEN_PLYMOUTH_PASSWORD,
       cryptDevice: "sdXY_crypt",
       plymountDuration: 4,
+      checkDecryptionPasswordUrl: null,
     },
   });
 }

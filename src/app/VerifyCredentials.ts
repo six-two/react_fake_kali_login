@@ -2,6 +2,7 @@ import { timeout, TimeoutError } from 'promise-timeout';
 import { ReduxState } from './redux/store';
 import * as C from './redux/constants';
 
+const SLEEP_TIME = 1000;
 
 export async function isLoginValid(state: ReduxState) {
   let username = state.var.login.username;
@@ -17,6 +18,9 @@ export async function isLoginValid(state: ReduxState) {
       // got a valid server response
       return serverResponse;
     }
+  } else {
+    // simulete the check time by just waiting a bit
+    await sleep(SLEEP_TIME);
   }
   // use regexes to check validity
   let validUsername = Boolean(username.match(state.const.validLoginUsernameRegex));
@@ -38,6 +42,9 @@ export async function isDecryptPasswordValid(state: ReduxState) {
       // got a valid server response
       return serverResponse;
     }
+  } else {
+    // simulete the check time by just waiting a bit
+    await sleep(SLEEP_TIME);
   }
   // use regex to check validity
   let validPassword = Boolean(password.match(state.const.validDecryptionPasswordRegex));
@@ -91,6 +98,10 @@ async function http<T>(url: string): Promise<T | null> {
     console.error(error);
     return null;
   }
+}
+
+function sleep(ms: number) {
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 interface VerifyCredentialsResponse {

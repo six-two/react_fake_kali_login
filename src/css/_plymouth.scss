@@ -97,5 +97,14 @@ $console-font-size: 12px;
   .status-text {
     color: white;
     text-align: center;
+    margin-top: 10px;
+  }
+}
+
+.screen-plymouth-check {
+  .status-text {
+    margin-top: 33px;
+    color: white;
+    text-align: center;
   }
 }
