@@ -80,6 +80,20 @@ export function setKernelAndBoot(entryName: string, kernelName: string) {
   });
 }
 
+export function setDecryptPassword(newValue: string) {
+  d({
+    type: C.SET_DECRYPT_PASSWORD,
+    payload: newValue,
+  });
+}
+
+export function tryDecrypt(success: boolean) {
+  d({
+    type: C.TRY_DECRYPT,
+    payload: success,
+  });
+}
+
 export function initialSetup(constants: ReduxConstants) {
   window.history.pushState({ stage: "simulation" }, "", C.URL_SIMULATION);
 

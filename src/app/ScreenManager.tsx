@@ -7,6 +7,7 @@ import ScreenGrubGreeting from './ScreenGrubGreeting';
 import ScreenGrubMain from './ScreenGrubMain';
 import ScreenGrubAdvanced from './ScreenGrubAdvanced';
 import ScreenConsoleBooting from './ScreenConsoleBooting';
+import ScreenPlymouthPassword from './ScreenPlymouthPassword';
 import ScreenPlymouthBoot from './ScreenPlymouthBoot';
 import ScreenLogin from './ScreenLogin';
 import ScreenOff from './TurnedOffScreen';
@@ -40,6 +41,8 @@ class ScreenManager extends React.Component<Props> {
         return <ScreenGrubAdvanced />
       case C.SCREEN_CONSOLE_BOOTING:
         return <ScreenConsoleBooting />
+      case C.SCREEN_PLYMOUTH_PASSWORD:
+        return <ScreenPlymouthPassword />
       case C.SCREEN_PLYMOUTH_BOOT:
         return <ScreenPlymouthBoot />
       case C.SCREEN_LOGIN:

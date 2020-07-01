@@ -2,7 +2,7 @@ import React from 'react';
 import { setScreen } from './redux/actions';
 import * as C from './redux/constants';
 import store from './redux/store';
-import BootAnimation from './PlymouthBootAnimation';
+import { PlymouthLogoBooting } from './PlymouthBootAnimation';
 
 export default class ScreenPlymouthBoot extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -14,10 +14,10 @@ export default class ScreenPlymouthBoot extends React.Component<Props, State> {
     let absProgress = Math.min(1, Math.max(0, this.state.progress));
     let percent = Math.round(100 * absProgress);
 
-    return <div className="screen-plymouth-boot v-flex">
+    return <div className="screen-plymouth-boot plymouth v-flex">
       <div className="expand"></div>
       {absProgress === this.state.progress &&
-        <BootAnimation progress={absProgress} />
+        <PlymouthLogoBooting progress={absProgress} />
       }
       <div className="expand">
         {C.DEBUG &&

@@ -71,6 +71,8 @@ export interface ReduxVariables {
   },
   decrypt: {
     password: string,
+    failed: boolean,
+    attempts: number,
   },
   login: {
     username: string,
@@ -98,6 +100,8 @@ export const DEFAULT_VARIABLES = {
   },
   decrypt: {
     password: "",
+    failed: false,
+    attempts: 0,
   },
   login: {
     username: "",
@@ -134,8 +138,9 @@ if (C.DEBUG) {
     type: C.INITIAL_SETUP,
     payload: {
       ...DEFAULT_CONSTANTS,
-      initialScreen: C.SCREEN_PLYMOUTH_BOOT,
-      plymountDuration: 10000,
+      initialScreen: C.SCREEN_PLYMOUTH_PASSWORD,
+      cryptDevice: "sdXY_crypt",
+      plymountDuration: 4,
     },
   });
 }

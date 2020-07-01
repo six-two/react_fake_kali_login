@@ -18,10 +18,10 @@ $console-font-size: 12px;
   }
 }
 
-.screen-plymouth-boot {
+.plymouth {
   cursor: none;
 
-  .kali-dragon-container {
+  .kali-logo {
     margin: auto;
     width: 400px;
     height: 400px;
@@ -33,6 +33,9 @@ $console-font-size: 12px;
     // fade: 386x300
     // outline: 380x60
     // idea: padd them all to the same size (400x400px)
+    img {
+      box-sizing: border-box;
+    }
 
     .logo {
       padding: 75px 32px;
@@ -44,25 +47,55 @@ $console-font-size: 12px;
 
     .fade {
       padding: 50px 7px;
-      opacity: 0.5;
+      // opacity: 0.5;
     }
 
     .outline {
       padding: 0px 10px;
     }
+  }
 
-
-    img {
-      box-sizing: border-box;
-    }
-
+  .logo-boot-animation {
     .outline {
       top: 340px;
       height: 60px;
     }
   }
+
+  .logo-password, .logo-shutdown {
+    .fade {
+      opacity: 0.5;
+    }
+
+    .outline {
+      display: none;
+    }
+  }
 }
 
-screen-plymouth-shutdown {
-  cursor: none;
+.screen-plymouth-decrypt {
+  .password-div {
+    display: flex;
+    width: 200px;
+    margin: auto;
+    border-bottom: 3px solid blue;
+
+    img {
+      width: 10px;
+      height: 18px;
+    }
+
+    input {
+      cursor: none;
+      caret-color: transparent;
+      flex: 1;
+      color: white;
+      background-color: black;
+    }
+  }
+
+  .status-text {
+    color: white;
+    text-align: center;
+  }
 }

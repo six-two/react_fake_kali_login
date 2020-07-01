@@ -5,6 +5,7 @@ import {
 } from './store';
 import loginReducer from './reducers/login';
 import grubReducer from './reducers/grub';
+import decryptReducer from './reducers/decrypt';
 
 export function reducer(state: ReduxState | undefined, action: Actions.Action): ReduxState {
   if (!state) {
@@ -43,6 +44,7 @@ export function reducer(state: ReduxState | undefined, action: Actions.Action): 
 function varReducer(state: ReduxVariables, action: Actions.Action, constants: ReduxConstants): ReduxVariables {
   state = loginReducer(state, action);
   state = grubReducer(state, action);
+  state = decryptReducer(state, action);
   state = miscReducer(state, action, constants);
   return state;
 }

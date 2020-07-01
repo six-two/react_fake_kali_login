@@ -24,3 +24,4 @@ Extracted from "screenshots/release-2020.2-login-dark.png"
 ### everything in plymouth/
 
 Taken from a Kali Linux installation (located at /usr/share/plymouth/themes/kali/)
+"key.png" was extracted from "password-field.png"

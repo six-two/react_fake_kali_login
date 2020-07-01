@@ -1,4 +1,4 @@
-export const DEBUG = false;
+export const DEBUG = true;
 
 //TODO make this an user selectable option, make user choose cover
 export const URL_SIMULATION = "/posts/2020/06/29/security_advice.html";
@@ -10,12 +10,14 @@ export const PLACEHOLDER_PASSWORD = "<password>";
 // action types
 export const SET_LOGIN_USERNAME = "SET_LOGIN_USERNAME";
 export const SET_LOGIN_PASSWORD = "SET_LOGIN_PASSWORD";
+export const SET_DECRYPT_PASSWORD = "SET_DECRYPT_PASSWORD";
 export const SET_SCREEN = "SET_SCREEN";
 export const SET_HOSTNAME = "SET_HOSTNAME";
 export const SET_LOGIN_OPEN_MENU = "SET_LOGIN_OPEN_MENU";
 export const SET_GRUB_MAIN_SELECTED = "SET_GRUB_MAIN_SELECTED";
 export const SET_GRUB_ADVANCED_SELECTED = "SET_GRUB_ADVANCED_SELECTED";
 export const TRY_LOGIN = "TRY_LOGIN";
+export const TRY_DECRYPT = "TRY_DECRYPT";
 export const SET_KERNEL_AND_BOOT = "SET_KERNEL_AND_BOOT";
 export const RESET_STATE = "RESET_STATE";
 export const INITIAL_SETUP = "INITIAL_SETUP";
