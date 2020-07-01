@@ -3,15 +3,17 @@ import { connect } from 'react-redux';
 import { setScreen, resetState } from './redux/actions';
 import * as C from './redux/constants';
 import { ReduxState } from './redux/store';
+import { PlymouthLogoShutdown } from './PlymouthBootAnimation';
 import Timeout from './TimeoutComponent';
-import imagePlymountBackground from '../img/decrypt.jpg';
 
 // TODO base it on /usr/share/plymouth/themes/kali/
 class ScreenShutdown extends React.Component<Props> {
   render() {
-    return <div className="screen-plymouth-shutdown">
+    return <div className="screen-plymouth-shutdown plymouth v-flex">
+      <div className="expand"></div>
+      <PlymouthLogoShutdown />
       <Timeout timeoutSeconds={this.props.duration} onComplete={this.nextScreen} />
-      <img className="fill-screen" src={imagePlymountBackground} alt="" />
+      <div className="expand"></div>
     </div>
   }
 

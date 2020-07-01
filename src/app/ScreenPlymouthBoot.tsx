@@ -11,18 +11,13 @@ export default class ScreenPlymouthBoot extends React.Component<Props, State> {
   }
 
   render() {
-    let absProgress = Math.min(1, Math.max(0, this.state.progress));
-    let percent = Math.round(100 * absProgress);
-
     return <div className="screen-plymouth-boot plymouth v-flex">
       <div className="expand"></div>
-      {absProgress === this.state.progress &&
-        <PlymouthLogoBooting progress={absProgress} />
-      }
+      <PlymouthLogoBooting progress={this.state.progress} />
       <div className="expand">
         {C.DEBUG &&
           <div style={{ color: "white", margin: "auto", textAlign: "center" }}>
-            Progress: {percent}%
+            Progress: {Math.round(100 * this.state.progress)}%
           </div>
         }
       </div>
