@@ -92,6 +92,26 @@ const URL_VERIFICATION_TIMEOUT: SettingsInfo = {
   type: C.TYPE_TIMEOUT,
 };
 
+const REGEX_DECRYPT_PASSWORD: SettingsInfo = {
+  title: "Decryption password",
+  name: "validDecryptionPasswordRegex",
+  description: "",
+  type: C.TYPE_REGEX,
+};
+
+const REGEX_LOGIN_USERNAME: SettingsInfo = {
+  title: "Login username",
+  name: "validLoginUsernameRegex",
+  description: "",
+  type: C.TYPE_REGEX,
+};
+
+const REGEX_LOGIN_PASSWORD: SettingsInfo = {
+  title: "Login password",
+  name: "validLoginPasswordRegex",
+  description: "",
+  type: C.TYPE_REGEX,
+};
 
 // const EMPTY: SettingsInfo = {
 //   title: "",
@@ -104,9 +124,14 @@ const URL_VERIFICATION_TIMEOUT: SettingsInfo = {
 export const FIELDS_TIMING = [GRUB_GREETER_DURATION, KERNEL_DURATION,
   INITRD_DURATION, BOOT_LOGO_DURATION, SHUTDOWN_LOGO_DURATIION];
 export const FIELDS_GENERAL = [HOSTNAME, INITIAL_SCREEN, GRUB_TIMEOUT, CRYPT_DEVICE];
-export const FIELDS_CREDENTIAL = [CHECK_DECRYPT_PASS_URL, CHECK_LOGIN_URL, URL_VERIFICATION_TIMEOUT];
+export const FIELDS_CREDENTIAL_SERVER = [CHECK_DECRYPT_PASS_URL, CHECK_LOGIN_URL,
+  URL_VERIFICATION_TIMEOUT];
+export const FIELDS_CREDENTIAL_LOCAL = [REGEX_DECRYPT_PASSWORD, REGEX_LOGIN_USERNAME,
+  REGEX_LOGIN_PASSWORD];
 
-const ALL_SETTINGS = [...FIELDS_GENERAL, ...FIELDS_TIMING, ...FIELDS_CREDENTIAL];
+const ALL_SETTINGS = [...FIELDS_GENERAL, ...FIELDS_TIMING,
+...FIELDS_CREDENTIAL_SERVER, ...FIELDS_CREDENTIAL_LOCAL];
+
 export const SETTINGS_MAP = new Map<string, SettingsInfo>();
 for (let s of ALL_SETTINGS) {
   SETTINGS_MAP.set(s.name, s);

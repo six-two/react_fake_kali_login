@@ -16,6 +16,7 @@ export interface ReduxState {
 // They will not change over the course of the simulation
 export interface ReduxConstants {
   hostname: string,
+  initialScreen: string,
   defaultKernel: string,
   kernelList: string[],
   bootTimeout: number | null,
@@ -29,12 +30,11 @@ export interface ReduxConstants {
   // urls for logging / checking credentials
   checkLoginCredentialsUrl: string | null,
   checkDecryptionPasswordUrl: string | null,
+  serverRequestTimeout: number,
+  // local validation
   validLoginUsernameRegex: RegExp,
   validLoginPasswordRegex: RegExp,
   validDecryptionPasswordRegex: RegExp,
-  serverRequestTimeout: number,
-
-  initialScreen: string,
 }
 
 export const DEFAULT_CONSTANTS: ReduxConstants = {

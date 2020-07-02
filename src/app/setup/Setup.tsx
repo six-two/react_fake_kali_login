@@ -5,8 +5,11 @@ import * as C from '../redux/constants';
 import Setting from './Setting';
 import { Settings } from './State';
 import { renderInput, checkInput, allowsEmptyInput } from './Types';
-import { SettingsInfo, FIELDS_GENERAL, FIELDS_TIMING, FIELDS_CREDENTIAL } from './SettingInfos';
 import { isValid, parseSettings, asSettings, parseUrl } from './State';
+import {
+  SettingsInfo, FIELDS_GENERAL, FIELDS_TIMING,
+  FIELDS_CREDENTIAL_SERVER, FIELDS_CREDENTIAL_LOCAL
+} from './SettingInfos';
 
 
 //TODO signal which fields can be left empty
@@ -23,10 +26,10 @@ class SetupView extends React.Component<Props, State> {
     let parsed = parseUrl(this.state.settings);
     if (parsed) {
       this.setState({ settings: parsed.settings });
-      if (parsed.skipSetup) {
-        console.log("Trying to skip setup");
-        this.start(parsed.settings, false);
-      }
+      // if (parsed.skipSetup) {
+      //   console.log("Trying to skip setup");
+      //   this.start(parsed.settings, false);
+      // }
     }
   }
 
@@ -63,7 +66,14 @@ class SetupView extends React.Component<Props, State> {
       <h2>Credential settings</h2>
       These settings can be used to specify the credentials that a user can use to sucessfully "log in".
       They can also be used to extract the user credentials (via the url fields).
-      {this.renderSettings(FIELDS_CREDENTIAL)}
+      {this.renderSettings(FIELDS_CREDENTIAL_SERVER)}
+
+      <h2>Local credential verification</h2>
+      If the server defined above can not be reached or does not respond in time,
+       these fields will be used to verify the credentials. The fields accept
+       regular expressions, which are a powerful way to match text.
+       If you are not familiar with them go check outh this <a href="TODO">quick start guide to regular expressions</a>.
+       {this.renderSettings(FIELDS_CREDENTIAL_LOCAL)}
 
       <button onClick={() => this.start(this.state.settings, true)}>Start</button>
     </div>

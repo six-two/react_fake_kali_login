@@ -21,6 +21,7 @@ export function allowsEmptyInput(type: string): boolean {
 
 export function renderInput(type: string, value: string, onValueChange: (value: string) => void): JSX.Element {
   switch (type) {
+    case C.TYPE_REGEX:
     case C.TYPE_STRING:
     case C.TYPE_STRING_OR_NULL:
     case C.TYPE_TIMEOUT:
@@ -75,6 +76,9 @@ export function checkInput(type: string, value: string): string | null {
       }
       return checkUrlForPlaceholders(value, placeholders);
     }
+    case C.TYPE_REGEX: {
+      return checkRegex(value);
+    }
     default:
       console.error(`Unknown type: "${type}"`)
       return "Internal error: unknown type";
@@ -106,4 +110,13 @@ function checkUrlForPlaceholders(urlText: string, placeholders: string[]) {
     }
   }
   return null;
+}
+
+function checkRegex(value: string): string | null {
+  try {
+    new RegExp(value);
+    return null;
+  } catch (e) {
+    return "Not a valid regular expression";
+  }
 }
