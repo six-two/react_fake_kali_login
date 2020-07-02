@@ -19,7 +19,8 @@ export function allowsEmptyInput(type: string): boolean {
   return false;
 }
 
-export function renderInput(type: string, value: string, onValueChange: (value: string) => void): JSX.Element {
+export function renderInput(type: string, defaultValue: string,
+  value: string, onValueChange: (value: string) => void): JSX.Element {
   switch (type) {
     case C.TYPE_REGEX:
     case C.TYPE_STRING:
@@ -28,8 +29,11 @@ export function renderInput(type: string, value: string, onValueChange: (value: 
     case C.TYPE_TIMEOUT_OR_NULL:
     case C.TYPE_TEMPLATE_URL_PASS:
     case C.TYPE_TEMPLATE_URL_USER_PASS: {
-      //TODO show default value
-      return <StringInputView value={value} setValue={onValueChange} />
+      let onChangeCallback = (e: React.ChangeEvent<HTMLInputElement>) => {
+        onValueChange(e.target.value);
+      }
+      return <input value={value} onChange={onChangeCallback}
+        placeholder={defaultValue} />
     }
     case C.TYPE_INITIAL_SCREEN: {
       return <Dropdown value={value} onValueChange={onValueChange} optionMap={INITIAL_SCREEN_MAP} />;
@@ -38,13 +42,6 @@ export function renderInput(type: string, value: string, onValueChange: (value: 
       console.error(`Unknown type: "${type}"`)
       return <div>ERROR: Unknown input type</div>;
   }
-}
-
-function StringInputView(props: RenderInputProps): JSX.Element {
-  let onChangeCallback = (e: React.ChangeEvent<HTMLInputElement>) => {
-    props.setValue(e.target.value);
-  }
-  return <input value={props.value} onChange={onChangeCallback} />
 }
 
 export function checkInput(type: string, value: string): string | null {

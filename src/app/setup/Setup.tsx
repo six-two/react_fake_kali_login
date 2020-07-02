@@ -1,5 +1,5 @@
 import React from 'react';
-import { ReduxConstants } from '../redux/store';
+import { ReduxConstants, DEFAULT_CONSTANTS } from '../redux/store';
 import { initialSetup } from '../redux/actions';
 import * as C from '../redux/constants';
 import Setting from './Setting';
@@ -11,8 +11,9 @@ import {
   FIELDS_CREDENTIAL_SERVER, FIELDS_CREDENTIAL_LOCAL
 } from './SettingInfos';
 
+const DEFAULT_SETTINGS = asSettings(DEFAULT_CONSTANTS);
 
-//TODO add descriptions
+
 class SetupView extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
@@ -85,6 +86,7 @@ class SetupView extends React.Component<Props, State> {
 
   renderGenericSetting = (setting: SettingsInfo) => {
     let value = this.state.settings[setting.name];
+    let defaultValue = DEFAULT_SETTINGS[setting.name];
     let errorMessage = checkInput(setting.type, value);
     let canBeEmpty = allowsEmptyInput(setting.type);
     let onChangeCallback = (newValue: string) => {
@@ -95,7 +97,7 @@ class SetupView extends React.Component<Props, State> {
 
     return <Setting key={setting.name} name={setting.title}
       canBeEmpty={canBeEmpty} errorMessage={errorMessage} description={setting.description}>
-      {renderInput(setting.type, value, onChangeCallback)}
+      {renderInput(setting.type, defaultValue, value, onChangeCallback)}
     </Setting>
   }
 
