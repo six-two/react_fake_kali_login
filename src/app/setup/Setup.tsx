@@ -94,7 +94,7 @@ class SetupView extends React.Component<Props, State> {
     }
 
     return <Setting key={setting.name} name={setting.title}
-      canBeEmpty={canBeEmpty} errorMessage={errorMessage}>
+      canBeEmpty={canBeEmpty} errorMessage={errorMessage} description={setting.description}>
       {renderInput(setting.type, value, onChangeCallback)}
     </Setting>
   }

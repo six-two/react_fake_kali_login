@@ -5,7 +5,7 @@ import * as C from '../redux/constants';
 export default function Setting(props: Props) {
   let hasErrorClass = props.errorMessage ? " has-error" : "";
   return <div className="setting">
-    <div className="label">
+    <div className="label" title={props.description}>
       {props.name}
       {props.canBeEmpty &&
         <abbr title="Leave this field empty to disable this feature">
@@ -31,4 +31,5 @@ interface Props {
   errorMessage?: string | null,
   children: any,
   canBeEmpty: boolean,
+  description: string,
 }
