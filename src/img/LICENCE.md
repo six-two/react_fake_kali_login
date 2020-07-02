@@ -1,24 +1,22 @@
 ## External Images
+
 **TODO: Find out what licenses the images are released under**
 
-### background.jpg
+File | Original source(^1) | Original license | Modifications by me
+---|---|---|---
+accessibility.png | https://www.kali.org/news/kali-linux-2020-2-release/ | ? | extracted from "release-2020.2-login-dark.png"
+bars.png | https://www.kali.org/news/kali-linux-2020-2-release/ | ? | extracted from "release-2020.2-login-dark.png"
+background.jpg | /usr/share/desktop-base/kali-theme/login/background.svg | ? | conversion to jpg
+background.png | /usr/share/desktop-base/kali-theme/login/background.svg | ? | conversion to png
+grub.jpg | /usr/share/grub/themes/kali/grub-16x9.png | ? | conversion to jpg
+shutdown.png | https://www.kali.org/news/kali-linux-2020-2-release/ | ? | extracted from "release-2020.2-login-dark.png"
+user.png | https://www.kali.org/news/kali-linux-2020-2-release/ | ? | extracted from "release-2020.2-login-dark.png"
+screenshots/release-2020.2-login-dark.png | https://www.kali.org/news/kali-linux-2020-2-release/ | ? | none
+screenshots/release-2020.2-login-light.png | https://www.kali.org/news/kali-linux-2020-2-release/ | ? | none
+plymouth/kali-logo-container.png | /usr/share/plymouth/themes/kali/kali-logo-container.png | ? | none
+plymouth/kali-logo-fade.png | /usr/share/plymouth/themes/kali/kali-logo-fade.png | ? | none
+plymouth/kali-logo.png | /usr/share/plymouth/themes/kali/kali-logo.png | ? | none
+plymouth/key.png | /usr/share/plymouth/themes/kali/password-field.png | ? | extracted (cropped)
+plymouth/outline.png | /usr/share/plymouth/themes/kali/outline.png | ? | none
 
-Taken from a Kali Linux installation (located at /usr/share/desktop-base/kali-theme/login/background.svg) and converted to png.
-
-
-### screenshots/release-2020.2-login-\*.png
-
-Taken from https://www.kali.org/news/kali-linux-2020-2-release/
-
-### grub.jpg
-
-Taken from a Kali Linux installation (located at /usr/share/grub/themes/kali/grub-16x9.png).
-
-### user.png, bars.png, shutdown.png, acessibility.png
-
-Extracted from "screenshots/release-2020.2-login-dark.png"
-
-### everything in plymouth/
-
-Taken from a Kali Linux installation (located at /usr/share/plymouth/themes/kali/)
-"key.png" was extracted from "password-field.png"
+(^1): If a path is given, the file was taken from a Kali Linux installation in 2020
