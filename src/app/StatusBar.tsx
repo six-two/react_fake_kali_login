@@ -30,11 +30,11 @@ const ACCESSIBILITY_MENU: MenuData = {
   icon: iconAccessibility,
   menuItems: [{
     name: "Large Font",
-    onClick: () => alert("TODO toggle big font"),
+    onClick: () => console.warn("TODO toggle big font"),
     shortcutKey: "f1",
   }, {
     name: "High Contrast",
-    onClick: () => alert("TODO toggle high contrast"),
+    onClick: () => console.warn("TODO toggle high contrast"),
     shortcutKey: "f2",
   }],
 };
@@ -45,7 +45,6 @@ const SHUTDOWN_MENU: MenuData = {
   menuItems: [{
     name: "Suspend",
     onClick: () => setScreen(C.SCREEN_SUSPEND),
-    shortcutKey: "ctrl+z",//TODO remove, just for testing
   }, {
     name: "Hibernate",
     onClick: () => setScreen(C.SCREEN_OFF),
@@ -55,7 +54,7 @@ const SHUTDOWN_MENU: MenuData = {
   }, {
     name: "Shut Down...",
     onClick: () => setScreen(C.SCREEN_DIALOG_SHUTDOWN),
-    shortcutKey: "alt+f4",//oops, might quit the browser
+    shortcutKey: "alt+f4", //oops, might quit the browser
   }],
 };
 

@@ -113,13 +113,6 @@ const REGEX_LOGIN_PASSWORD: SettingsInfo = {
   type: C.TYPE_REGEX,
 };
 
-// const EMPTY: SettingsInfo = {
-//   title: "",
-//   name: "",
-//   description: "",
-//   type: C.TYPE_TODO,
-// };
-
 
 export const FIELDS_TIMING = [GRUB_GREETER_DURATION, KERNEL_DURATION,
   INITRD_DURATION, BOOT_LOGO_DURATION, SHUTDOWN_LOGO_DURATIION];

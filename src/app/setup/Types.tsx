@@ -28,6 +28,7 @@ export function renderInput(type: string, value: string, onValueChange: (value: 
     case C.TYPE_TIMEOUT_OR_NULL:
     case C.TYPE_TEMPLATE_URL_PASS:
     case C.TYPE_TEMPLATE_URL_USER_PASS: {
+      //TODO show default value
       return <StringInputView value={value} setValue={onValueChange} />
     }
     case C.TYPE_INITIAL_SCREEN: {

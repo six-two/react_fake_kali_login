@@ -1,8 +1,9 @@
 ## External Images
+**TODO: Find out what licenses the images are released under**
 
 ### background.jpg
 
-Taken from a Kali Linux installation (located at /usr/share/desktop-base/kali-theme/login/background.svg) and converted to png. I could not find out what license they distribute it under. TODO: ask them?
+Taken from a Kali Linux installation (located at /usr/share/desktop-base/kali-theme/login/background.svg) and converted to png.
 
 
 ### screenshots/release-2020.2-login-\*.png

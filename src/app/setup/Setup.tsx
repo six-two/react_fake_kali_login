@@ -12,7 +12,6 @@ import {
 } from './SettingInfos';
 
 
-//TODO signal which fields can be left empty
 //TODO add descriptions
 class SetupView extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -46,8 +45,6 @@ class SetupView extends React.Component<Props, State> {
   }
 
   render() {
-    // window.location.hash = "#" + this.getParamString();
-    // console.log(this.getParamString());
     return <div className="setup">
       <h1>Setup</h1>
       Here you can configure the Kali Linux simulation. Or just skip this step by
@@ -76,6 +73,7 @@ class SetupView extends React.Component<Props, State> {
        {this.renderSettings(FIELDS_CREDENTIAL_LOCAL)}
 
       <button onClick={() => this.start(this.state.settings, true)}>Start</button>
+    //TODO add reset to defaults button
     </div>
   }
 
