@@ -16,7 +16,7 @@ import ScreenOff from './TurnedOffScreen';
 import ScreenShutdown from './ScreenShutdown';
 import ScreenSuspend from './ScreenSuspend';
 import LoginDialog from './LoginDialog';
-import ShutdownConfirmDialog from './ShutdownConfirmDialog';
+import { ShutdownConfirmDialog, RebootConfirmDialog } from './ShutdownConfirmDialog';
 
 
 function preventContextMenu(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
@@ -54,11 +54,15 @@ class ScreenManager extends React.Component<Props> {
       case C.SCREEN_LOGIN:
         return <ScreenLogin>
           <LoginDialog />
-        </ScreenLogin>;
+        </ScreenLogin>
       case C.SCREEN_DIALOG_REBOOT:
-        return renderRebootConfirmDialog();
+        return <ScreenLogin>
+          <RebootConfirmDialog />
+        </ScreenLogin>
       case C.SCREEN_DIALOG_SHUTDOWN:
-        return renderShutdownConfirmDialog();
+        return <ScreenLogin>
+          <ShutdownConfirmDialog />
+        </ScreenLogin>
       case C.SCREEN_SUSPEND:
         return <ScreenSuspend />;
       case C.SCREEN_SHUTDOWN:
@@ -71,32 +75,6 @@ class ScreenManager extends React.Component<Props> {
         </h1>
     }
   }
-}
-
-const renderRebootConfirmDialog = () => {
-  return <ScreenLogin>
-    <ShutdownConfirmDialog
-      title="Restart"
-      message="Are you sure you want to close all programs and restart the computer?"
-      icon="TODO"
-      confirmButtonText="Restart"
-      onConfirm={() => setScreen(C.SCREEN_REBOOT)}
-      onCancel={() => setScreen(C.SCREEN_LOGIN)}
-    />
-  </ScreenLogin>
-}
-
-const renderShutdownConfirmDialog = () => {
-  return <ScreenLogin>
-    <ShutdownConfirmDialog
-      title="Shut Down"
-      message="Are you sure you want to close all programs and shut down the computer?"
-      icon="TODO"
-      confirmButtonText="Shut Down"
-      onConfirm={() => setScreen(C.SCREEN_SHUTDOWN)}
-      onCancel={() => setScreen(C.SCREEN_LOGIN)}
-    />
-  </ScreenLogin>
 }
 
 interface Props {

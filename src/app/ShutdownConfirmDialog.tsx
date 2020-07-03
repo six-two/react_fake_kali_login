@@ -1,23 +1,27 @@
 import React from 'react';
+import { setScreen } from './redux/actions';
+import * as C from './redux/constants';
+import iconShutdown from '../img/dialogs/shutdown-w.png';
+import iconReboot from '../img/dialogs/reboot-w.png';
 
-export default class ShutdownConfirmDialog extends React.Component<Props> {
-  render() {
-    return <div className="shutdown-dialog">
-      <div className="top h-flex">
-        <img className="icon" alt="" src={this.props.icon} />
-        <div className="content expand">
-          <div className="title">{this.props.title}</div>
-          <div className="text">{this.props.message}</div>
-        </div>
-      </div>
-      <div className="buttons h-flex">
-        <div className="expand"></div>
-        <button type="button" onClick={this.props.onCancel}>Cancel</button>
-        <button type="button" onClick={this.props.onConfirm}>{this.props.confirmButtonText}</button>
+
+function GenericConfirmDialog(props: Props) {
+  return <div className="shutdown-dialog">
+    <div className="top h-flex">
+      <img className="icon" alt="" src={props.icon} />
+      <div className="content expand">
+        <div className="title">{props.title}</div>
+        <div className="text">{props.message}</div>
       </div>
     </div>
-  }
+    <div className="buttons h-flex">
+      <div className="expand"></div>
+      <button type="button" onClick={props.onCancel}>Cancel</button>
+      <button type="button" onClick={props.onConfirm}>{props.confirmButtonText}</button>
+    </div>
+  </div>
 }
+
 
 interface Props {
   title: string,
@@ -26,4 +30,26 @@ interface Props {
   confirmButtonText: string,
   onConfirm: () => void,
   onCancel: () => void,
+}
+
+export function RebootConfirmDialog() {
+  return <GenericConfirmDialog
+    title="Restart"
+    message="Are you sure you want to close all programs and restart the computer?"
+    icon={iconReboot}
+    confirmButtonText="Restart"
+    onConfirm={() => setScreen(C.SCREEN_REBOOT)}
+    onCancel={() => setScreen(C.SCREEN_LOGIN)}
+  />
+}
+
+export function ShutdownConfirmDialog() {
+  return <GenericConfirmDialog
+    title="Shut Down"
+    message="Are you sure you want to close all programs and shut down the computer?"
+    icon={iconShutdown}
+    confirmButtonText="Shut Down"
+    onConfirm={() => setScreen(C.SCREEN_SHUTDOWN)}
+    onCancel={() => setScreen(C.SCREEN_LOGIN)}
+  />
 }
