@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { setLoginUsername, setLoginPassword, tryLogin } from '../../redux/actions';
 import { ReduxState } from '../../redux/store';
 import { isLoginValid } from '../../VerifyCredentials';
-import imageUser from '../../../img/user.png';
+import {iconUser} from '../../Images';
 
 
 function focus(ref: React.RefObject<unknown>) {
@@ -22,7 +22,7 @@ class LoginDialog extends React.Component<Props, State> {
   render() {
     return <div className="login-box">
       <div className="user-details h-flex">
-        <img className="user-icon" alt="" src={imageUser} />
+        <img className="user-icon" alt="" src={iconUser} />
         <div className="inputs expand">
           <KeyboardEventHandler
             handleKeys={["enter"]}

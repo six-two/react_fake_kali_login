@@ -5,7 +5,7 @@ import { setScreen, setDecryptPassword } from '../../redux/actions';
 import * as C from '../../redux/constants';
 import { ReduxState } from '../../redux/store';
 import { PlymouthLogoPassword } from './PlymouthBootAnimation';
-import iconKey from '../../../img/plymouth/key.png';
+import { iconKey } from '../../Images';
 
 
 class ScreenPlymouthPassword extends React.Component<Props, State> {

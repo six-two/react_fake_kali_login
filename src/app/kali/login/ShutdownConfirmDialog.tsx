@@ -1,8 +1,7 @@
 import React from 'react';
 import { setScreen } from '../../redux/actions';
 import * as C from '../../redux/constants';
-import iconShutdown from '../../../img/dialogs/shutdown-w.png';
-import iconReboot from '../../../img/dialogs/reboot-w.png';
+import { iconShutdownDialog, iconRebootDialog } from '../../Images';
 
 
 function GenericConfirmDialog(props: Props) {
@@ -36,7 +35,7 @@ export function RebootConfirmDialog() {
   return <GenericConfirmDialog
     title="Restart"
     message="Are you sure you want to close all programs and restart the computer?"
-    icon={iconReboot}
+    icon={iconRebootDialog}
     confirmButtonText="Restart"
     onConfirm={() => setScreen(C.SCREEN_REBOOT)}
     onCancel={() => setScreen(C.SCREEN_LOGIN)}
@@ -47,7 +46,7 @@ export function ShutdownConfirmDialog() {
   return <GenericConfirmDialog
     title="Shut Down"
     message="Are you sure you want to close all programs and shut down the computer?"
-    icon={iconShutdown}
+    icon={iconShutdownDialog}
     confirmButtonText="Shut Down"
     onConfirm={() => setScreen(C.SCREEN_SHUTDOWN)}
     onCancel={() => setScreen(C.SCREEN_LOGIN)}

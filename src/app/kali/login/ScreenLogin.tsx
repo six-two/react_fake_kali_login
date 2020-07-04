@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { ReduxState } from '../../redux/store';
 import { setLoginOpenMenu } from '../../redux/actions';
 import StatusBar from './StatusBar';
-import imageLoginBackground from '../../../img/background.jpg';
+import { imageLoginBackground } from '../../Images';
 
 
 class ScreenLogin extends React.Component<Props> {

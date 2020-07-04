@@ -1,8 +1,5 @@
 import React from 'react';
-import logo from '../../../img/plymouth/kali-logo.png';
-import fade from '../../../img/plymouth/kali-logo-fade.png';
-import container from '../../../img/plymouth/kali-logo-container.png';
-import outline from '../../../img/plymouth/outline.png';
+import {kaliFade, kaliLogo, kaliOutline, kaliContainer} from '../../Images';
 
 const STAGE_ONE = 0.4;
 const STAGE_TWO = 0.9;
@@ -57,10 +54,10 @@ function PlymouthLogo(props: LogoProps) {
     className += " " + props.className;
   }
   return <div className={className}>
-    <img style={props.outlineStyle} className="outline fill-screen" src={outline} alt="" />
-    <img className="container fill-screen" src={container} alt="" />
-    <img style={props.fadeStyle} className="fade fill-screen" src={fade} alt="" />
-    <img style={props.logoStyle} className="logo fill-screen" src={logo} alt="" />
+    <img style={props.outlineStyle} className="outline fill-screen" src={kaliOutline} alt="" />
+    <img className="container fill-screen" src={kaliContainer} alt="" />
+    <img style={props.fadeStyle} className="fade fill-screen" src={kaliFade} alt="" />
+    <img style={props.logoStyle} className="logo fill-screen" src={kaliLogo} alt="" />
   </div>
 }
 

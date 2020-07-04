@@ -5,6 +5,7 @@ import FullscreenManager from './FullscreenManager';
 import ScreenManager from './kali/ScreenManager';
 import ScreenCover from './ScreenCover';
 import Setup from './setup/Setup';
+import { PreloadImages } from './Images';
 import '../css/App.scss';
 
 // TODOs
@@ -24,6 +25,7 @@ class App extends React.Component<Props, State> {
 
   render() {
     return <div className="app">
+      <PreloadImages />
       <FullscreenManager alwaysShowContents={true}>
         {this.renderContent()}
       </FullscreenManager>

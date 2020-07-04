@@ -6,14 +6,12 @@ import { ReduxState } from '../../redux/store';
 import { setScreen, setLoginOpenMenu } from '../../redux/actions';
 import * as C from '../../redux/constants';
 import MenuBarItem from '../../Menu';
-import iconSession from '../../../img/bars.png';
-import iconAccessibility from '../../../img/accessibility.png';
-import iconShutdown from '../../../img/shutdown.png';
+import { iconBars, iconAccessibility, iconShutdown } from '../../Images';
 
 
 const SESSION_MENU: MenuData = {
   name: "session",
-  icon: iconSession,
+  icon: iconBars,
   menuItems: [
     { name: "Default Xsession" },
     { name: "Xfce Session" },
