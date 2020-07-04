@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { ReduxState, ReduxConstants } from './redux/store';
 import FullscreenManager from './FullscreenManager';
-import ScreenManager from './ScreenManager';
+import ScreenManager from './kali/ScreenManager';
 import ScreenCover from './ScreenCover';
 import Setup from './setup/Setup';
 import '../css/App.scss';

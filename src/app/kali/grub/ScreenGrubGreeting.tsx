@@ -1,8 +1,8 @@
 import React from 'react';
-import { setScreen } from './redux/actions';
-import * as C from './redux/constants';
-import store from './redux/store';
-import Timeout from './TimeoutComponent';
+import { setScreen } from '../../redux/actions';
+import * as C from '../../redux/constants';
+import store from '../../redux/store';
+import Timeout from '../../TimeoutComponent';
 
 
 export default class ScreenGrubGreeting extends React.Component {

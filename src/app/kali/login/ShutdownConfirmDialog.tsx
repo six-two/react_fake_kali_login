@@ -1,8 +1,8 @@
 import React from 'react';
-import { setScreen } from './redux/actions';
-import * as C from './redux/constants';
-import iconShutdown from '../img/dialogs/shutdown-w.png';
-import iconReboot from '../img/dialogs/reboot-w.png';
+import { setScreen } from '../../redux/actions';
+import * as C from '../../redux/constants';
+import iconShutdown from '../../../img/dialogs/shutdown-w.png';
+import iconReboot from '../../../img/dialogs/reboot-w.png';
 
 
 function GenericConfirmDialog(props: Props) {

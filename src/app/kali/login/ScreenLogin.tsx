@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { ReduxState } from './redux/store';
-import { setLoginOpenMenu } from './redux/actions';
+import { ReduxState } from '../../redux/store';
+import { setLoginOpenMenu } from '../../redux/actions';
 import StatusBar from './StatusBar';
-import imageLoginBackground from '../img/background.jpg';
+import imageLoginBackground from '../../../img/background.jpg';
 
 
 class ScreenLogin extends React.Component<Props> {

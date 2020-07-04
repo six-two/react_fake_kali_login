@@ -1,10 +1,10 @@
 import React from 'react';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 import { connect } from 'react-redux';
-import { setLoginUsername, setLoginPassword, tryLogin } from './redux/actions';
-import { ReduxState } from './redux/store';
-import { isLoginValid } from './VerifyCredentials';
-import imageUser from '../img/user.png';
+import { setLoginUsername, setLoginPassword, tryLogin } from '../../redux/actions';
+import { ReduxState } from '../../redux/store';
+import { isLoginValid } from '../../VerifyCredentials';
+import imageUser from '../../../img/user.png';
 
 
 function focus(ref: React.RefObject<unknown>) {

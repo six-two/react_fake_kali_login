@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { tryDecrypt } from './redux/actions';
-import { ReduxState } from './redux/store';
-import { isDecryptPasswordValid } from './VerifyCredentials';
+import { tryDecrypt } from '../../redux/actions';
+import { ReduxState } from '../../redux/store';
+import { isDecryptPasswordValid } from '../../VerifyCredentials';
 import { PlymouthLogoPassword } from './PlymouthBootAnimation';
-import Timeout from './TimeoutComponent';
+import Timeout from '../../TimeoutComponent';
 
 
 class ScreenPlymouthCheckingPassword extends React.Component<Props, State> {

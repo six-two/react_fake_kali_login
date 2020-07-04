@@ -2,13 +2,13 @@ import React from 'react';
 import Clock from 'react-live-clock';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 import { connect } from 'react-redux';
-import { ReduxState } from './redux/store';
-import { setScreen, setLoginOpenMenu } from './redux/actions';
-import * as C from './redux/constants';
-import MenuBarItem from './StatusBarMenu';
-import iconSession from '../img/bars.png';
-import iconAccessibility from '../img/accessibility.png';
-import iconShutdown from '../img/shutdown.png';
+import { ReduxState } from '../../redux/store';
+import { setScreen, setLoginOpenMenu } from '../../redux/actions';
+import * as C from '../../redux/constants';
+import MenuBarItem from '../../Menu';
+import iconSession from '../../../img/bars.png';
+import iconAccessibility from '../../../img/accessibility.png';
+import iconShutdown from '../../../img/shutdown.png';
 
 
 const SESSION_MENU: MenuData = {

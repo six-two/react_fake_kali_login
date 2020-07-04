@@ -2,9 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {
   setScreen, setGrubAdvancedSelectedIndex, setKernelAndBoot
-} from './redux/actions';
-import * as C from './redux/constants';
-import { ReduxState } from './redux/store';
+} from '../../redux/actions';
+import * as C from '../../redux/constants';
+import { ReduxState } from '../../redux/store';
 import ScreenGrub from './ScreenGrub';
 
 const TEMPLATE_BASE = "Kali GNU/Linux, with Linux %s";

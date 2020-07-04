@@ -1,8 +1,8 @@
 import React from 'react';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
 import { connect } from 'react-redux';
-import { ReduxState } from './redux/store';
-import { setScreen } from './redux/actions';
+import { ReduxState } from '../redux/store';
+import { setScreen } from '../redux/actions';
 
 const MIN_SUSPEND_TIME = 1000;//in milliseconds
 

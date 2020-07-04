@@ -1,7 +1,7 @@
 import React from 'react';
-import { setScreen } from './redux/actions';
-import * as C from './redux/constants';
-import store from './redux/store';
+import { setScreen } from '../../redux/actions';
+import * as C from '../../redux/constants';
+import store from '../../redux/store';
 import { PlymouthLogoBooting } from './PlymouthBootAnimation';
 
 export default class ScreenPlymouthBoot extends React.Component<Props, State> {

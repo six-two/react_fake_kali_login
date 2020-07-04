@@ -1,8 +1,8 @@
 import React from 'react';
-import logo from '../img/plymouth/kali-logo.png';
-import fade from '../img/plymouth/kali-logo-fade.png';
-import container from '../img/plymouth/kali-logo-container.png';
-import outline from '../img/plymouth/outline.png';
+import logo from '../../../img/plymouth/kali-logo.png';
+import fade from '../../../img/plymouth/kali-logo-fade.png';
+import container from '../../../img/plymouth/kali-logo-container.png';
+import outline from '../../../img/plymouth/outline.png';
 
 const STAGE_ONE = 0.4;
 const STAGE_TWO = 0.9;

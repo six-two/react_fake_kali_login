@@ -1,22 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setScreen } from './redux/actions';
-import * as C from './redux/constants';
-import { ReduxState } from './redux/store';
-import ScreenCover from './ScreenCover';
-import ScreenGrubGreeting from './ScreenGrubGreeting';
-import ScreenGrubMain from './ScreenGrubMain';
-import ScreenGrubAdvanced from './ScreenGrubAdvanced';
-import ScreenConsoleBooting from './ScreenConsoleBooting';
-import ScreenPlymouthPassword from './ScreenPlymouthPassword';
-import ScreenPlymouthCheckingPassword from './ScreenPlymouthCheckingPassword';
-import ScreenPlymouthBoot from './ScreenPlymouthBoot';
-import ScreenLogin from './ScreenLogin';
+import * as C from '../redux/constants';
+import { ReduxState } from '../redux/store';
+import ScreenCover from '../ScreenCover';
+import ScreenGrubGreeting from './grub/ScreenGrubGreeting';
+import ScreenGrubMain from './grub/ScreenGrubMain';
+import ScreenGrubAdvanced from './grub/ScreenGrubAdvanced';
+import ScreenConsoleBooting from './grub/ScreenConsoleBooting';
+import ScreenPlymouthPassword from './plymouth/ScreenPlymouthPassword';
+import ScreenPlymouthCheckingPassword from './plymouth/ScreenPlymouthCheckingPassword';
+import ScreenPlymouthBoot from './plymouth/ScreenPlymouthBoot';
+import ScreenLogin from './login/ScreenLogin';
 import ScreenOff from './TurnedOffScreen';
-import ScreenShutdown from './ScreenShutdown';
+import ScreenShutdown from './plymouth/ScreenShutdown';
 import ScreenSuspend from './ScreenSuspend';
-import LoginDialog from './LoginDialog';
-import { ShutdownConfirmDialog, RebootConfirmDialog } from './ShutdownConfirmDialog';
+import LoginDialog from './login/LoginDialog';
+import { ShutdownConfirmDialog, RebootConfirmDialog } from './login/ShutdownConfirmDialog';
 
 
 function preventContextMenu(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {

@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setScreen } from './redux/actions';
-import * as C from './redux/constants';
-import { ReduxState } from './redux/store';
-import Timeout from './TimeoutComponent';
+import { setScreen } from '../../redux/actions';
+import * as C from '../../redux/constants';
+import { ReduxState } from '../../redux/store';
+import Timeout from '../../TimeoutComponent';
 
 
 class ScreenConsoleBooting extends React.Component<Props, State> {

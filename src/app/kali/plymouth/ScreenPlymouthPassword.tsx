@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import KeyboardEventHandler from 'react-keyboard-event-handler';
-import { setScreen, setDecryptPassword } from './redux/actions';
-import * as C from './redux/constants';
-import { ReduxState } from './redux/store';
+import { setScreen, setDecryptPassword } from '../../redux/actions';
+import * as C from '../../redux/constants';
+import { ReduxState } from '../../redux/store';
 import { PlymouthLogoPassword } from './PlymouthBootAnimation';
-import iconKey from '../img/plymouth/key.png';
+import iconKey from '../../../img/plymouth/key.png';
 
 
 class ScreenPlymouthPassword extends React.Component<Props, State> {

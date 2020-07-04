@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setScreen, resetState } from './redux/actions';
-import * as C from './redux/constants';
-import { ReduxState } from './redux/store';
+import { setScreen, resetState } from '../../redux/actions';
+import * as C from '../../redux/constants';
+import { ReduxState } from '../../redux/store';
 import { PlymouthLogoShutdown } from './PlymouthBootAnimation';
-import Timeout from './TimeoutComponent';
+import Timeout from '../../TimeoutComponent';
 
 
 class ScreenShutdown extends React.Component<Props> {
