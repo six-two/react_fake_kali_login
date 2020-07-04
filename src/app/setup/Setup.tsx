@@ -70,7 +70,10 @@ class SetupView extends React.Component<Props, State> {
       If the server defined above can not be reached or does not respond in time,
        these fields will be used to verify the credentials. The fields accept
        regular expressions, which are a powerful way to match text.
-       If you are not familiar with them go check outh this <a href="TODO">quick start guide to regular expressions</a>.
+       If you are not familiar with them go check out this
+       <a href="https://www.computerhope.com/unix/regex-quickref.htm">
+        quick start guide to regular expressions
+       </a>.
        {this.renderSettings(FIELDS_CREDENTIAL_LOCAL)}
 
       <button onClick={() => this.start(this.state.settings, true)}>Start</button>

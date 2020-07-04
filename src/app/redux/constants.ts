@@ -1,7 +1,5 @@
 export const DEBUG = false;
 
-//TODO make this an user selectable option, make user choose cover
-export const URL_SIMULATION = "/posts/2020/06/29/security_advice.html";
 export const MARKER_CAN_BE_LEFT_EMPTY = "*";
 
 export const PLACEHOLDER_USERNAME = "<username>";

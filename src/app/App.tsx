@@ -10,11 +10,10 @@ import '../css/App.scss';
 
 // TODOs
 // setup screen: allow setting all variables, kernels
-// Better cover page
+// Better cover page (close tab: impossible, iframe: url still there, redirect: slow)
 
 // --- Nice to have ---
 // Disable autofill on password fields (in Firefox)
-// preload images so they will not be displayed a secont too late
 // Build my own clock, that does not create error messages in the console
 
 class App extends React.Component<Props, State> {

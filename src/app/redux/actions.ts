@@ -109,7 +109,8 @@ export function tryDecrypt(success: boolean) {
 }
 
 export function initialSetup(constants: ReduxConstants) {
-  window.history.pushState({ stage: "simulation" }, "", C.URL_SIMULATION);
+  document.title = constants.coverFakeTitle;
+  window.history.pushState({ stage: "simulation" }, "", constants.coverFakeUrl);
 
   d({
     type: C.INITIAL_SETUP,

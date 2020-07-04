@@ -35,6 +35,10 @@ export interface ReduxConstants {
   validLoginUsernameRegex: RegExp,
   validLoginPasswordRegex: RegExp,
   validDecryptionPasswordRegex: RegExp,
+  // cover
+  coverUrl: string,
+  coverFakeUrl: string,
+  coverFakeTitle: string,
 }
 
 export const DEFAULT_CONSTANTS: ReduxConstants = {
@@ -57,6 +61,10 @@ export const DEFAULT_CONSTANTS: ReduxConstants = {
   validDecryptionPasswordRegex: RegExp("^$"),//empty string
   serverRequestTimeout: 2.0,
   initialScreen: C.SCREEN_LOGIN,
+  //cover
+  coverUrl: "https://www.google.com/webhp?igu=1",
+  coverFakeUrl: "/www.google.com",
+  coverFakeTitle: "Google",
 }
 
 // The variables or "state" of the simulation.
@@ -141,17 +149,17 @@ if ((window as any).__REDUX_DEVTOOLS_EXTENSION__) {
 
 export const store = createStore(reducer, FALLBACK_STATE, devTools);
 
-if (C.DEBUG) {
-  store.dispatch({
-    type: C.INITIAL_SETUP,
-    payload: {
-      ...DEFAULT_CONSTANTS,
-      initialScreen: C.SCREEN_PLYMOUTH_PASSWORD,
-      cryptDevice: "sdXY_crypt",
-      plymountDuration: 4,
-      checkDecryptionPasswordUrl: null,
-    },
-  });
-}
+// if (C.DEBUG) {
+//   store.dispatch({
+//     type: C.INITIAL_SETUP,
+//     payload: {
+//       ...DEFAULT_CONSTANTS,
+//       initialScreen: C.SCREEN_PLYMOUTH_PASSWORD,
+//       cryptDevice: "sdXY_crypt",
+//       plymountDuration: 4,
+//       checkDecryptionPasswordUrl: null,
+//     },
+//   });
+// }
 
 export default store;
