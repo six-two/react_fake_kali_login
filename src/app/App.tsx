@@ -11,6 +11,8 @@ import '../css/App.scss';
 // TODOs
 // setup screen: allow setting all variables, kernels
 // Better cover page (close tab: impossible, iframe: url still there, redirect: slow)
+// Improve boot anim
+// Fix login emblem
 
 // --- Nice to have ---
 // Disable autofill on password fields (in Firefox)
