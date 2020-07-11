@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "43cb678d0180b8cfd21edf4916c64022",
+    "revision": "dc4ac16681cdce21d6c0041c54cf5de9",
     "url": "/react_fake_kali_login/index.html"
   },
   {
-    "revision": "9fe5e9a0f85216dac23d",
+    "revision": "6b2e555fa3df3ae940b6",
     "url": "/react_fake_kali_login/static/css/main.fec5612e.chunk.css"
   },
   {
-    "revision": "c322c5e1a82b2da90fad",
-    "url": "/react_fake_kali_login/static/js/2.6fe7e30e.chunk.js"
+    "revision": "74c013754ae4f09d1f20",
+    "url": "/react_fake_kali_login/static/js/2.e3049d38.chunk.js"
   },
   {
     "revision": "c64c486544348f10a6d6c716950bc223",
-    "url": "/react_fake_kali_login/static/js/2.6fe7e30e.chunk.js.LICENSE.txt"
+    "url": "/react_fake_kali_login/static/js/2.e3049d38.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "9fe5e9a0f85216dac23d",
-    "url": "/react_fake_kali_login/static/js/main.ca40cde8.chunk.js"
+    "revision": "6b2e555fa3df3ae940b6",
+    "url": "/react_fake_kali_login/static/js/main.8ef6e317.chunk.js"
   },
   {
-    "revision": "28b6b421e8ea119986a3",
-    "url": "/react_fake_kali_login/static/js/runtime-main.456212ea.js"
+    "revision": "248ac1de83dd1ea2db1d",
+    "url": "/react_fake_kali_login/static/js/runtime-main.9d4fe72c.js"
   },
   {
     "revision": "017ebdca99a384fff78e9029fa1da58e",
