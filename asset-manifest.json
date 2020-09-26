@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/react_fake_kali_login/static/css/main.fec5612e.chunk.css",
-    "main.js": "/react_fake_kali_login/static/js/main.8ef6e317.chunk.js",
-    "main.js.map": "/react_fake_kali_login/static/js/main.8ef6e317.chunk.js.map",
+    "main.js": "/react_fake_kali_login/static/js/main.8abe26f5.chunk.js",
+    "main.js.map": "/react_fake_kali_login/static/js/main.8abe26f5.chunk.js.map",
     "runtime-main.js": "/react_fake_kali_login/static/js/runtime-main.9d4fe72c.js",
     "runtime-main.js.map": "/react_fake_kali_login/static/js/runtime-main.9d4fe72c.js.map",
     "static/js/2.e3049d38.chunk.js": "/react_fake_kali_login/static/js/2.e3049d38.chunk.js",
     "static/js/2.e3049d38.chunk.js.map": "/react_fake_kali_login/static/js/2.e3049d38.chunk.js.map",
     "index.html": "/react_fake_kali_login/index.html",
-    "precache-manifest.e84ddd80b1553555c6f84c85439617cd.js": "/react_fake_kali_login/precache-manifest.e84ddd80b1553555c6f84c85439617cd.js",
+    "precache-manifest.e80adb417c00fb60d81283c3235902b6.js": "/react_fake_kali_login/precache-manifest.e80adb417c00fb60d81283c3235902b6.js",
     "service-worker.js": "/react_fake_kali_login/service-worker.js",
     "static/css/main.fec5612e.chunk.css.map": "/react_fake_kali_login/static/css/main.fec5612e.chunk.css.map",
     "static/js/2.e3049d38.chunk.js.LICENSE.txt": "/react_fake_kali_login/static/js/2.e3049d38.chunk.js.LICENSE.txt",
@@ -21,6 +21,6 @@
     "static/js/runtime-main.9d4fe72c.js",
     "static/js/2.e3049d38.chunk.js",
     "static/css/main.fec5612e.chunk.css",
-    "static/js/main.8ef6e317.chunk.js"
+    "static/js/main.8abe26f5.chunk.js"
   ]
 }
