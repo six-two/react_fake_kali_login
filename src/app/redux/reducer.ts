@@ -56,10 +56,21 @@ export function reducer(state: ReduxState | undefined, action: Actions.Action): 
       }
     }
     default: {
-      return {
+      state = {
         ...state,
         var: varReducer(state.var, action, state.const),
       };
+      if (action.type === C.TRY_LOGIN && state.var.isFinished) {
+        state = {
+          ...state,
+          fullscreen: {
+            ...state.fullscreen,
+            requested: false,
+          }
+        }
+      }
+
+      return state;
     }
   }
 }
