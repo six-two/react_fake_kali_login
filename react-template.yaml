@@ -3,5 +3,9 @@ description: A small web app that emulates the login screen of the Kali Linux di
 menu:
   - title: Source code
     url: "https://github.com/six-two/react_fake_kali_login"
+    id: page-nav-source
   - title: My other projects
     url: "https://projects.six-two.dev/"
+    id: page-nav-projects
+pre_build:
+  - template-tools/defaults.py <PROJECT>
